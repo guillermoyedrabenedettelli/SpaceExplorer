@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 1036944466}
   - component: {fileID: 1036944465}
   - component: {fileID: 1036944469}
+  - component: {fileID: 1036944470}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -300,7 +301,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036944464}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -390,6 +391,23 @@ MonoBehaviour:
   onChangeLife:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1036944470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036944464}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1468e02b8dc2e6249b383ec6ee665c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Giro: 1
+  amplitude: 200
+  frequency: 1
+  speed: 1
+  rotationSpeed: 1
 --- !u!1 &1344846799
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,8 +554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   esferaPrefab: {fileID: 3833084985142979199, guid: 08bc773e1abef314abc872ba90be07dd,
     type: 3}
-  cantidad: 1000
-  margen: 50
+  cantidad: 20
+  margen: 10
   amplitud: 2.43
   velocidad: 50
   TrigometriaBehavior: 0
@@ -550,7 +568,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371328435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.95, y: 0, z: -1.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -691,7 +709,7 @@ MonoBehaviour:
   NameTarget: Player
   velocidadAvance: 10
   velocidadRotacion: 2
-  distanciaMaxima: 0
+  distanciaMaxima: 15
   cadense: 3
   proyectil: {fileID: 5086306553055730537, guid: d56505121c57d484895a48e3ad7495e4,
     type: 3}
