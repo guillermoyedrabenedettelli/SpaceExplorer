@@ -4905,10 +4905,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  damage_explostions: 20
+  damage_explostions: 5
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967241
+    m_Bits: 2147483647
 --- !u!82 &4212108665212618656
 AudioSource:
   m_ObjectHideFlags: 0

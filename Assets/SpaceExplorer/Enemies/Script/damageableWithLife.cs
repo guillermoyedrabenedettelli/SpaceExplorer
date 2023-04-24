@@ -55,10 +55,13 @@ public class damageableWithLife : MonoBehaviour, IDamageable
             if (damage >= 1f)
             {
                 timeCurrentSetMotor = timeSetMotor;
-                Hurt.Play();
+                if (Hurt != null)
+                {
+                    Hurt.Play();
+                }
             }
         }
-        if (life_dead < 0f)
+        if (life_dead < 0.5f)
         {
             Destroy(gameObject);
             Gamepad.current?.SetMotorSpeeds(0f, 0f);

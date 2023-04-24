@@ -15,19 +15,8 @@ public class Explosion : MonoBehaviour
             IDamageable damageable = c.GetComponent<IDamageable>();
             if (damageable != null)
             {
+                damageable.NotifyHit(damage_explostions);
                 Debug.Log("Hay IDamageable");
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position,
-                 c.transform.position - transform.position,
-                 out hit,
-                 radius,
-                 layerMask))
-                {
-                    if (hit.collider == c)
-                    {
-                        damageable.NotifyHit(damage_explostions);
-                    }
-                }
             }
         }
         Destroy(this);
