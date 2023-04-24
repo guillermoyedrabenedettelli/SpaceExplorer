@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: b9b63c9d8bd83cc4298fd6d015685b67, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 18b6bf7c06173654ead94eda5ab1abee, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -200,13 +200,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327714789}
-  m_LocalRotation: {x: 0, y: -0.35836798, z: 0, w: 0.93358046}
-  m_LocalPosition: {x: 15.14, y: 0.83, z: -20.18}
+  m_LocalRotation: {x: -0.16567229, y: -0.028383642, z: 0.0047906507, w: -0.9857607}
+  m_LocalPosition: {x: -0.09320259, y: 1.329339, z: -2.9959393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1780588981}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -42, z: 0}
 --- !u!114 &327714793
 MonoBehaviour:
@@ -291,7 +291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1036944465
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1036944469
 MonoBehaviour:
@@ -536,8 +536,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   esferaPrefab: {fileID: 3833084985142979199, guid: 08bc773e1abef314abc872ba90be07dd,
     type: 3}
-  cantidad: 30
-  margen: 10
+  cantidad: 1000
+  margen: 50
   amplitud: 2.43
   velocidad: 50
   TrigometriaBehavior: 0
@@ -555,7 +555,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1626067345
 GameObject:
@@ -675,7 +675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1780588977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,8 +777,9 @@ Transform:
   m_Children:
   - {fileID: 1626067346}
   - {fileID: 921102823}
+  - {fileID: 327714792}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1780588982
 MonoBehaviour:
