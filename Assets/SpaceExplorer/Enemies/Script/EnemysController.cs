@@ -6,7 +6,10 @@ public class EnemysController : MonoBehaviour
 {
     [SerializeField]
     public string NameTarget = "";
+    //Deteccion del objetivo por nombre
+    private GameObject Target;
 
+    // Configuración de velocidades de nave 
     public float velocidadAvance = 5.0f; // Velocidad de movimiento
     public float velocidadRotacion = 5.0f; // Velocidad de rotación
     public float distanciaMaxima = 5.0f; // Distancia máxima para avanzar
@@ -21,10 +24,8 @@ public class EnemysController : MonoBehaviour
     float timeSinceLastShot = 0f;
     public KeyCode teclaDisparo = KeyCode.Space; // Tecla para disparar
 
-    //Deteccion del objetivo por nombre
-    private GameObject Target;
+    
 
-    // Start is called before the first frame update
     void Start()
     {
         GameObject objetoBuscado = GameObject.Find(NameTarget);
@@ -52,7 +53,7 @@ public class EnemysController : MonoBehaviour
 
         // Avanzar hacia el target si la distancia es mayor a distanciaMaxima
         float distancia = Vector3.Distance(transform.position, Target.transform.position);
-        Debug.Log(distancia);
+        //Debug.Log(distancia);
         if (distancia >= distanciaMaxima)
         {
             transform.Translate(Vector3.forward * velocidadAvance * Time.deltaTime);
