@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b9b63c9d8bd83cc4298fd6d015685b67, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.008612238, g: 0.013448726, b: 0.016632903, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -200,14 +200,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327714789}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.0842446, y: -0, z: -0, w: 0.9964451}
+  m_LocalPosition: {x: 0, y: 0.83, z: -1.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 1780588981}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 9.665, y: 0, z: 0}
 --- !u!114 &327714793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +300,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036944464}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -368,7 +368,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1036944469
 MonoBehaviour:
@@ -503,8 +503,60 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1371328435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1371328437}
+  - component: {fileID: 1371328436}
+  m_Layer: 0
+  m_Name: GenerateAsteroid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1371328436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371328435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20016dc6bcb2e29468553a670dc10237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esferaPrefab: {fileID: 3833084985142979199, guid: 08bc773e1abef314abc872ba90be07dd,
+    type: 3}
+  cantidad: 30
+  margen: 10
+  amplitud: 2.43
+  velocidad: 50
+  TrigometriaBehavior: 0
+  Behavior: 010000
+--- !u!4 &1371328437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371328435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1626067345
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,6 +668,7 @@ GameObject:
   - component: {fileID: 1780588979}
   - component: {fileID: 1780588978}
   - component: {fileID: 1780588977}
+  - component: {fileID: 1780588982}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -636,9 +689,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameTarget: Player
-  velocidadAvance: 5
-  velocidadRotacion: 5
-  distanciaMaxima: 10
+  velocidadAvance: 10
+  velocidadRotacion: 2
+  distanciaMaxima: 0
   cadense: 3
   proyectil: {fileID: 5086306553055730537, guid: d56505121c57d484895a48e3ad7495e4,
     type: 3}
@@ -658,7 +711,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.22
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1780588979
 MeshRenderer:
@@ -718,12 +771,33 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780588976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.14, y: 0, z: -23.8}
+  m_LocalPosition: {x: 15.14, y: 0, z: -18.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1626067346}
   - {fileID: 921102823}
+  - {fileID: 327714792}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1780588982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780588976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea5ec4d01a3cc349bc8f5f5a787e396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 20
+  life_dead: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onChangeLife:
+    m_PersistentCalls:
+      m_Calls: []

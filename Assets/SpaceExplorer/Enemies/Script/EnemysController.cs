@@ -24,7 +24,7 @@ public class EnemysController : MonoBehaviour
     float timeSinceLastShot = 0f;
     public KeyCode teclaDisparo = KeyCode.Space; // Tecla para disparar
 
-    
+
 
     void Start()
     {
@@ -57,19 +57,34 @@ public class EnemysController : MonoBehaviour
         if (distancia >= distanciaMaxima)
         {
             transform.Translate(Vector3.forward * velocidadAvance * Time.deltaTime);
+            if (distanciaMaxima == 0)
+            {
+                if (distancia < 15)
+                {
+                    if ((Time.time - timeSinceLastShot) > (1f / cadense))
+                    {
 
+                        //Disparar continuamente
+                        timeSinceLastShot = Time.time;
+                        Shoot();
+                    }
+                }
+
+            }
         }
         else
         {
             if (distancia <= distanciaMaxima || Input.GetKeyDown(teclaDisparo))
             {
-               if ((Time.time - timeSinceLastShot) > (1f / cadense)){
+                if ((Time.time - timeSinceLastShot) > (1f / cadense))
+                {
 
                     //Disparar continuamente
                     timeSinceLastShot = Time.time;
                     Shoot();
                 }
             }
+
         }
 
 

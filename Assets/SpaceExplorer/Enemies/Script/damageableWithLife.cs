@@ -72,7 +72,7 @@ public class damageableWithLife : MonoBehaviour, IDamageable
         {
             life_dead = life;
         }
-        print(life_dead);
+        //print(life_dead);
     }
     UnityEvent IDamageable.GetDeathEvent()
     {

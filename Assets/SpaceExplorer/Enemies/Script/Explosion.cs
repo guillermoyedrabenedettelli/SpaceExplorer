@@ -16,7 +16,7 @@ public class Explosion : MonoBehaviour
             if (damageable != null)
             {
                 damageable.NotifyHit(damage_explostions);
-                Debug.Log("Hay IDamageable");
+                //Debug.Log("Hay IDamageable");
             }
         }
         Destroy(this);
