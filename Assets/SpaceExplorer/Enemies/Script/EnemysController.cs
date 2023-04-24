@@ -12,12 +12,16 @@ public class EnemysController : MonoBehaviour
     public float distanciaMaxima = 5.0f; // Distancia máxima para avanzar
 
     //Instanciar Proyectil
+    [SerializeField] float cadense = 5f;
     public GameObject proyectil; // Prefab del proyectil
     public Transform puntoDisparo; // Punto de origen del proyectil
     public float fuerzaDisparo = 1000.0f; // Fuerza de disparo
+    public float lifeTime = 5f; // Tiempo de destruccion de misil
     public Vector3 direccionDisparo = Vector3.forward; // Dirección de disparo
+    float timeSinceLastShot = 0f;
     public KeyCode teclaDisparo = KeyCode.Space; // Tecla para disparar
 
+    //Deteccion del objetivo por nombre
     private GameObject Target;
 
     // Start is called before the first frame update
@@ -48,19 +52,35 @@ public class EnemysController : MonoBehaviour
 
         // Avanzar hacia el target si la distancia es mayor a distanciaMaxima
         float distancia = Vector3.Distance(transform.position, Target.transform.position);
-        if (distancia > distanciaMaxima)
+        Debug.Log(distancia);
+        if (distancia >= distanciaMaxima)
         {
             transform.Translate(Vector3.forward * velocidadAvance * Time.deltaTime);
+
         }
-        if (Input.GetKeyDown(teclaDisparo))
+        else
         {
-            GameObject nuevoProyectil = Instantiate(proyectil, puntoDisparo.position, puntoDisparo.rotation);
+            if (distancia <= distanciaMaxima || Input.GetKeyDown(teclaDisparo))
+            {
+               if ((Time.time - timeSinceLastShot) > (1f / cadense)){
 
-            // Obtener el componente Rigidbody del proyectil
-            Rigidbody rigidbodyProyectil = nuevoProyectil.GetComponent<Rigidbody>();
+                    //Disparar continuamente
+                    timeSinceLastShot = Time.time;
+                    Shoot();
+                }
+            }
+        }
 
-            // Aplicar una fuerza al proyectil en la dirección y magnitud deseadas
-            rigidbodyProyectil.AddForce(direccionDisparo * fuerzaDisparo);
+
+    }
+    private void Shoot()
+    {
+        GameObject nuevoProyectil = Instantiate(proyectil, puntoDisparo.position, puntoDisparo.rotation);
+        Rigidbody rigidbodyProyectil = nuevoProyectil.GetComponent<Rigidbody>();
+        if (rigidbodyProyectil)
+        {
+            rigidbodyProyectil.velocity = nuevoProyectil.transform.forward * fuerzaDisparo;
+            Destroy(nuevoProyectil, lifeTime);
         }
 
     }
