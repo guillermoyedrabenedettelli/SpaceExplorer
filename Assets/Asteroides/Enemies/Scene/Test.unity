@@ -949,7 +949,7 @@ MonoBehaviour:
   NameTarget: Player
   velocidadAvance: 100
   velocidadRotacion: 2
-  distanciaMaxima: 0
+  distanciaMaxima: 15
   cadense: 3
   proyectil: {fileID: 5086306553055730537, guid: d56505121c57d484895a48e3ad7495e4,
     type: 3}
