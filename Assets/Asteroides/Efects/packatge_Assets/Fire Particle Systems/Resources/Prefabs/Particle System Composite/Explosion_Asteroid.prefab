@@ -4904,8 +4904,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f65995cf4a1aa48b5aa7375eef5c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 20
-  damage_explostions: 20
+  radius: 10
+  damage_explostions: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 2147483647
