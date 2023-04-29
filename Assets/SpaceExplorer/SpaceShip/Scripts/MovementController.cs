@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class MovementController : MonoBehaviour
@@ -25,6 +26,17 @@ public class MovementController : MonoBehaviour
 
     Vector3 motion;
 
+
+    [Header("Turbo configuration")]
+    [SerializeField] float maxTurbo = 100f;
+    [SerializeField] float turboConsumption =6f;
+    [SerializeField] float turboRecovery = 2f;
+    [SerializeField] float actualTurbo;
+    [SerializeField] float timeToStartRecovering =2f;
+    float actualTimeWaitingForRecover = 0f;
+    [SerializeField] Image turboBar;
+
+
     [Header("Direction Bindings")]
     [SerializeField] InputAction forwardInput;
     [SerializeField] InputAction backwardInput;
@@ -44,6 +56,8 @@ public class MovementController : MonoBehaviour
         actualAcceleration = Vector3.zero;
 
         EnableInputs();
+
+        actualTurbo = maxTurbo;
     }
 
     private void Update()
@@ -56,9 +70,7 @@ public class MovementController : MonoBehaviour
     {
         motion = Vector3.zero;
 
-        if (turboInput.IsPressed()) { TurboOn = true; }
-        else{ TurboOn = false; }
-
+        TurboUpdate();
         getInputAccelerations();
 
         motion += characterTransform.right * actualAcceleration.x * Time.deltaTime;
@@ -181,6 +193,72 @@ public class MovementController : MonoBehaviour
             }
         }
     }
+
+    void TurboUpdate()
+    {
+        if (turboInput.IsPressed() && actualTurbo >= turboConsumption * Time.deltaTime)
+        {
+            actualTurbo -= turboConsumption * Time.deltaTime;
+            if (turboBar != null)
+            {
+                turboBar.fillAmount = actualTurbo / maxTurbo;
+            }
+            if (actualTurbo <= 0f)
+            {
+                actualTurbo = 0f;
+            }
+            TurboOn = true;
+            actualTimeWaitingForRecover = 0f;
+        }
+        else
+        {
+            if (actualTimeWaitingForRecover >= timeToStartRecovering)
+            {
+                if (actualTurbo < maxTurbo)
+                {
+                    actualTurbo += turboRecovery * Time.deltaTime;
+                    if (actualTurbo >= maxTurbo)
+                    {
+                        actualTurbo = maxTurbo;
+                    }
+                    FillTurboBar();
+                }
+            }
+            else
+            {
+                actualTimeWaitingForRecover += Time.deltaTime;
+            }
+
+            TurboOn = false;
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("TurboFuelTank"))
+        {
+            TurboFuelTank fuelTank=other.GetComponent<TurboFuelTank>();
+            float turboToAdd=maxTurbo*fuelTank.turboRecoveryPercentage/100f;
+
+            actualTurbo += turboToAdd;
+            if (actualTurbo >= maxTurbo)
+                actualTurbo = maxTurbo;
+
+            FillTurboBar();
+
+            fuelTank.DestroyTank();
+        }
+    }
+
+    void FillTurboBar()
+    {
+        if (turboBar != null)
+        {
+            turboBar.fillAmount = actualTurbo / maxTurbo;
+        }
+    }
+
 
     public bool GetTurboOn()
     {
