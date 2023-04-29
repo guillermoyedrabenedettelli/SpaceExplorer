@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Enemy
   - Bala
   - GranadaLanza
-  - TurboFuelTank
+  - Asteroid
   layers:
   - Default
   - TransparentFX
