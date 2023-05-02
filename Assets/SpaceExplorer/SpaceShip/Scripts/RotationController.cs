@@ -44,14 +44,14 @@ public class RotationController : MonoBehaviour
         }
         if (rotation.y != 0f)
         {
-            float SpeedY = (rotation.y / Screen.height) / Time.deltaTime;
+            float SpeedY = rotation.y * Time.deltaTime;
             float angleToApplyY = SpeedY * (sensitivityY / actualSensitivityReduction);
             Quaternion rotationToApplyY = Quaternion.AngleAxis(angleToApplyY, transform.right);
             transform.rotation = rotationToApplyY * transform.rotation;
         }
         if (rotation.x != 0f)
         {
-            float SpeedX = (rotation.x / Screen.width) / Time.deltaTime;
+            float SpeedX = rotation.x * Time.deltaTime;
             float angleToApplyX = SpeedX * (sensitivityX / actualSensitivityReduction);
             Quaternion rotationToApplyX = Quaternion.AngleAxis(angleToApplyX, transform.up);
             transform.rotation = rotationToApplyX * transform.rotation;

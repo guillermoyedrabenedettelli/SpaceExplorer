@@ -5,11 +5,11 @@ using UnityEngine;
 public class AttractionArea : MonoBehaviour
 {
 
-    TurboFuelTank turboFuelTank;
+    DropeableItem dropeableItem;
     // Start is called before the first frame update
     void Awake()
     {
-        turboFuelTank = GetComponentInParent<TurboFuelTank>();
+        dropeableItem = GetComponentInParent<DropeableItem>();
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class AttractionArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            turboFuelTank.MoveToPlayer(other.transform);
+            dropeableItem.MoveToPlayer(other.transform);
         }
     }
 }
