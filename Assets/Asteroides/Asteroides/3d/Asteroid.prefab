@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -1859370593759886177}
   m_Layer: 0
   m_Name: Asteroid
-  m_TagString: Untagged
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,6 +207,10 @@ PrefabInstance:
     - target: {fileID: 469044, guid: b5bc6e46929efee41976deeb12e1f3ad, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467940, guid: b5bc6e46929efee41976deeb12e1f3ad, type: 3}
+      propertyPath: tumble
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5bc6e46929efee41976deeb12e1f3ad, type: 3}

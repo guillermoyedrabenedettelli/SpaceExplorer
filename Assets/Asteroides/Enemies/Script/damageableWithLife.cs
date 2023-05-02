@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class damageableWithLife : MonoBehaviour, IDamageable
 {
@@ -11,6 +12,8 @@ public class damageableWithLife : MonoBehaviour, IDamageable
     bool alreadyDead = false;
     [SerializeField] public UnityEvent onDeath;
     [SerializeField] public UnityEvent<float> onChangeLife;
+
+    [SerializeField] Image healthBar;
 
     AudioSource Hurt;
     bool principalPlayer = false;
@@ -60,6 +63,10 @@ public class damageableWithLife : MonoBehaviour, IDamageable
                     Hurt.Play();
                 }
             }
+        }
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = life_dead / life;
         }
         if (life_dead < 0.5f)
         {
