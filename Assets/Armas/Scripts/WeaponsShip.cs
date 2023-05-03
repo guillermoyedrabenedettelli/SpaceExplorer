@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponsShip : MonoBehaviour
 {
@@ -21,13 +23,20 @@ public class WeaponsShip : MonoBehaviour
     private float recoil;
     private bool puedoDisparar = true;
 
-    private int muniAmetralladora = 100;
-    private int muniLanzagranadas = 50;
-    private float energiaDisparo = 1000.0f;
+    [Header("Ammo")]
+    [SerializeField] int muniAmetralladora = 100;
+    [SerializeField] int muniLanzagranadas = 50;
+    [SerializeField] float maxEnergiaDisparo = 100f;
+    private float energiaDisparo;
+
+    [Header("UI")]
+    [SerializeField] TMP_Text weaponsAmmo;
+    [SerializeField] Image laserInterface;
+    Image laserTemperature;
     // Start is called before the first frame update
     void Start()
     {
-        
+
         bulletReference = bulletReferenceAmetralladora;
         bulletPrefab = bulletPrefabAmetralladora;
 
@@ -35,7 +44,15 @@ public class WeaponsShip : MonoBehaviour
         bulletVelocity = 1000.0f;
         timeDestroy = 500.0f;
         recoil = 0.1f;
-}
+        UpdateAmmo(muniAmetralladora);
+        if (laserInterface != null)
+        {
+            laserTemperature= laserInterface.GetComponentsInChildren<Image>()[1];
+            laserTemperature.fillAmount = 0f;
+            HideLaserInterface();
+        }
+        energiaDisparo = maxEnergiaDisparo;
+    }
 
     // Update is called once per frame
     void Update()
@@ -54,9 +71,10 @@ public class WeaponsShip : MonoBehaviour
                     Destroy(bulletTemp, timeDestroy * Time.deltaTime);
                     StartCoroutine(Recoil());
                 }
-            } else
+            }
+            else
             {
-                if (energiaDisparo != 1000.0f)
+                if (energiaDisparo != maxEnergiaDisparo)
                 {
                     StartCoroutine(RecargaEnergia());
                 }
@@ -78,7 +96,8 @@ public class WeaponsShip : MonoBehaviour
             if (muniAmetralladora > 0)
             {
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }
@@ -116,24 +135,30 @@ public class WeaponsShip : MonoBehaviour
             bulletReference = bulletReferenceLanzagranadas;
 
             armaUsada = "lanzamisiles";
+            UpdateAmmo(muniLanzagranadas);
             bulletVelocity = 500.0f;
             timeDestroy = 500.0f;
             recoil = 0.5f;
-        } else if (armaUsada == "lanzamisiles")
+        }
+        else if (armaUsada == "lanzamisiles")
         {
             bulletPrefab = bulletPrefabEnergia;
             bulletReference = bulletReferenceEnergia;
 
             armaUsada = "energia";
+            ShowLaserInterface();
             bulletVelocity = 1000.0f;
             timeDestroy = 500.0f;
             recoil = 0.05f;
-        } else if (armaUsada == "energia")
+        }
+        else if (armaUsada == "energia")
         {
             bulletPrefab = bulletPrefabAmetralladora;
             bulletReference = bulletReferenceAmetralladora;
 
             armaUsada = "ametralladora";
+            HideLaserInterface();
+            UpdateAmmo(muniAmetralladora);
             bulletVelocity = 1000.0f;
             timeDestroy = 500.0f;
             recoil = 0.1f;
@@ -147,6 +172,7 @@ public class WeaponsShip : MonoBehaviour
         {
             case 1:
                 muniAmetralladora = muniAmetralladora + cantidad;
+
                 break;
             case 2:
                 muniLanzagranadas = muniLanzagranadas + cantidad;
@@ -158,10 +184,13 @@ public class WeaponsShip : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1.0f);
         energiaDisparo = energiaDisparo + 0.5f;
-        if (energiaDisparo > 1000.0f)
+        if (energiaDisparo > maxEnergiaDisparo)
         {
-            energiaDisparo = 1000.0f;
+            energiaDisparo = maxEnergiaDisparo;
         }
+        UpdateTemperature();
+
+
     }
 
     IEnumerator Recoil()
@@ -170,14 +199,57 @@ public class WeaponsShip : MonoBehaviour
         if (armaUsada == "ametralladora")
         {
             muniAmetralladora--;
-        } else if (armaUsada == "lanzamisiles")
+            UpdateAmmo(muniAmetralladora);
+        }
+        else if (armaUsada == "lanzamisiles")
         {
             muniLanzagranadas--;
-        } else if (armaUsada == "energia")
+            UpdateAmmo(muniLanzagranadas);
+        }
+        else if (armaUsada == "energia")
         {
             energiaDisparo = energiaDisparo - 1.0f;
+            UpdateTemperature();
         }
         yield return new WaitForSecondsRealtime(recoil);
         puedoDisparar = true;
+    }
+
+    void UpdateAmmo( int ammo)
+    {
+        if (weaponsAmmo != null)
+        {
+            weaponsAmmo.text = ammo.ToString();
+        }
+    }
+    void UpdateTemperature()
+    {
+        if (laserTemperature != null)
+        {
+            float fillAmount=(maxEnergiaDisparo - energiaDisparo) / maxEnergiaDisparo;
+            laserTemperature.fillAmount=fillAmount;
+        }
+    }
+    void ShowLaserInterface()
+    {
+        if (weaponsAmmo != null)
+        {
+            weaponsAmmo.enabled = false;
+        }
+        if (laserInterface != null)
+        {
+            laserInterface.enabled = true;
+        }
+    }
+    void HideLaserInterface()
+    {
+        if (weaponsAmmo != null)
+        {
+            weaponsAmmo.enabled = true;
+        }
+        if (laserInterface != null)
+        {
+            laserInterface.enabled = false;
+        }
     }
 }

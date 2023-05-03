@@ -247,7 +247,7 @@ public class MovementController : MonoBehaviour
 
             FillTurboBar();
 
-            fuelTank.DestroyTank();
+            fuelTank.DestroyItem();
         }
     }
 
