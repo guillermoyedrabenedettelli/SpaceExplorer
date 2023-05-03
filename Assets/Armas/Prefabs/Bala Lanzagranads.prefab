@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8956593166328218457}
   - component: {fileID: 1055922343991930295}
   - component: {fileID: 6757694384696218849}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bala Lanzagranads
   m_TagString: GranadaLanza
   m_Icon: {fileID: 0}

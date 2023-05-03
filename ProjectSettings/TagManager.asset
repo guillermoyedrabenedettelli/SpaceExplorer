@@ -8,14 +8,15 @@ TagManager:
   - Bala
   - GranadaLanza
   - Asteroid
+  - TurboFuelTank
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Bullet
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

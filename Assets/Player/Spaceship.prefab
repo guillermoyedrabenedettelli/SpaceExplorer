@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1053793857010159272}
   - component: {fileID: 1053793857010159269}
   - component: {fileID: 1053793857010159268}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1053793857083727521}
   - component: {fileID: 1053793857083727520}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CM vcam1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 1053793857839035718}
   - component: {fileID: 1053793857839035719}
   - component: {fileID: 1053793857839035716}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 1567655178907502358}
   - component: {fileID: 1037667612774360813}
   - component: {fileID: 1053793858792924478}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spaceship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,6 +628,8 @@ MonoBehaviour:
   onChangeLife:
     m_PersistentCalls:
       m_Calls: []
+  DropeableItems: []
+  NoDropChance: 100
   healthBar: {fileID: 0}
 --- !u!114 &1037667612774360813
 MonoBehaviour:
@@ -649,6 +651,11 @@ MonoBehaviour:
   bulletPrefabLanzagrandas: {fileID: 8120059961020251374, guid: e288d1419cd2d294bb21f82ab4414e0f,
     type: 3}
   bulletPrefabEnergia: {fileID: 0}
+  muniAmetralladora: 100
+  muniLanzagranadas: 50
+  maxEnergiaDisparo: 100
+  weaponsAmmo: {fileID: 0}
+  laserInterface: {fileID: 0}
 --- !u!114 &1053793858792924478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,7 +760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3849466307308609333}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,10 +789,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1053793858792924476}
     m_Modifications:
+    - target: {fileID: 1459881825379833349, guid: 3ae5a8994f43dc54dbad71c1005e0960,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6786312032402282517, guid: 3ae5a8994f43dc54dbad71c1005e0960,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6941613409415342916, guid: 3ae5a8994f43dc54dbad71c1005e0960,
         type: 3}
       propertyPath: m_Name
       value: SHIPS4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941613409415342916, guid: 3ae5a8994f43dc54dbad71c1005e0960,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428857751914488945, guid: 3ae5a8994f43dc54dbad71c1005e0960,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7718677397116711422, guid: 3ae5a8994f43dc54dbad71c1005e0960,
         type: 3}
