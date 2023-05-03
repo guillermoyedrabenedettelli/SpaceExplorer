@@ -19,6 +19,9 @@ public class WeaponsShip : MonoBehaviour
 
     private string armaUsada;
     private float bulletVelocity;
+    [SerializeField] float bulletVelocity_ametralladora = 500f;
+    [SerializeField] float bulletVelocity_lanzamisiles = 500f;
+    [SerializeField] float bulletVelocity_energia = 1000f;
     private float timeDestroy;
     private float recoil;
     private bool puedoDisparar = true;
@@ -47,7 +50,7 @@ public class WeaponsShip : MonoBehaviour
         UpdateAmmo(muniAmetralladora);
         if (laserInterface != null)
         {
-            laserTemperature= laserInterface.GetComponentsInChildren<Image>()[1];
+            laserTemperature = laserInterface.GetComponentsInChildren<Image>()[1];
             laserTemperature.fillAmount = 0f;
             HideLaserInterface();
         }
@@ -136,8 +139,8 @@ public class WeaponsShip : MonoBehaviour
 
             armaUsada = "lanzamisiles";
             UpdateAmmo(muniLanzagranadas);
-            bulletVelocity = 500.0f;
-            timeDestroy = 500.0f;
+            bulletVelocity = bulletVelocity_lanzamisiles;
+            timeDestroy = 500;
             recoil = 0.5f;
         }
         else if (armaUsada == "lanzamisiles")
@@ -147,7 +150,7 @@ public class WeaponsShip : MonoBehaviour
 
             armaUsada = "energia";
             ShowLaserInterface();
-            bulletVelocity = 1000.0f;
+            bulletVelocity = bulletVelocity_energia;
             timeDestroy = 500.0f;
             recoil = 0.05f;
         }
@@ -159,7 +162,7 @@ public class WeaponsShip : MonoBehaviour
             armaUsada = "ametralladora";
             HideLaserInterface();
             UpdateAmmo(muniAmetralladora);
-            bulletVelocity = 1000.0f;
+            bulletVelocity = bulletVelocity_ametralladora;
             timeDestroy = 500.0f;
             recoil = 0.1f;
         }
@@ -215,7 +218,7 @@ public class WeaponsShip : MonoBehaviour
         puedoDisparar = true;
     }
 
-    void UpdateAmmo( int ammo)
+    void UpdateAmmo(int ammo)
     {
         if (weaponsAmmo != null)
         {
@@ -226,8 +229,8 @@ public class WeaponsShip : MonoBehaviour
     {
         if (laserTemperature != null)
         {
-            float fillAmount=(maxEnergiaDisparo - energiaDisparo) / maxEnergiaDisparo;
-            laserTemperature.fillAmount=fillAmount;
+            float fillAmount = (maxEnergiaDisparo - energiaDisparo) / maxEnergiaDisparo;
+            laserTemperature.fillAmount = fillAmount;
         }
     }
     void ShowLaserInterface()

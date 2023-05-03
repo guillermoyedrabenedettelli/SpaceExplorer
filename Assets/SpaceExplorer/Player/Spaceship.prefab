@@ -761,12 +761,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletReferenceAmetralladora: {fileID: 8331961926145376387}
   bulletReferenceLanzagranadas: {fileID: 8331961926145376387}
-  bulletReferenceEnergia: {fileID: 0}
+  bulletReferenceEnergia: {fileID: 8331961926145376387}
   bulletPrefabAmetralladora: {fileID: 8120059961020251374, guid: 3761dac8b8eaebe4fa9f8e974ea75b35,
     type: 3}
   bulletPrefabLanzagrandas: {fileID: 8120059961020251374, guid: e288d1419cd2d294bb21f82ab4414e0f,
     type: 3}
-  bulletPrefabEnergia: {fileID: 0}
+  bulletPrefabEnergia: {fileID: 8120059961020251374, guid: 83dc57f528ba4604294fc9d3de047838,
+    type: 3}
   muniAmetralladora: 100
   muniLanzagranadas: 50
   maxEnergiaDisparo: 100
