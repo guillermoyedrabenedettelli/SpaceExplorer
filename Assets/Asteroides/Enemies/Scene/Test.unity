@@ -846,6 +846,11 @@ PrefabInstance:
       propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1053793857010159273, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1053793857010159274, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1331,7 +1336,7 @@ PrefabInstance:
     - target: {fileID: 1436992794470731801, guid: 234f3e8c67a23a647a050d664982c941,
         type: 3}
       propertyPath: m_Depth
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4200142315151098048, guid: 234f3e8c67a23a647a050d664982c941,
         type: 3}
@@ -1353,10 +1358,30 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 4722373506729866086, guid: 234f3e8c67a23a647a050d664982c941,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722373506729866086, guid: 234f3e8c67a23a647a050d664982c941,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722373506729866086, guid: 234f3e8c67a23a647a050d664982c941,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5890441070228879119, guid: 234f3e8c67a23a647a050d664982c941,
         type: 3}
       propertyPath: m_Name
       value: Cabina_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890441070228879119, guid: 234f3e8c67a23a647a050d664982c941,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6554105651129052597, guid: 234f3e8c67a23a647a050d664982c941,
         type: 3}
