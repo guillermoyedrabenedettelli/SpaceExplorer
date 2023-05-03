@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class WeaponsShip : MonoBehaviour
@@ -36,6 +37,15 @@ public class WeaponsShip : MonoBehaviour
     [SerializeField] TMP_Text weaponsAmmo;
     [SerializeField] Image laserInterface;
     Image laserTemperature;
+
+    [Header("Input Shoot")]
+    [SerializeField] InputAction ShootInput;
+    [SerializeField] InputAction ReloadInput;
+    private void Awake()
+    {
+        ShootInput.Enable();
+        ReloadInput.Enable();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +72,7 @@ public class WeaponsShip : MonoBehaviour
     {
         if (puedoDisparar)
         {
-            if (Input.GetButton("Fire1"))
+            if (ShootInput.IsPressed())
             {
                 bool siTengo = checkTengoMuni();
                 if (siTengo)
@@ -83,7 +93,7 @@ public class WeaponsShip : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (ReloadInput.WasPressedThisFrame())
         {
             StopAllCoroutines();
             changeWeapon();

@@ -547,6 +547,26 @@ PrefabInstance:
       objectReference: {fileID: 1977546793}
     - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
+      propertyPath: ShootInput.m_Id
+      value: fdb68c02-56d6-481e-a305-ea75bcadc15b
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ReloadInput.m_Id
+      value: f6514ae2-fe78-4c96-8536-1d2fabbb3c6c
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ShootInput.m_Name
+      value: Shoot Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ReloadInput.m_Name
+      value: Reload Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
       propertyPath: bulletVelocity_energia
       value: 10000
       objectReference: {fileID: 0}
@@ -559,6 +579,46 @@ PrefabInstance:
         type: 3}
       propertyPath: bulletVelocity_ametralladora
       value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ShootInput.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ReloadInput.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ShootInput.m_SingletonActionBindings.Array.data[0].m_Id
+      value: b9dbbd72-d0ea-471d-a002-4f0c026bfb9f
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ReloadInput.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 0482e261-6918-4d7b-96a3-b445d6e9a7e1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ShootInput.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/rightTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ReloadInput.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/leftTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ShootInput.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Shoot Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ReloadInput.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Reload Input
       objectReference: {fileID: 0}
     - target: {fileID: 1053793857010159273, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
