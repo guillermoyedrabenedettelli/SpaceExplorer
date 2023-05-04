@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public class AlingIA : MonoBehaviour
 {
     public Transform PatrolPoint; // El objetivo a llegar de patruya
     private Transform target;    // El objetivo a seguir
@@ -37,7 +37,7 @@ public class EnemyAI : MonoBehaviour
         foreach (Collider collider in detectedColliders)
         {
             // Verificar si el objeto detectado es un enemigo o un jugador
-            if (collider.GetComponent<AlingIA>()|| collider.CompareTag("Player") || collider.CompareTag("Aling"))
+            if (collider.CompareTag("Enemy")||collider.GetComponent<EnemyAI>())
             {
                 // Pasar el objeto detectado al código que lo maneja
                 // Esto podría ser una función separada que toma el objeto detectado como un parámetro
@@ -63,7 +63,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        
+
     }
 
     // Función para hacer algo con el objeto detectado
@@ -84,7 +84,7 @@ public class EnemyAI : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
         // Avanzar hacia el target si la distancia es mayor a distanciaMaxima
-        float distancia = Vector3.Distance(transform.position, obj.transform.position); 
+        float distancia = Vector3.Distance(transform.position, obj.transform.position);
 
         // Aplicamos la rotación gradualmente Lerp
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
@@ -186,5 +186,3 @@ public class EnemyAI : MonoBehaviour
 
     }
 }
-
-

@@ -10,7 +10,7 @@ public class DetectChild : MonoBehaviour
         // Verificar si el objeto padre tiene hijos
         if (padre.transform.childCount == 0)
         {
-            Debug.Log("El objeto padre no tiene hijos");
+            Debug.Log("El objeto "+ this.gameObject.name+" no tiene hijos");
             // Hacer algo si el objeto padre no tiene hijos
             Destroy(padre);
         }

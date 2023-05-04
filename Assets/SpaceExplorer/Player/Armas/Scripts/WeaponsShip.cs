@@ -98,9 +98,9 @@ public class WeaponsShip : MonoBehaviour
             StopAllCoroutines();
             changeWeapon();
         }
-        Debug.Log("Ametralladora: " + muniAmetralladora);
-        Debug.Log("Lanzamisiles: " + muniLanzagranadas);
-        Debug.Log("Energía: " + energiaDisparo);
+        //Debug.Log("Ametralladora: " + muniAmetralladora);
+        //Debug.Log("Lanzamisiles: " + muniLanzagranadas);
+        //Debug.Log("Energía: " + energiaDisparo);
     }
     bool checkTengoMuni()
     {
