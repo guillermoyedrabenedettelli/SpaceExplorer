@@ -11,6 +11,7 @@ TagManager:
   - TurboFuelTank
   - AmmoPack
   - ReparationKit
+  - Aling
   layers:
   - Default
   - TransparentFX
