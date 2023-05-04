@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 1053793858792924608}
   - component: {fileID: 1053793858792924609}
   - component: {fileID: 1053793858792924479}
-  - component: {fileID: 1567655178907502358}
+  - component: {fileID: 71871419131804128}
   - component: {fileID: 1037667612774360813}
   - component: {fileID: 1053793858792924478}
   m_Layer: 6
@@ -708,8 +708,32 @@ MonoBehaviour:
       m_Action: Turbo Input
       m_Flags: 0
     m_Flags: 0
-  camara_interna: {fileID: 0}
-  camara_externa: {fileID: 0}
+  ChangeCamera:
+    m_Name: Change Camera
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d0fb30a0-b56d-49c8-8460-b4fed7a7441e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 3cee1ad2-a581-4ed3-81f6-6eed8100fd37
+      m_Path: <Keyboard>/tab
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Change Camera
+      m_Flags: 0
+    - m_Name: 
+      m_Id: f67ae5a9-574b-4872-9eb9-0d9d0b7e14c6
+      m_Path: <Gamepad>/select
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Change Camera
+      m_Flags: 0
+    m_Flags: 0
+  Cabina: {fileID: 5916762651417826249}
 --- !u!114 &1053793858792924479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +749,7 @@ MonoBehaviour:
   sensitivityX: 43
   sensitivityY: 46
   sensitivityReductionOnTurbo: 2
---- !u!114 &1567655178907502358
+--- !u!114 &71871419131804128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -734,10 +758,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1053793858792924614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ea5ec4d01a3cc349bc8f5f5a787e396, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d29d4c03e4673d4d850bffe9c2bb171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 50
+  life: 100
   life_dead: 0
   onDeath:
     m_PersistentCalls:
@@ -778,22 +802,54 @@ MonoBehaviour:
   weaponsAmmo: {fileID: 0}
   laserInterface: {fileID: 0}
   ShootInput:
-    m_Name: 
+    m_Name: Shoot Input
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: dc7c359e-6c6f-4e4c-b659-717cbb035247
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1fca098e-fbc7-487b-80f2-b148d7bcb9ea
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Shoot Input
+      m_Flags: 0
+    - m_Name: 
+      m_Id: f2bb7cc6-527f-42a6-8d9d-19a15ca2d9f9
+      m_Path: <Gamepad>/rightTrigger
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Shoot Input
+      m_Flags: 0
     m_Flags: 0
   ReloadInput:
-    m_Name: 
+    m_Name: Reload Input
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 799716ab-7b86-480c-be1a-733b14b13ad4
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: fdee402e-d7d2-4ea5-b015-0ccc8e79abcb
+      m_Path: <Keyboard>/r
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Reload Input
+      m_Flags: 0
+    - m_Name: 
+      m_Id: b8846ad5-edaa-4d48-97f9-eec7a4caafc8
+      m_Path: <Gamepad>/leftTrigger
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Reload Input
+      m_Flags: 0
     m_Flags: 0
 --- !u!114 &1053793858792924478
 MonoBehaviour:
@@ -1008,6 +1064,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5916762651102739393, guid: 234f3e8c67a23a647a050d664982c941,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6554105651129052597, guid: 234f3e8c67a23a647a050d664982c941,
         type: 3}
       propertyPath: m_RootOrder
@@ -1085,6 +1146,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 234f3e8c67a23a647a050d664982c941, type: 3}
+--- !u!1 &5916762651417826249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5916762651102739393, guid: 234f3e8c67a23a647a050d664982c941,
+    type: 3}
+  m_PrefabInstance: {fileID: 491268104}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8031042878018204468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8031042878509456188, guid: 234f3e8c67a23a647a050d664982c941,

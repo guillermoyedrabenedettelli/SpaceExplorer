@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public class damageableWithLife : MonoBehaviour, IDamageable
 {
-    [SerializeField] public float life;
-    [SerializeField] public float life_dead = 0;
+    public float life;
+    public float life_dead = 0;
     bool alreadyDead = false;
-    [SerializeField] public UnityEvent onDeath;
-    [SerializeField] public UnityEvent<float> onChangeLife;
+    public UnityEvent onDeath;
+    public UnityEvent<float> onChangeLife;
 
     [Header("Droop Configurations")]
     [SerializeField] GameObject[] DropeableItems;
@@ -19,7 +19,7 @@ public class damageableWithLife : MonoBehaviour, IDamageable
 
     int range;
 
-    [SerializeField] Image healthBar;
+    [SerializeField] protected Image healthBar;
 
     AudioSource Hurt;
     bool principalPlayer = false;
@@ -27,6 +27,11 @@ public class damageableWithLife : MonoBehaviour, IDamageable
     float timeCurrentSetMotor = 0;
 
     private void Awake()
+    {
+        baseAwake();
+    }
+
+    public void baseAwake()
     {
         life_dead = life;
         if (this.gameObject.GetComponent<CharacterController>())
@@ -42,7 +47,7 @@ public class damageableWithLife : MonoBehaviour, IDamageable
                 range += dropeable.GetDropRate();
             }
             range = range + NoDropChance;
-        } 
+        }
     }
 
 

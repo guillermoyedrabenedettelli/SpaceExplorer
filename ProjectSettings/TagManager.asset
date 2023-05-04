@@ -9,6 +9,8 @@ TagManager:
   - GranadaLanza
   - Asteroid
   - TurboFuelTank
+  - AmmoPack
+  - ReparationKit
   layers:
   - Default
   - TransparentFX

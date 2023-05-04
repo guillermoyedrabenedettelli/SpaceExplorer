@@ -990,6 +990,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 71871419131804128, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 523762734}
     - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: weaponsAmmo
@@ -1038,12 +1043,12 @@ PrefabInstance:
     - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: ShootInput.m_SingletonActionBindings.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: ReloadInput.m_SingletonActionBindings.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
@@ -1052,8 +1057,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
+      propertyPath: ShootInput.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 0d50d4ae-6eec-4456-8a49-970e780afffc
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ShootInput.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 0d7afd38-a534-4f94-a910-08597bfa66a7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
       propertyPath: ReloadInput.m_SingletonActionBindings.Array.data[0].m_Id
       value: 0482e261-6918-4d7b-96a3-b445d6e9a7e1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ReloadInput.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 0473b319-d9ba-4d21-9b40-952a04527614
       objectReference: {fileID: 0}
     - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
@@ -1062,8 +1082,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
+      propertyPath: ShootInput.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Mouse>/leftButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
       propertyPath: ReloadInput.m_SingletonActionBindings.Array.data[0].m_Path
       value: <Gamepad>/leftTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ReloadInput.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/r
       objectReference: {fileID: 0}
     - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
@@ -1072,7 +1102,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
+      propertyPath: ShootInput.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Shoot Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ShootInput.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Shoot Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
       propertyPath: ReloadInput.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Reload Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ReloadInput.m_SingletonActionBindings.Array.data[1].m_Action
       value: Reload Input
       objectReference: {fileID: 0}
     - target: {fileID: 1053793857010159273, guid: 880f4ca0b4717e34285686a2e22281dc,
@@ -1174,7 +1219,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Cabina
       value: 
-      objectReference: {fileID: 1396062314}
+      objectReference: {fileID: 1468403270}
     - target: {fileID: 1053793858792924609, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: turboBar
@@ -1586,12 +1631,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1396062314 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5890441070408703751, guid: 880f4ca0b4717e34285686a2e22281dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1155314819}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1468403270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5916762651417826249, guid: 880f4ca0b4717e34285686a2e22281dc,

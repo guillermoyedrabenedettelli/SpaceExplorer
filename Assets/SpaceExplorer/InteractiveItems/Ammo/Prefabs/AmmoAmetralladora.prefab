@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4099810972187022467
+--- !u!1 &6424136676422638231
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4099810972187022479}
-  - component: {fileID: 4099810972187022476}
-  - component: {fileID: 4099810972187022477}
-  - component: {fileID: 4099810972187022466}
-  - component: {fileID: 4099810972187022478}
+  - component: {fileID: 6424136676422638235}
+  - component: {fileID: 6424136676422638232}
+  - component: {fileID: 6424136676422638233}
+  - component: {fileID: 6424136676422638230}
+  - component: {fileID: 6424136676422638234}
   m_Layer: 0
-  m_Name: TurboFuelAttractionArea
+  m_Name: AttractionArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4099810972187022479
+--- !u!4 &6424136676422638235
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4099810972187022467}
+  m_GameObject: {fileID: 6424136676422638231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4099810972935257149}
+  m_Father: {fileID: 6424136677211763241}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4099810972187022476
+--- !u!33 &6424136676422638232
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4099810972187022467}
+  m_GameObject: {fileID: 6424136676422638231}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4099810972187022477
+--- !u!23 &6424136676422638233
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4099810972187022467}
+  m_GameObject: {fileID: 6424136676422638231}
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,32 +85,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4099810972187022466
+--- !u!135 &6424136676422638230
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4099810972187022467}
+  m_GameObject: {fileID: 6424136676422638231}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4099810972187022478
+--- !u!114 &6424136676422638234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4099810972187022467}
+  m_GameObject: {fileID: 6424136676422638231}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 205176c731d62b84d945bc0f67febc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &4099810972935257138
+--- !u!1 &6424136677211763238
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,49 +118,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4099810972935257149}
-  - component: {fileID: 4099810972935257150}
-  - component: {fileID: 4099810972935257151}
-  - component: {fileID: 4099810972935257148}
-  - component: {fileID: 4099810972935257145}
+  - component: {fileID: 6424136677211763241}
+  - component: {fileID: 6424136677211763242}
+  - component: {fileID: 6424136677211763243}
+  - component: {fileID: 6424136677211763240}
+  - component: {fileID: 6424136677211763255}
   m_Layer: 0
-  m_Name: TurboFuelTank
-  m_TagString: TurboFuelTank
+  m_Name: AmmoAmetralladora
+  m_TagString: AmmoPack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4099810972935257149
+--- !u!4 &6424136677211763241
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4099810972935257138}
+  m_GameObject: {fileID: 6424136677211763238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -32.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4099810972187022479}
+  - {fileID: 6424136676422638235}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4099810972935257150
+--- !u!33 &6424136677211763242
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4099810972935257138}
+  m_GameObject: {fileID: 6424136677211763238}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4099810972935257151
+--- !u!23 &6424136677211763243
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4099810972935257138}
+  m_GameObject: {fileID: 6424136677211763238}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -196,13 +196,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4099810972935257148
+--- !u!136 &6424136677211763240
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4099810972935257138}
+  m_GameObject: {fileID: 6424136677211763238}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
@@ -210,18 +210,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4099810972935257145
+--- !u!114 &6424136677211763255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4099810972935257138}
+  m_GameObject: {fileID: 6424136677211763238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e00c10d9c56bf84490187bce05b8b43, type: 3}
+  m_Script: {fileID: 11500000, guid: 9da2271fcab279a42bac8fe3252db515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  DropRate: 30
-  turboRecoveryPercentage: 20
+  DropRate: 40
+  ammoType: ametralladora
+  ammoToRecover: 40

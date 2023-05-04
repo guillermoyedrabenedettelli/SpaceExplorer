@@ -369,8 +369,12 @@ MonoBehaviour:
   onChangeLife:
     m_PersistentCalls:
       m_Calls: []
-  DropeableItems: []
-  NoDropChance: 100
+  DropeableItems:
+  - {fileID: 8941822766154463543, guid: 1e21c3b385403384f9fa28fc544b7308, type: 3}
+  - {fileID: 6424136677211763238, guid: 4b8d1cd7ed498864dae0b23d2af53984, type: 3}
+  - {fileID: 2568730108239822021, guid: c31b68eecc43b1648bc106c3475bfae9, type: 3}
+  - {fileID: 4099810972935257138, guid: 76ceca55c42861e4c9f5521ad5c6568e, type: 3}
+  NoDropChance: 70
   healthBar: {fileID: 0}
 --- !u!114 &6586914473146932991
 MonoBehaviour:

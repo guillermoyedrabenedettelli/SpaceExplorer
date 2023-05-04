@@ -247,22 +247,41 @@ public class WeaponsShip : MonoBehaviour
     {
         if (weaponsAmmo != null)
         {
-            weaponsAmmo.enabled = false;
+            weaponsAmmo.gameObject.SetActive(false);
         }
         if (laserInterface != null)
         {
-            laserInterface.enabled = true;
+            laserInterface.gameObject.SetActive(true);
         }
     }
     void HideLaserInterface()
     {
         if (weaponsAmmo != null)
         {
-            weaponsAmmo.enabled = true;
+            weaponsAmmo.gameObject.SetActive(true);
         }
         if (laserInterface != null)
         {
-            laserInterface.enabled = false;
+            laserInterface.gameObject.SetActive(false);
         }
+    }
+    public void chargeAmmo(AmmoPack ammoPack)
+    {
+        int ammo = 0;
+        if(ammoPack.ammoType=="ametralladora")
+        {
+            muniAmetralladora += ammoPack.ammoToRecover;
+            ammo = muniAmetralladora;
+        }
+        if(ammoPack.ammoType== "lanzamisiles")
+        {
+            muniLanzagranadas += ammoPack.ammoToRecover;
+            ammo = muniLanzagranadas;
+        }
+        if (ammoPack.ammoType == armaUsada)
+        {
+            UpdateAmmo(ammo);
+        }
+        ammoPack.DestroyItem();
     }
 }

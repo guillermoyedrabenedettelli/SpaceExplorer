@@ -59,6 +59,7 @@ public class MovementController : MonoBehaviour
         actualAcceleration = Vector3.zero;
 
         EnableInputs();
+        Cabina.SetActive(false);
 
         actualTurbo = maxTurbo;
     }
@@ -99,7 +100,7 @@ public class MovementController : MonoBehaviour
     void getInputAccelerations()
     {
         if (ChangeCamera.WasPressedThisFrame())
-        {
+            {
             if (camaraChange==false)
             {
                 camaraChange = true;
@@ -250,21 +251,17 @@ public class MovementController : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    public void chargeTurbo(TurboFuelTank fuelTank)
     {
-        if (other.CompareTag("TurboFuelTank"))
-        {
-            TurboFuelTank fuelTank = other.GetComponent<TurboFuelTank>();
-            float turboToAdd = maxTurbo * fuelTank.turboRecoveryPercentage / 100f;
+        float turboToAdd = maxTurbo * fuelTank.turboRecoveryPercentage / 100f;
 
-            actualTurbo += turboToAdd;
-            if (actualTurbo >= maxTurbo)
-                actualTurbo = maxTurbo;
+        actualTurbo += turboToAdd;
+        if (actualTurbo >= maxTurbo)
+            actualTurbo = maxTurbo;
 
-            FillTurboBar();
-
-            fuelTank.DestroyItem();
-        }
+        FillTurboBar();
+        fuelTank.DestroyItem();
+        
     }
 
     void FillTurboBar()
