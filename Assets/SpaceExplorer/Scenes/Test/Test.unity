@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.03204305, g: 0.045538917, b: 0.09468784, a: 1}
+  m_IndirectSpecularColor: {r: 0.03222259, g: 0.04575713, b: 0.09516245, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1203,7 +1203,7 @@ PrefabInstance:
     - target: {fileID: 1053793858792924609, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: ChangeCamera.m_SingletonActionBindings.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1053793858792924609, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
@@ -1212,12 +1212,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1053793858792924609, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
+      propertyPath: ChangeCamera.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 21ae5d44-bf36-4b51-b613-12dad9eee848
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053793858792924609, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
       propertyPath: ChangeCamera.m_SingletonActionBindings.Array.data[0].m_Path
-      value: <Gamepad>/buttonNorth
+      value: <Gamepad>/select
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053793858792924609, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ChangeCamera.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/tab
       objectReference: {fileID: 0}
     - target: {fileID: 1053793858792924609, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: ChangeCamera.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Change Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053793858792924609, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: ChangeCamera.m_SingletonActionBindings.Array.data[1].m_Action
       value: Change Camera
       objectReference: {fileID: 0}
     - target: {fileID: 1053793858792924614, guid: 880f4ca0b4717e34285686a2e22281dc,
