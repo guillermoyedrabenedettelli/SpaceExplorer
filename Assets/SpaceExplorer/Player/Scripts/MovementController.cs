@@ -29,10 +29,10 @@ public class MovementController : MonoBehaviour
 
     [Header("Turbo configuration")]
     [SerializeField] float maxTurbo = 100f;
-    [SerializeField] float turboConsumption =6f;
+    [SerializeField] float turboConsumption = 6f;
     [SerializeField] float turboRecovery = 2f;
     [SerializeField] float actualTurbo;
-    [SerializeField] float timeToStartRecovering =2f;
+    [SerializeField] float timeToStartRecovering = 2f;
     float actualTimeWaitingForRecover = 0f;
     [SerializeField] Image turboBar;
 
@@ -47,7 +47,10 @@ public class MovementController : MonoBehaviour
 
     [Header("Turbo Bindings")]
     [SerializeField] InputAction turboInput;
-
+    [Header("Cambio de Camara")]
+    [SerializeField] InputAction ChangeCamera;
+    [SerializeField] GameObject Cabina;
+    bool camaraChange = false;
 
     private void Awake()
     {
@@ -89,12 +92,25 @@ public class MovementController : MonoBehaviour
         downInput.Enable();
         rightInput.Enable();
         leftInput.Enable();
-
+        ChangeCamera.Enable();
         turboInput.Enable();
     }
 
     void getInputAccelerations()
     {
+        if (ChangeCamera.WasPressedThisFrame())
+        {
+            if (camaraChange==false)
+            {
+                camaraChange = true;
+                Cabina.SetActive(true);
+            }
+            else if(camaraChange == true)
+            {
+                camaraChange = false;
+                Cabina.SetActive(false);
+            }
+        }
         if (leftInput.IsPressed())
         {
             if (actualAcceleration.x < maxSpeedWithoutTurbo)
@@ -236,10 +252,10 @@ public class MovementController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("TurboFuelTank"))
+        if (other.CompareTag("TurboFuelTank"))
         {
-            TurboFuelTank fuelTank=other.GetComponent<TurboFuelTank>();
-            float turboToAdd=maxTurbo*fuelTank.turboRecoveryPercentage/100f;
+            TurboFuelTank fuelTank = other.GetComponent<TurboFuelTank>();
+            float turboToAdd = maxTurbo * fuelTank.turboRecoveryPercentage / 100f;
 
             actualTurbo += turboToAdd;
             if (actualTurbo >= maxTurbo)
@@ -264,4 +280,7 @@ public class MovementController : MonoBehaviour
     {
         return TurboOn;
     }
+
 }
+
+

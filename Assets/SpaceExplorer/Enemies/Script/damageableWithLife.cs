@@ -55,6 +55,7 @@ public class damageableWithLife : MonoBehaviour, IDamageable
             {
                 timeCurrentSetMotor -= Time.deltaTime;
                 Gamepad.current?.SetMotorSpeeds(0.25f, 0.75f);
+                //this.gameObject.GetComponent<CameraShaker>().StartShake(1, .1f);
             }
             else
             {
