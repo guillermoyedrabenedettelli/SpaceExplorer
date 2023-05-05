@@ -131,26 +131,6 @@ public class MovementController : MonoBehaviour
                                 0f;
 
         // Movimiento en el eje Z (sólo si TurboOn es falso)
-
-        if (!TurboOn)
-        {
-            float accelerationInput = forwardInput.IsPressed() ? acceleration : (backwardInput.IsPressed() ? -acceleration : 0f);
-            actualAcceleration.z = Mathf.Clamp(actualAcceleration.z + accelerationInput, -maxSpeedWithoutTurbo, maxSpeedWithoutTurbo);
-
-            if (Mathf.Abs(actualAcceleration.z) < 0.4f)
-            {
-                actualAcceleration.z = 0f;
-            }
-            else
-            {
-                actualAcceleration.z += actualAcceleration.z > 0 ? -deceleration : deceleration;
-            }
-        }
-        else
-        {
-            actualAcceleration.z = Mathf.Clamp(actualAcceleration.z + turboAcceleration, 0f, maxSpeedWithTurbo);
-        }
-        /*
         if (!TurboOn)
         {
             actualAcceleration.z += (forwardInput.IsPressed()) ? Mathf.Min(maxSpeedWithoutTurbo - actualAcceleration.z, acceleration) :
@@ -158,106 +138,7 @@ public class MovementController : MonoBehaviour
                                     (actualAcceleration.z > 0.4f) ? -deceleration :
                                     (actualAcceleration.z < -0.4f) ? deceleration :
                                     0f;
-        }
-        else // Si TurboOn es verdadero
-        {
-            actualAcceleration.z += (actualAcceleration.z < maxSpeedWithTurbo) ? turboAcceleration : 0f;
-        }*/
-        ////
-        ///
-
-
-        ////
-        /*
-        if (leftInput.IsPressed())
-        {
-            if (actualAcceleration.x < maxSpeedWithoutTurbo)
-            {
-                actualAcceleration.x += acceleration;
-            }
-        }
-        else if (rightInput.IsPressed())
-        {
-            if (actualAcceleration.x > -maxSpeedWithoutTurbo)
-            {
-                actualAcceleration.x += -acceleration;
-            }
-        }
-        else
-        {
-            if (actualAcceleration.x < (-0.4f))
-            {
-                actualAcceleration.x += (deceleration);
-            }
-            else if (actualAcceleration.x > (0.4f))
-            {
-                actualAcceleration.x += (-deceleration);
-            }
-            else
-            {
-                actualAcceleration.x = 0;
-            }
-        }
-        if (upInput.IsPressed())
-        {
-            if (actualAcceleration.y < maxSpeedWithoutTurbo)
-            {
-                actualAcceleration.y += acceleration;
-            }
-        }
-        else if (downInput.IsPressed())
-        {
-            if (actualAcceleration.y > -maxSpeedWithoutTurbo)
-            {
-                actualAcceleration.y += -acceleration;
-            }
-        }
-        else
-        {
-            if (actualAcceleration.y > (0.4f))
-            {
-                actualAcceleration.y += (-deceleration);
-            }
-            else if (actualAcceleration.y < (-0.4f))
-            {
-                actualAcceleration.y += (deceleration);
-            }
-            else
-            {
-                actualAcceleration.y = 0;
-            }
-        }
-        if (!TurboOn)
-        {
-            if (forwardInput.IsPressed())
-            {
-                if (actualAcceleration.z < maxSpeedWithoutTurbo)
-                {
-                    actualAcceleration.z += acceleration;
-                }
-            }
-            else if (backwardInput.IsPressed())
-            {
-                if (actualAcceleration.z > -maxSpeedWithoutTurbo)
-                {
-                    actualAcceleration.z += -acceleration;
-                }
-            }
-            else
-            {
-                if (actualAcceleration.z > (0.4f))
-                {
-                    actualAcceleration.z += (-deceleration);
-                }
-                else if (actualAcceleration.z < (-0.4f))
-                {
-                    actualAcceleration.z += (deceleration);
-                }
-                else
-                {
-                    actualAcceleration.z = 0;
-                }
-            }
+          
         }
         else
         {
@@ -266,7 +147,7 @@ public class MovementController : MonoBehaviour
                 actualAcceleration.z += turboAcceleration;
             }
         }
-        */
+        
     }
 
     void TurboUpdate()
