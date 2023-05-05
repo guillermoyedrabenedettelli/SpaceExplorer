@@ -2966,8 +2966,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1053793857010159275, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
+      propertyPath: far clip plane
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053793857010159275, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053793857010159275, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
       propertyPath: m_projectionMatrixMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053793857083727520, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: m_Lens.FarClipPlane
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 1053793857083727521, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
