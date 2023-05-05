@@ -131,6 +131,26 @@ public class MovementController : MonoBehaviour
                                 0f;
 
         // Movimiento en el eje Z (sólo si TurboOn es falso)
+
+        if (!TurboOn)
+        {
+            float accelerationInput = forwardInput.IsPressed() ? acceleration : (backwardInput.IsPressed() ? -acceleration : 0f);
+            actualAcceleration.z = Mathf.Clamp(actualAcceleration.z + accelerationInput, -maxSpeedWithoutTurbo, maxSpeedWithoutTurbo);
+
+            if (Mathf.Abs(actualAcceleration.z) < 0.4f)
+            {
+                actualAcceleration.z = 0f;
+            }
+            else
+            {
+                actualAcceleration.z += actualAcceleration.z > 0 ? -deceleration : deceleration;
+            }
+        }
+        else
+        {
+            actualAcceleration.z = Mathf.Clamp(actualAcceleration.z + turboAcceleration, 0f, maxSpeedWithTurbo);
+        }
+        /*
         if (!TurboOn)
         {
             actualAcceleration.z += (forwardInput.IsPressed()) ? Mathf.Min(maxSpeedWithoutTurbo - actualAcceleration.z, acceleration) :
@@ -142,7 +162,12 @@ public class MovementController : MonoBehaviour
         else // Si TurboOn es verdadero
         {
             actualAcceleration.z += (actualAcceleration.z < maxSpeedWithTurbo) ? turboAcceleration : 0f;
-        }
+        }*/
+        ////
+        ///
+
+
+        ////
         /*
         if (leftInput.IsPressed())
         {
