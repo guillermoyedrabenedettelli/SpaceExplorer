@@ -24,8 +24,10 @@ public class EnemyAI : MonoBehaviour
     public float lifeTime = 5f; // Tiempo de destruccion de misil
     public Vector3 direccionDisparo = Vector3.forward; // Dirección de disparo
 
-    public float shootDistance = 5.0f; // Distancia máxima para avanzar
+    public float shootDistance = 50.0f; // Distancia máxima para avanzar
     float timeSinceLastShot = 1f;
+    [Header("Distancia segura")]
+    [SerializeField] float safeShoot = 20f;
     //
 
 
@@ -172,7 +174,11 @@ public class EnemyAI : MonoBehaviour
         // Rotar el objeto hacia el target
         transform.rotation = Quaternion.Slerp(transform.rotation, rotacion, rotationSpeed * Time.deltaTime);
         // Mover al enemigo en la dirección del objetivo
-        transform.position += direction * speed * Time.deltaTime;
+        if (Vector3.Distance(transform.position, obj.position) > safeShoot)
+        {
+            transform.position += direction * speed * Time.deltaTime;
+        }
+        
     }
     private void Shoot()
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class damageableWithLife : MonoBehaviour, IDamageable
 {
@@ -94,6 +95,12 @@ public class damageableWithLife : MonoBehaviour, IDamageable
             if (!principalPlayer)
             {
                 SpawnDrop();
+
+            }
+            else
+            {
+
+                SceneManager.LoadScene("Test");
             }
             Destroy(gameObject);
             Gamepad.current?.SetMotorSpeeds(0f, 0f);

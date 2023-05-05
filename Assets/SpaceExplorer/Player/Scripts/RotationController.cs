@@ -10,10 +10,10 @@ public class RotationController : MonoBehaviour
     [SerializeField] [Range(1f, 180f)] float sensitivityY = 60f;
 
     [SerializeField] [Range(1f, 3f)] float sensitivityReductionOnTurbo = 1.5f;
-    [SerializeField] GameObject Ship;
+
     Vector2 rotation;
-    [SerializeField] float anguloDeGiro;
-    float anguloOriginal;
+ 
+
     MovementController movementController;
 
     float actualSensitivityReduction = 1f;
@@ -30,14 +30,12 @@ public class RotationController : MonoBehaviour
     }
     private void Start()
     {
-        //anguloOriginal = Ship.transform.rotation.x;
+     
     }
     void Update()
     {
         UpdateRotation();
-        //float giroEnX = 0;
-        //giroEnX = rotation.x * anguloDeGiro+ giroEnX;
-        //Ship.transform.rotation = Quaternion.Euler(0, 0, giroEnX);
+
     }
 
     void UpdateRotation()

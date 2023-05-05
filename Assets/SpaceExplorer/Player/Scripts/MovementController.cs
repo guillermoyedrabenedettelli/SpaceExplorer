@@ -50,6 +50,7 @@ public class MovementController : MonoBehaviour
     [Header("Cambio de Camara")]
     [SerializeField] InputAction ChangeCamera;
     [SerializeField] GameObject Cabina;
+    [SerializeField] GameObject ShipPS4;
     bool camaraChange = false;
 
     private void Awake()
@@ -59,7 +60,7 @@ public class MovementController : MonoBehaviour
         actualAcceleration = Vector3.zero;
 
         EnableInputs();
-        Cabina.SetActive(false);
+        CabinaBool(false);
 
         actualTurbo = maxTurbo;
     }
@@ -67,6 +68,19 @@ public class MovementController : MonoBehaviour
     private void Update()
     {
         UpdateMovement();
+        if (ChangeCamera.WasPressedThisFrame())
+        {
+            if (camaraChange == false)
+            {
+               // ShipPS4.SetActive(false);
+                CabinaBool(true);
+            }
+            else if (camaraChange == true)
+            {
+                //ShipPS4.SetActive(true);
+                CabinaBool(false);
+            }
+        }
     }
 
     bool TurboOn = false;
@@ -100,45 +114,44 @@ public class MovementController : MonoBehaviour
     {
         camaraChange = b;
         Cabina.SetActive(b);
+        print("Cabina " + b);
+        if (!b)
+        {
+            ShipPS4.SetActive(true);
+        }
+        else
+        {
+            ShipPS4.SetActive(false);
+        }
     }
     void getInputAccelerations()
     {
 
 
-        if (ChangeCamera.WasPressedThisFrame())
-        {
-            if (camaraChange == false)
-            {
-                CabinaBool(true);
-            }
-            else if (camaraChange == true)
-            {
-                CabinaBool(false);
-            }
-        }
+      
         // Movimiento en el eje X
         actualAcceleration.x += (leftInput.IsPressed()) ? Mathf.Min(maxSpeedWithoutTurbo - actualAcceleration.x, acceleration) :
                                 (rightInput.IsPressed()) ? Mathf.Max(-maxSpeedWithoutTurbo - actualAcceleration.x, -acceleration) :
                                 (actualAcceleration.x < -0.4f) ? deceleration :
                                 (actualAcceleration.x > 0.4f) ? -deceleration :
-                                0f;
+                                -actualAcceleration.x;
 
         // Movimiento en el eje Y
         actualAcceleration.y += (upInput.IsPressed()) ? Mathf.Min(maxSpeedWithoutTurbo - actualAcceleration.y, acceleration) :
                                 (downInput.IsPressed()) ? Mathf.Max(-maxSpeedWithoutTurbo - actualAcceleration.y, -acceleration) :
-                                (actualAcceleration.y > 0.4f) ? -deceleration :
                                 (actualAcceleration.y < -0.4f) ? deceleration :
-                                0f;
+                                (actualAcceleration.y > 0.4f) ? -deceleration :
+                                -actualAcceleration.y;
 
         // Movimiento en el eje Z (sólo si TurboOn es falso)
         if (!TurboOn)
         {
             actualAcceleration.z += (forwardInput.IsPressed()) ? Mathf.Min(maxSpeedWithoutTurbo - actualAcceleration.z, acceleration) :
                                     (backwardInput.IsPressed()) ? Mathf.Max(-maxSpeedWithoutTurbo - actualAcceleration.z, -acceleration) :
-                                    (actualAcceleration.z > 0.4f) ? -deceleration :
                                     (actualAcceleration.z < -0.4f) ? deceleration :
-                                    0f;
-          
+                                    (actualAcceleration.z > 0.4f) ? -deceleration :
+                                     -actualAcceleration.z;
+
         }
         else
         {
@@ -147,9 +160,8 @@ public class MovementController : MonoBehaviour
                 actualAcceleration.z += turboAcceleration;
             }
         }
-        
-    }
 
+    }
     void TurboUpdate()
     {
 
