@@ -10,9 +10,10 @@ public class RotationController : MonoBehaviour
     [SerializeField] [Range(1f, 180f)] float sensitivityY = 60f;
 
     [SerializeField] [Range(1f, 3f)] float sensitivityReductionOnTurbo = 1.5f;
+    [SerializeField] GameObject Ship;
     Vector2 rotation;
-
-
+    [SerializeField] float anguloDeGiro;
+    float anguloOriginal;
     MovementController movementController;
 
     float actualSensitivityReduction = 1f;
@@ -27,39 +28,38 @@ public class RotationController : MonoBehaviour
         movementController = GetComponent<MovementController>();
 
     }
+    private void Start()
+    {
+        anguloOriginal = Ship.transform.rotation.x;
+    }
     void Update()
     {
         UpdateRotation();
+        //float giroEnX = 0;
+        //giroEnX = rotation.x * anguloDeGiro+ giroEnX;
+        //Ship.transform.rotation = Quaternion.Euler(0, 0, giroEnX);
     }
 
     void UpdateRotation()
     {
-        if (movementController.GetTurboOn())
-        {
-            actualSensitivityReduction = sensitivityReductionOnTurbo;
-        }
-        else
-        {
-            actualSensitivityReduction = 1f;
-        }
-        if (rotation.y != 0f)
-        {
-            float SpeedY = rotation.y * Time.deltaTime;
-            float angleToApplyY = SpeedY * (sensitivityY / actualSensitivityReduction);
-            Quaternion rotationToApplyY = Quaternion.AngleAxis(angleToApplyY, transform.right);
-            transform.rotation = rotationToApplyY * transform.rotation;
-        }
-        if (rotation.x != 0f)
-        {
-            float SpeedX = rotation.x * Time.deltaTime;
-            float angleToApplyX = SpeedX * (sensitivityX / actualSensitivityReduction);
-            Quaternion rotationToApplyX = Quaternion.AngleAxis(angleToApplyX, transform.up);
-            transform.rotation = rotationToApplyX * transform.rotation;
-        }
+        float SpeedY = rotation.y * Time.deltaTime;
+        float angleToApplyY = SpeedY * (sensitivityY / actualSensitivityReduction);
+        float SpeedX = rotation.x * Time.deltaTime;
+        float angleToApplyX = SpeedX * (sensitivityX / actualSensitivityReduction);
+
+        actualSensitivityReduction = movementController.GetTurboOn() ? sensitivityReductionOnTurbo : 1f;
+
+        Quaternion rotationToApplyY = Quaternion.AngleAxis(angleToApplyY, transform.right);
+        Quaternion rotationToApplyX = Quaternion.AngleAxis(angleToApplyX, transform.up);
+
+        transform.rotation = rotationToApplyY * transform.rotation;
+        transform.rotation = rotationToApplyX * transform.rotation;
+
+
     }
     public void GetRotation(InputAction.CallbackContext context)
     {
-        rotation=context.ReadValue<Vector2>();
-        rotation.Normalize();    
+        rotation = context.ReadValue<Vector2>();
+        rotation.Normalize();
     }
 }

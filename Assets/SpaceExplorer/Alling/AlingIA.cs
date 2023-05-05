@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class AlingIA : MonoBehaviour
 {
-    public Transform PatrolPoint; // El objetivo a llegar de patruya
-    private Transform target;    // El objetivo a seguir
-    public float speed = 100f;    // La velocidad a la que se moverá el enemigo
-    public float detectRadius = 10f; // El radio de detección para buscar enemigos o jugadores
-    public float additionalDetectDistance = 10f; // Distancia adicional para la detección
-    public float rotationSpeed = 5f; // Velocidad de rotacion
+    public Transform PatrolPoint; 
+    private Transform target;    
+    public float speed = 10f;    
+    public float detectRadius = 100f; 
+    public float additionalDetectDistance = 11f; 
+    public float rotationSpeed = 5f; 
 
 
     private bool isTarget = false;
 
-    //
 
-    //Instanciar Proyectil
-    [SerializeField] float cadense = 5f;
-    public GameObject proyectil; // Prefab del proyectil
-    public Transform puntoDisparo; // Punto de origen del proyectil
-    public float fuerzaDisparo = 1000.0f; // Fuerza de disparo
-    public float lifeTime = 5f; // Tiempo de destruccion de misil
-    public Vector3 direccionDisparo = Vector3.forward; // Dirección de disparo
+    [SerializeField] float cadense = 3f;
+    public GameObject proyectil; 
+    public Transform puntoDisparo; 
+    public float fuerzaDisparo = 100.0f; 
+    public float lifeTime = 1f; 
+    public Vector3 direccionDisparo = Vector3.forward; 
 
-    public float shootDistance = 5.0f; // Distancia máxima para avanzar
+    public float shootDistance = 50.0f; 
     float timeSinceLastShot = 1f;
     //
 
@@ -36,11 +34,8 @@ public class AlingIA : MonoBehaviour
         Collider[] detectedColliders = Physics.OverlapSphere(detectPosition, detectRadius);
         foreach (Collider collider in detectedColliders)
         {
-            // Verificar si el objeto detectado es un enemigo o un jugador
             if (collider.CompareTag("Enemy")||collider.GetComponent<EnemyAI>())
             {
-                // Pasar el objeto detectado al código que lo maneja
-                // Esto podría ser una función separada que toma el objeto detectado como un parámetro
                 isTarget = true;
                 TargetEncontrado(collider.gameObject);
             }

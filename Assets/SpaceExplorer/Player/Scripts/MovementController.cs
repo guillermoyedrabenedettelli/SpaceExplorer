@@ -96,22 +96,54 @@ public class MovementController : MonoBehaviour
         ChangeCamera.Enable();
         turboInput.Enable();
     }
-
+    private void CabinaBool(bool b)
+    {
+        camaraChange = b;
+        Cabina.SetActive(b);
+    }
     void getInputAccelerations()
     {
+
+
         if (ChangeCamera.WasPressedThisFrame())
+        {
+            if (camaraChange == false)
             {
-            if (camaraChange==false)
-            {
-                camaraChange = true;
-                Cabina.SetActive(true);
+                CabinaBool(true);
             }
-            else if(camaraChange == true)
+            else if (camaraChange == true)
             {
-                camaraChange = false;
-                Cabina.SetActive(false);
+                CabinaBool(false);
             }
         }
+        // Movimiento en el eje X
+        actualAcceleration.x += (leftInput.IsPressed()) ? Mathf.Min(maxSpeedWithoutTurbo - actualAcceleration.x, acceleration) :
+                                (rightInput.IsPressed()) ? Mathf.Max(-maxSpeedWithoutTurbo - actualAcceleration.x, -acceleration) :
+                                (actualAcceleration.x < -0.4f) ? deceleration :
+                                (actualAcceleration.x > 0.4f) ? -deceleration :
+                                0f;
+
+        // Movimiento en el eje Y
+        actualAcceleration.y += (upInput.IsPressed()) ? Mathf.Min(maxSpeedWithoutTurbo - actualAcceleration.y, acceleration) :
+                                (downInput.IsPressed()) ? Mathf.Max(-maxSpeedWithoutTurbo - actualAcceleration.y, -acceleration) :
+                                (actualAcceleration.y > 0.4f) ? -deceleration :
+                                (actualAcceleration.y < -0.4f) ? deceleration :
+                                0f;
+
+        // Movimiento en el eje Z (sólo si TurboOn es falso)
+        if (!TurboOn)
+        {
+            actualAcceleration.z += (forwardInput.IsPressed()) ? Mathf.Min(maxSpeedWithoutTurbo - actualAcceleration.z, acceleration) :
+                                    (backwardInput.IsPressed()) ? Mathf.Max(-maxSpeedWithoutTurbo - actualAcceleration.z, -acceleration) :
+                                    (actualAcceleration.z > 0.4f) ? -deceleration :
+                                    (actualAcceleration.z < -0.4f) ? deceleration :
+                                    0f;
+        }
+        else // Si TurboOn es verdadero
+        {
+            actualAcceleration.z += (actualAcceleration.z < maxSpeedWithTurbo) ? turboAcceleration : 0f;
+        }
+        /*
         if (leftInput.IsPressed())
         {
             if (actualAcceleration.x < maxSpeedWithoutTurbo)
@@ -209,10 +241,13 @@ public class MovementController : MonoBehaviour
                 actualAcceleration.z += turboAcceleration;
             }
         }
+        */
     }
 
     void TurboUpdate()
     {
+
+
         if (turboInput.IsPressed() && actualTurbo >= turboConsumption * Time.deltaTime)
         {
             actualTurbo -= turboConsumption * Time.deltaTime;
@@ -261,7 +296,7 @@ public class MovementController : MonoBehaviour
 
         FillTurboBar();
         fuelTank.DestroyItem();
-        
+
     }
 
     void FillTurboBar()
