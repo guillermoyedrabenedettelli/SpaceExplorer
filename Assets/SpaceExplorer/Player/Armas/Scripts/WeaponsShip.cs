@@ -20,9 +20,9 @@ public class WeaponsShip : MonoBehaviour
 
     private string armaUsada;
     private float bulletVelocity;
-    [SerializeField] float bulletVelocity_ametralladora = 500f;
-    [SerializeField] float bulletVelocity_lanzamisiles = 500f;
-    [SerializeField] float bulletVelocity_energia = 1000f;
+    [SerializeField] float bulletVelocity_ametralladora = 10000.0f;
+    [SerializeField] float bulletVelocity_lanzamisiles = 5000.0f;
+    [SerializeField] float bulletVelocity_energia = 10000.0f;
     private float timeDestroy;
     private float recoil;
     private bool puedoDisparar = true;
@@ -54,7 +54,7 @@ public class WeaponsShip : MonoBehaviour
         bulletPrefab = bulletPrefabAmetralladora;
 
         armaUsada = "ametralladora";
-        bulletVelocity = 1000.0f;
+        bulletVelocity = 10000.0f;
         timeDestroy = 500.0f;
         recoil = 0.1f;
         UpdateAmmo(muniAmetralladora);

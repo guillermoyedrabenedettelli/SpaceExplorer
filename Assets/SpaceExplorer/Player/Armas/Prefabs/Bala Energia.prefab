@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8956593166328218457}
   - component: {fileID: 8583074102852488941}
   - component: {fileID: 7570253007955888242}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Bala Energia
   m_TagString: Bala
   m_Icon: {fileID: 0}

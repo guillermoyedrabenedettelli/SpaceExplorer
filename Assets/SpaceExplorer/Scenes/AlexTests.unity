@@ -1021,6 +1021,12 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &2124987387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1053793858792924614, guid: 880f4ca0b4717e34285686a2e22281dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1053793857760243133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1053793857760243133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1064,6 +1070,21 @@ PrefabInstance:
       propertyPath: bulletReferenceEnergia
       value: 
       objectReference: {fileID: 344534534}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: bulletVelocity_energia
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: bulletVelocity_lanzamisiles
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: bulletVelocity_ametralladora
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 1053793857010159273, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: m_IsActive
@@ -1124,6 +1145,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1053793858792924479, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: Ship
+      value: 
+      objectReference: {fileID: 2124987387}
     - target: {fileID: 1053793858792924479, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: sensitivityX
