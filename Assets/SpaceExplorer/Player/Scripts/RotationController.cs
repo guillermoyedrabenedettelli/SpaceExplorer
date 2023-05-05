@@ -30,7 +30,7 @@ public class RotationController : MonoBehaviour
     }
     private void Start()
     {
-        anguloOriginal = Ship.transform.rotation.x;
+        //anguloOriginal = Ship.transform.rotation.x;
     }
     void Update()
     {
