@@ -2994,6 +2994,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1053793858792924609, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
+      propertyPath: turboInput.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Gamepad>/buttonSouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053793858792924609, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
       propertyPath: ChangeCamera.m_SingletonActionBindings.Array.data[0].m_Path
       value: <Gamepad>/select
       objectReference: {fileID: 0}
