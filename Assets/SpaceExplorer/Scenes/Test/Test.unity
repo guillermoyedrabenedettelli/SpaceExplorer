@@ -194,6 +194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
         type: 3}
+      propertyPath: safeShoot
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
+        type: 3}
       propertyPath: PatrolPoint
       value: 
       objectReference: {fileID: 1296922575}
@@ -223,6 +228,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1821543231}
     m_Modifications:
+    - target: {fileID: 6586914471724848800, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.28
+      objectReference: {fileID: 0}
     - target: {fileID: 6586914473033281235, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -307,6 +317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: safeShoot
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
@@ -592,6 +607,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1821543231}
     m_Modifications:
+    - target: {fileID: 6586914471724848800, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.19
+      objectReference: {fileID: 0}
     - target: {fileID: 6586914473033281235, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -676,6 +696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: safeShoot
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
@@ -804,6 +829,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1821543231}
     m_Modifications:
+    - target: {fileID: 6586914471724848800, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.177
+      objectReference: {fileID: 0}
     - target: {fileID: 6586914473033281235, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -883,6 +913,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: safeShoot
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
@@ -1469,6 +1504,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1821543231}
     m_Modifications:
+    - target: {fileID: 6586914471724848800, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.206
+      objectReference: {fileID: 0}
     - target: {fileID: 6586914473033281235, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1556,6 +1596,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
+      propertyPath: safeShoot
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
       propertyPath: PatrolPoint
       value: 
       objectReference: {fileID: 1036944468}
@@ -1578,6 +1623,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1821543231}
     m_Modifications:
+    - target: {fileID: 6586914471724848800, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6586914473033281235, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1657,6 +1707,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: safeShoot
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
@@ -2351,6 +2406,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
         type: 3}
+      propertyPath: safeShoot
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
+        type: 3}
       propertyPath: PatrolPoint
       value: 
       objectReference: {fileID: 356203740}
@@ -2560,6 +2620,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
         type: 3}
+      propertyPath: safeShoot
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
+        type: 3}
       propertyPath: PatrolPoint
       value: 
       objectReference: {fileID: 1684466173}
@@ -2674,6 +2739,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1821543231}
     m_Modifications:
+    - target: {fileID: 6586914471724848800, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.069
+      objectReference: {fileID: 0}
     - target: {fileID: 6586914473033281235, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2758,6 +2828,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: safeShoot
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
@@ -3401,6 +3476,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
         type: 3}
+      propertyPath: safeShoot
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
+        type: 3}
       propertyPath: PatrolPoint
       value: 
       objectReference: {fileID: 1021733365}
@@ -3527,6 +3607,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1821543231}
     m_Modifications:
+    - target: {fileID: 6586914471724848800, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.015
+      objectReference: {fileID: 0}
     - target: {fileID: 6586914473033281235, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3614,6 +3699,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
+      propertyPath: safeShoot
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
       propertyPath: PatrolPoint
       value: 
       objectReference: {fileID: 1036944468}
@@ -3690,6 +3780,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
+        type: 3}
+      propertyPath: safeShoot
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
         type: 3}
@@ -3905,6 +4000,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
+        type: 3}
+      propertyPath: safeShoot
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
         type: 3}
@@ -4146,6 +4246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
+        type: 3}
+      propertyPath: safeShoot
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
         type: 3}
@@ -4471,6 +4576,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1821543231}
     m_Modifications:
+    - target: {fileID: 6586914471724848800, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.51
+      objectReference: {fileID: 0}
     - target: {fileID: 6586914473033281235, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4555,6 +4665,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: safeShoot
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
@@ -4998,6 +5113,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
         type: 3}
+      propertyPath: safeShoot
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
+        type: 3}
       propertyPath: PatrolPoint
       value: 
       objectReference: {fileID: 1099726824}
@@ -5105,6 +5225,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1821543231}
     m_Modifications:
+    - target: {fileID: 6586914471724848800, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.15
+      objectReference: {fileID: 0}
     - target: {fileID: 6586914473033281235, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5184,6 +5309,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
+        type: 3}
+      propertyPath: safeShoot
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6586914473146932991, guid: 9f4eca873ebc94f4197435cafdde47a3,
         type: 3}
@@ -5355,6 +5485,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
         type: 3}
+      propertyPath: safeShoot
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
+        type: 3}
       propertyPath: PatrolPoint
       value: 
       objectReference: {fileID: 862903936}
@@ -5426,6 +5561,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
+        type: 3}
+      propertyPath: safeShoot
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5039277015665319251, guid: f6a28ac0f4779ef47a1e2189b4503ae1,
         type: 3}
