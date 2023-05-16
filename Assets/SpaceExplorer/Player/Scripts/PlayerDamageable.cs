@@ -7,12 +7,14 @@ public class PlayerDamageable : damageableWithLife
 
     MovementController movementController;
     WeaponsShip shipWeapons;
+    PlayerMovementController playerMovementController;
 
     private  void Awake()
     {
         baseAwake();
         movementController = GetComponent<MovementController>();
         shipWeapons = GetComponent<WeaponsShip>();
+        playerMovementController = GetComponent<PlayerMovementController>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,6 +25,7 @@ public class PlayerDamageable : damageableWithLife
             {
                 TurboFuelTank turboFuelTank = other.GetComponent<TurboFuelTank>();
                 movementController?.chargeTurbo(turboFuelTank);
+                playerMovementController?.chargeTurbo(turboFuelTank);
             }
             if(other.CompareTag("ReparationKit"))
             {
