@@ -21,5 +21,9 @@ public class MainManu : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
 
