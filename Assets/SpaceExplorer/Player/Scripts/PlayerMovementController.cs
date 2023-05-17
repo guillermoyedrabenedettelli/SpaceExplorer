@@ -80,8 +80,8 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
-        rotationLimit = (movement > 0) ? turboRotationLimitation : 1;
         UpdateLocation();
+        UpdateSpeedParticles();
         UpdateRotation();
     }
 
@@ -122,6 +122,11 @@ public class PlayerMovementController : MonoBehaviour
 
         transform.position += -transform.forward * actualSpeed * Time.deltaTime;
 
+        
+
+    }
+    void UpdateSpeedParticles()
+    {
         if (speedParticles != null)
         {
             var emision = speedParticles.emission;
@@ -130,7 +135,6 @@ public class PlayerMovementController : MonoBehaviour
 
             main.startSpeed = FunctionAffectedBySpeed(maxParticleSpeed, minParticleSpeed);
         }
-
     }
 
     float FunctionAffectedBySpeed(float maxResult, float minResult)
@@ -139,6 +143,7 @@ public class PlayerMovementController : MonoBehaviour
     }
     void UpdateRotation()
     {
+        rotationLimit = (movement > 0) ? turboRotationLimitation : 1;
 
         actualRollSpeed = (roll == 0) ?
             ((actualRollSpeed < stopThreshold && actualRollSpeed > -stopThreshold) ?
@@ -172,10 +177,6 @@ public class PlayerMovementController : MonoBehaviour
                 actualPitchSpeed + (pitchSpeed * rotationLimit* yawPicth.y * Time.deltaTime)
                 : actualPitchSpeed > 0 ? maxPitchSpeed * rotationLimit : -maxPitchSpeed * rotationLimit);
 
-
-
-
-
         transform.rotation = Quaternion.AngleAxis(actualPitchSpeed, transform.right)
             * Quaternion.AngleAxis(actualYawSpeed, transform.up) 
             * Quaternion.AngleAxis(actualRollSpeed, transform.forward) 
@@ -184,6 +185,34 @@ public class PlayerMovementController : MonoBehaviour
     }
 
 
+    private void CabinaBool(bool b)
+    {
+        camaraChange = b;
+        Cabina?.SetActive(b);
+        if (!b)
+        {
+            ShipPS4?.SetActive(true);
+        }
+        else
+        {
+            ShipPS4?.SetActive(false);
+        }
+    }
+
+    public void chargeTurbo(TurboFuelTank fuelTank)
+    {
+        float turboToAdd = maxTurbo * fuelTank.turboRecoveryPercentage / 100f;
+
+        actualTurbo += turboToAdd;
+        if (actualTurbo >= maxTurbo)
+            actualTurbo = maxTurbo;
+
+        turboBar.fillAmount = actualTurbo / maxTurbo;
+        fuelTank.DestroyItem();
+
+    }
+
+    //Imputs
     public void OnMovemente(InputAction.CallbackContext context)
     {
         movement = context.ReadValue<float>();
@@ -218,7 +247,6 @@ public class PlayerMovementController : MonoBehaviour
         }
 
     }
-
     public void OnCameraChange(InputAction.CallbackContext context)
     {
         if (camaraChange == false)
@@ -231,32 +259,7 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    private void CabinaBool(bool b)
-    {
-        camaraChange = b;
-        Cabina?.SetActive(b);
-        if (!b)
-        {
-            ShipPS4?.SetActive(true);
-        }
-        else
-        {
-            ShipPS4?.SetActive(false);
-        }
-    }
-
-    public void chargeTurbo(TurboFuelTank fuelTank)
-    {
-        float turboToAdd = maxTurbo * fuelTank.turboRecoveryPercentage / 100f;
-
-        actualTurbo += turboToAdd;
-        if (actualTurbo >= maxTurbo)
-            actualTurbo = maxTurbo;
-
-        turboBar.fillAmount = actualTurbo / maxTurbo;
-        fuelTank.DestroyItem();
-
-    }
+    
 
 
 }
