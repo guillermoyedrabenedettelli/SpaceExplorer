@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerMovementController : MonoBehaviour
 {
@@ -44,6 +46,14 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] float turboRecovery = 2f;
     [SerializeField] float timeToStartRecovering = 2f;
     float actualTimeWaitingForRecover = 0f;
+
+    [Header("Particles")]
+    [SerializeField] float maxParticleSpeed=25;
+    [SerializeField] float minParticleSpeed=10;
+    [SerializeField] float maxParticleEmision=20f;
+    [SerializeField] float minParticleEmision=10f;
+    [SerializeField] ParticleSystem speedParticles;
+
 
     [Header("Camera")]
     [SerializeField] GameObject Cabina;
@@ -108,9 +118,24 @@ public class PlayerMovementController : MonoBehaviour
 
             actualSpeed =(actualSpeed > defaultSpeed) ? actualSpeed - turboDeceleration : defaultSpeed;
         }
-        
-        
+
+
         transform.position += -transform.forward * actualSpeed * Time.deltaTime;
+
+        if (speedParticles != null)
+        {
+            var emision = speedParticles.emission;
+            var main = speedParticles.main;
+            emision.rateOverTime = FunctionAffectedBySpeed(maxParticleEmision, minParticleEmision);
+
+            main.startSpeed = FunctionAffectedBySpeed(maxParticleSpeed, minParticleSpeed);
+        }
+
+    }
+
+    float FunctionAffectedBySpeed(float maxResult, float minResult)
+    {
+        return ((maxResult - minResult) *(actualSpeed - defaultSpeed) / (turboMaxSpeed - defaultSpeed) + minResult);
     }
     void UpdateRotation()
     {
