@@ -76,6 +76,7 @@ public class PlayerMovementController : MonoBehaviour
         yawPicth = new Vector2(0, 0);
         CabinaBool(false);
         actualTurbo = maxTurbo;
+        ch = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -120,7 +121,9 @@ public class PlayerMovementController : MonoBehaviour
         }
 
 
-        transform.position += -transform.forward * actualSpeed * Time.deltaTime;
+
+        ch.Move(-transform.forward * actualSpeed * Time.deltaTime);
+        //transform.position += -transform.forward * actualSpeed * Time.deltaTime;
 
         
 
