@@ -473,6 +473,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55787d8c0810f6d43881fc1fe3a229a2, type: 3}
+--- !u!114 &1076411804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5843011661934101011, guid: 6fca961e068847a46bb64713fc1c5b19,
+    type: 3}
+  m_PrefabInstance: {fileID: 1516431692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1171295806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1198688644098305533, guid: 6fca961e068847a46bb64713fc1c5b19,
+    type: 3}
+  m_PrefabInstance: {fileID: 1516431692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1198153558 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2284562864791924755, guid: 6fca961e068847a46bb64713fc1c5b19,
@@ -1121,6 +1145,16 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1198153558}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: weaponsAmmo
+      value: 
+      objectReference: {fileID: 1076411804}
+    - target: {fileID: 1037667612774360813, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: laserInterface
+      value: 
+      objectReference: {fileID: 1171295806}
     - target: {fileID: 1053793857083727520, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x

@@ -59,11 +59,13 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] GameObject Cabina;
     [SerializeField] GameObject ShipPS4;
     bool camaraChange = false;
-
+    [SerializeField] float maxAimHorizontalMovement = 2f;
+    [SerializeField] float maxAimVerticalMovement = 1f;
 
 
     Rigidbody rigidBody;
     CharacterController ch;
+    PlayerMoveCameraCentre playerMoveCameraCentre;
 
     private float movement;
     private float roll;
@@ -77,6 +79,7 @@ public class PlayerMovementController : MonoBehaviour
         CabinaBool(false);
         actualTurbo = maxTurbo;
         ch = GetComponent<CharacterController>();
+        playerMoveCameraCentre = GetComponentInChildren<PlayerMoveCameraCentre>();
     }
 
     void Update()
@@ -134,15 +137,15 @@ public class PlayerMovementController : MonoBehaviour
         {
             var emision = speedParticles.emission;
             var main = speedParticles.main;
-            emision.rateOverTime = FunctionAffectedBySpeed(maxParticleEmision, minParticleEmision);
+            emision.rateOverTime = FunctionAffectedBySpeed(maxParticleEmision, minParticleEmision,actualSpeed,defaultSpeed,turboMaxSpeed);
 
-            main.startSpeed = FunctionAffectedBySpeed(maxParticleSpeed, minParticleSpeed);
+            main.startSpeed = FunctionAffectedBySpeed(maxParticleSpeed, minParticleSpeed, actualSpeed, defaultSpeed, turboMaxSpeed);
         }
     }
 
-    float FunctionAffectedBySpeed(float maxResult, float minResult)
+    float FunctionAffectedBySpeed(float maxResult, float minResult, float currentSpeed, float minSpeed, float maxspeed)
     {
-        return ((maxResult - minResult) *(actualSpeed - defaultSpeed) / (turboMaxSpeed - defaultSpeed) + minResult);
+        return ((maxResult - minResult) *(currentSpeed - minSpeed) / (maxspeed - minSpeed) + minResult);
     }
     void UpdateRotation()
     {
@@ -169,6 +172,8 @@ public class PlayerMovementController : MonoBehaviour
                 actualYawSpeed + (yawSpeed * rotationLimit* yawPicth.x * Time.deltaTime)
                 : actualYawSpeed > 0 ? maxYawSpeed * rotationLimit : -maxYawSpeed * rotationLimit);
 
+       
+
 
         actualPitchSpeed = (yawPicth.y == 0) ?
             ((actualPitchSpeed < stopThreshold && actualPitchSpeed > -stopThreshold) ?
@@ -179,6 +184,13 @@ public class PlayerMovementController : MonoBehaviour
             : ((actualPitchSpeed < maxPitchSpeed * rotationLimit && actualPitchSpeed > -maxPitchSpeed * rotationLimit) ?
                 actualPitchSpeed + (pitchSpeed * rotationLimit* yawPicth.y * Time.deltaTime)
                 : actualPitchSpeed > 0 ? maxPitchSpeed * rotationLimit : -maxPitchSpeed * rotationLimit);
+
+
+
+        float horizontal = -FunctionAffectedBySpeed(maxAimHorizontalMovement * rotationLimit, -maxAimHorizontalMovement * rotationLimit, actualYawSpeed, -maxYawSpeed * rotationLimit, maxYawSpeed * rotationLimit);
+        float vertical = FunctionAffectedBySpeed(maxAimVerticalMovement * rotationLimit, -maxAimVerticalMovement * rotationLimit, actualPitchSpeed, -maxPitchSpeed * rotationLimit, maxPitchSpeed * rotationLimit);
+        playerMoveCameraCentre.MovePosition(new Vector3(horizontal, vertical, 0));
+
 
         transform.rotation = Quaternion.AngleAxis(actualPitchSpeed, transform.right)
             * Quaternion.AngleAxis(actualYawSpeed, transform.up) 
