@@ -16,7 +16,10 @@ public class Gravedad : MonoBehaviour
             if (collider.gameObject != gameObject)
             {
                 Vector3 direction = transform.position - collider.transform.position;
-                collider.GetComponent<Rigidbody>().AddForce(direction.normalized * FuerzaDeGravedad);
+                if(collider.GetComponent<Rigidbody>()!=null)
+                {
+                    collider.GetComponent<Rigidbody>().AddForce(direction.normalized * FuerzaDeGravedad);
+                }
             }
         }
     }
