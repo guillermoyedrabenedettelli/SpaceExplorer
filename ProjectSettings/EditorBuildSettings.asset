@@ -4,11 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/SpaceExplorer/Scenes/Test/Test.unity
-    guid: f699f210eb41d92419dcaa4db557a615
-  m_configObjects: {}
+  m_Scenes: []
