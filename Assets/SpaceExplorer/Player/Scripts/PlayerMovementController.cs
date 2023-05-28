@@ -61,6 +61,8 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] float timeToStartRecovering = 2f;
     float actualTimeWaitingForRecover = 0f;
     [SerializeField] float movementDeadzone = 0.2f;
+    Quaternion shipStartRotation;
+    [SerializeField] float rotationOnYaw = 10f;
 
 
     [Header("Particles")]
@@ -115,12 +117,17 @@ public class PlayerMovementController : MonoBehaviour
         CabinaBool(false);
         actualTurbo = maxTurbo;
         ch = GetComponent<CharacterController>();
+        shipStartRotation = ShipPS4.transform.rotation;
 
         playerMoveCameraCentre = GetComponentInChildren<PlayerMoveCameraCentre>();
 
         if(landingMessage!=null)
             landingMessage.SetActive(false);
         trails = GetComponentsInChildren<TrailRenderer>();
+
+
+
+
     }
 
     void Update()
@@ -255,6 +262,21 @@ public class PlayerMovementController : MonoBehaviour
             * Quaternion.AngleAxis(actualYawSpeed* Time.deltaTime, transform.up) 
             * Quaternion.AngleAxis(actualRollSpeed* Time.deltaTime, transform.forward) 
             * transform.rotation;
+
+        RollOnYaw();
+
+    }
+
+    void RollOnYaw()
+    {
+        if(actualYawSpeed>=0)
+        {       
+            ShipPS4.transform.rotation = Quaternion.Euler(Mathf.LerpAngle(shipStartRotation.eulerAngles.x, shipStartRotation.eulerAngles.x + rotationOnYaw, (actualYawSpeed / maxYawSpeed)), ShipPS4.transform.eulerAngles.y, ShipPS4.transform.eulerAngles.z);
+        }
+        else
+        {
+            ShipPS4.transform.rotation = Quaternion.Euler(Mathf.LerpAngle(shipStartRotation.eulerAngles.x, shipStartRotation.eulerAngles.x - rotationOnYaw, -1*(actualYawSpeed / maxYawSpeed)), ShipPS4.transform.eulerAngles.y, ShipPS4.transform.eulerAngles.z);
+        }
 
     }
 
