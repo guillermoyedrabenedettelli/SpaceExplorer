@@ -263,7 +263,7 @@ public class PlayerMovementController : MonoBehaviour
             * Quaternion.AngleAxis(actualRollSpeed* Time.deltaTime, transform.forward) 
             * transform.rotation;
 
-        RollOnYaw();
+        //RollOnYaw();
 
     }
 
