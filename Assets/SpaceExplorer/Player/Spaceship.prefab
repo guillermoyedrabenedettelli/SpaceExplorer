@@ -106,7 +106,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -748,7 +748,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 4
       mode: 0
       spread: 0
       speed:
@@ -4989,7 +4989,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -5796,6 +5796,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9a08a05b-5072-4355-8b30-b2ef969a5be5
     m_ActionName: SpaceshipControlls/ChangeCamera[/XInputControllerWindows/select,/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 854298146}
+        m_TargetAssemblyTypeName: PlayerMovementController, Assembly-CSharp
+        m_MethodName: OnPressActionButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 02bd2300-7c11-43d6-80a7-8f5ff8cd8b54
+    m_ActionName: SpaceshipControlls/ActionInput[/XInputControllerWindows/buttonSouth,/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: SpaceshipControlls
@@ -5814,39 +5830,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turboRotationLimitation: 0.5
-  stopThreshold: 0.05
-  rollSpeed: 4
+  stopThreshold: 4
+  rotationDeadZone: 0.5
+  rollSpeed: 240
   actualRollSpeed: 0
-  maxRollSpeed: 4
-  rollDeceleration: 4
-  yawSpeed: 4
+  maxRollSpeed: 240
+  rollDeceleration: 480
+  yawSpeed: 120
   actualYawSpeed: 0
-  maxYawSpeed: 4
-  yawDeceleration: 4
-  pitchSpeed: 4
+  maxYawSpeed: 120
+  yawDeceleration: 480
+  pitchSpeed: 240
   actualPitchSpeed: 0
-  maxPitchSpeed: 4
-  pitchDeceleration: 4
+  maxPitchSpeed: 240
+  pitchDeceleration: 480
   defaultSpeed: 10
+  defaultAcceleration: 0.2
   turboMaxSpeed: 40
   actualSpeed: 2
   turboAceleration: 0.5
-  turboDeceleration: 2
+  turboDeceleration: 0.2
   maxTurbo: 100
   actualTurbo: 0
   turboReductionPerSecond: 10
   turboBar: {fileID: 0}
   turboRecovery: 5
   timeToStartRecovering: 2
+  movementDeadzone: 0.2
+  rotationOnYaw: 30
   maxParticleSpeed: 25
-  minParticleSpeed: 10
-  maxParticleEmision: 20
-  minParticleEmision: 10
+  minParticleSpeed: 15
+  maxParticleEmision: 30
+  minParticleEmision: 0
   speedParticles: {fileID: 540288480}
   Cabina: {fileID: 5890441070408703751}
   ShipPS4: {fileID: 7983267439546022587}
-  maxAimHorizontalMovement: 2
+  maxAimHorizontalMovement: 1
   maxAimVerticalMovement: 1
+  landingMessage: {fileID: 0}
+  heightBeforeLanding: 2
 --- !u!1 &8331961926145376387
 GameObject:
   m_ObjectHideFlags: 0
@@ -6472,7 +6494,7 @@ PrefabInstance:
     - target: {fileID: 7718677397116711422, guid: 3ae5a8994f43dc54dbad71c1005e0960,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.454
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7718677397116711422, guid: 3ae5a8994f43dc54dbad71c1005e0960,
         type: 3}
