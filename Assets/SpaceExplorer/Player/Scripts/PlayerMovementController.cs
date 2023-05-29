@@ -117,7 +117,7 @@ public class PlayerMovementController : MonoBehaviour
         CabinaBool(false);
         actualTurbo = maxTurbo;
         ch = GetComponent<CharacterController>();
-        shipStartRotation = ShipPS4.transform.rotation;
+        shipStartRotation = ShipPS4.transform.localRotation;
 
         playerMoveCameraCentre = GetComponentInChildren<PlayerMoveCameraCentre>();
 
@@ -263,19 +263,19 @@ public class PlayerMovementController : MonoBehaviour
             * Quaternion.AngleAxis(actualRollSpeed* Time.deltaTime, transform.forward) 
             * transform.rotation;
 
-        //RollOnYaw();
+        RollOnYaw();
 
     }
 
     void RollOnYaw()
     {
         if(actualYawSpeed>=0)
-        {       
-            ShipPS4.transform.rotation = Quaternion.Euler(Mathf.LerpAngle(shipStartRotation.eulerAngles.x, shipStartRotation.eulerAngles.x + rotationOnYaw, (actualYawSpeed / maxYawSpeed)), ShipPS4.transform.eulerAngles.y, ShipPS4.transform.eulerAngles.z);
+        {
+            ShipPS4.transform.localRotation = Quaternion.Euler(Mathf.LerpAngle(shipStartRotation.eulerAngles.x, shipStartRotation.eulerAngles.x + rotationOnYaw, (actualYawSpeed / maxYawSpeed)), ShipPS4.transform.localRotation.eulerAngles.y, ShipPS4.transform.localRotation.eulerAngles.z);
         }
         else
         {
-            ShipPS4.transform.rotation = Quaternion.Euler(Mathf.LerpAngle(shipStartRotation.eulerAngles.x, shipStartRotation.eulerAngles.x - rotationOnYaw, -1*(actualYawSpeed / maxYawSpeed)), ShipPS4.transform.eulerAngles.y, ShipPS4.transform.eulerAngles.z);
+            ShipPS4.transform.localRotation = Quaternion.Euler(Mathf.LerpAngle(shipStartRotation.eulerAngles.x, shipStartRotation.eulerAngles.x - rotationOnYaw, -1*(actualYawSpeed / maxYawSpeed)), ShipPS4.transform.localRotation.eulerAngles.y, ShipPS4.transform.localRotation.eulerAngles.z);
         }
 
     }

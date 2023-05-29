@@ -5857,6 +5857,7 @@ MonoBehaviour:
   turboRecovery: 5
   timeToStartRecovering: 2
   movementDeadzone: 0.2
+  rotationOnYaw: 30
   maxParticleSpeed: 25
   minParticleSpeed: 15
   maxParticleEmision: 30
