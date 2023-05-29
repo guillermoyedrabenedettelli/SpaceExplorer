@@ -5080,6 +5080,26 @@ PrefabInstance:
       propertyPath: m_OcclusionCulling
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1489281302056899360, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489281302754271707, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489281303407763196, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489281303484278242, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1567655178907502358, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: life
