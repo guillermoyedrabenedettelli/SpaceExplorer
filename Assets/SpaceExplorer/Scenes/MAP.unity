@@ -808,7 +808,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ejemplo 1
+  m_text: 'Prueba 1
+
 
 '
   m_isRightToLeft: 0
@@ -1022,7 +1023,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707029190}
-  m_LocalRotation: {x: -0.10251726, y: 0.0000000042789328, z: 4.409879e-10, w: 0.99473125}
+  m_LocalRotation: {x: -0.10251726, y: -0.00000000427893, z: -4.4098764e-10, w: 0.99473125}
   m_LocalPosition: {x: -1809.02, y: 46.9, z: 222}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2227,7 +2228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateTarget: {fileID: 180503378}
-  gradesPerSecond: 0.5
+  gradesPerSecond: 0.4
 --- !u!1001 &1832004231
 PrefabInstance:
   m_ObjectHideFlags: 0
