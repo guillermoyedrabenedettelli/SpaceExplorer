@@ -4950,7 +4950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2137642604
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5046,6 +5046,7 @@ GameObject:
   - component: {fileID: 1053793857010159272}
   - component: {fileID: 1053793857010159269}
   - component: {fileID: 1053793857010159268}
+  - component: {fileID: 322910497}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5060,8 +5061,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053793857010159273}
-  m_LocalRotation: {x: -0.042197693, y: 0.870225, z: -0.07571933, w: -0.4849685}
-  m_LocalPosition: {x: -1771.0299, y: 87, z: 365}
+  m_LocalRotation: {x: 0.05043118, y: 0.7562002, z: -0.05869359, w: 0.64974844}
+  m_LocalPosition: {x: -6.3301272, y: 1, z: 0.96410084}
   m_LocalScale: {x: 1, y: 0.78972983, z: 0.53067404}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5143,7 +5144,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -5186,6 +5187,26 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &322910497
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053793857010159273}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1053793857083727526
 GameObject:
   m_ObjectHideFlags: 0
@@ -5213,8 +5234,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053793857083727526}
-  m_LocalRotation: {x: -1.9106855e-15, y: 1, z: -0.00000004371139, w: -0.00000004371139}
-  m_LocalPosition: {x: 0, y: 1, z: 4.5}
+  m_LocalRotation: {x: -7.1054274e-14, y: -1, z: 0.00000012513159, w: -0.00000052154064}
+  m_LocalPosition: {x: -0.000006198883, y: 1, z: 4.5000095}
   m_LocalScale: {x: 1, y: 0.97965986, z: 1.013668}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5479,6 +5500,8 @@ GameObject:
   - component: {fileID: 1037667612774360813}
   - component: {fileID: 1053793858792924478}
   - component: {fileID: 854298146}
+  - component: {fileID: 1815123779}
+  - component: {fileID: 1815123780}
   m_Layer: 6
   m_Name: Spaceship
   m_TagString: Player
@@ -5869,6 +5892,40 @@ MonoBehaviour:
   maxAimVerticalMovement: 1
   landingMessage: {fileID: 0}
   heightBeforeLanding: 2
+--- !u!95 &1815123779
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053793858792924614}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1815123780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053793858792924614}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b76e6124f9cf645b436f01c7885cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateTarget: {fileID: 0}
+  gradesPerSecond: 10
 --- !u!1 &8331961926145376387
 GameObject:
   m_ObjectHideFlags: 0
@@ -5926,6 +5983,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Depth
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436992794470731801, guid: 234f3e8c67a23a647a050d664982c941,
+        type: 3}
+      propertyPath: far clip plane
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 3382189671252966775, guid: 234f3e8c67a23a647a050d664982c941,
         type: 3}
