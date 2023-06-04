@@ -674,7 +674,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le recomiendo desactivar el pilotot autom\xE1tico, gasta m\xE1s energ\xEDa
+  m_text: "Le recomiendo desactivar el piloto autom\xE1tico, gasta m\xE1s energ\xEDa
     y no tendr\xEDa para llegar."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

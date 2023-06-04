@@ -344,6 +344,8 @@ public class PlayerMovementController : MonoBehaviour
     public void SetReadyToLand(bool ready)
     {
         isReadyToLand = ready;
+        if (landingMessage != null)
+            landingMessage.SetActive(ready);
     }
     void StartLanding()
     {
