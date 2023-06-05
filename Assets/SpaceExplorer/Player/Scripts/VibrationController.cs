@@ -2,17 +2,19 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+
+
 public class VibrationController : MonoBehaviour
 {
     public Transform targetZone;
     public float vibrationDuration = 1f;
     public float vibrationIntensity = 0.5f;
     public AnimationCurve vibrationCurve;
-
+    
     private Gamepad gamepad;
     private bool isVibrating = false;
-    private float vibrationTimer = 0f;
-
+    private VibrationSense sense;
     private void Start()
     {
         // Obtén el gamepad principal
@@ -21,51 +23,57 @@ public class VibrationController : MonoBehaviour
 
     private void Update()
     {
-        // Verifica si el gamepad existe y si el jugador se encuentra cerca de la zona objetivo
-        if (gamepad != null && Vector3.Distance(transform.position, targetZone.position) < 2f)
+            Vibration(sense);
+    }
+    public void VibrationSense(VibrationSense number)
+    {
+        sense = number;
+    }
+    private void Vibration(VibrationSense vibrationIndex)
+    {
+        if (gamepad != null)
         {
             if (!isVibrating)
             {
                 // Comienza una subrutina de vibración aleatoria
                 isVibrating = true;
-                vibrationTimer = 0f;
-
-                int vibrationIndex = Random.Range(0, 8);
                 switch (vibrationIndex)
                 {
-                    case 0:
+                    case global::VibrationSense.FastPulse:
                         StartCoroutine(VibrateFastPulse());
                         Debug.Log("Reproduciendo: Ráfaga rápida");
                         break;
-                    case 1:
+                    case global::VibrationSense.SlowPulse:
                         StartCoroutine(VibrateSlowPulse());
                         Debug.Log("Reproduciendo: Pulso tranquilo");
                         break;
-                    case 2:
+                    case global::VibrationSense.AscendingBurst:
                         StartCoroutine(VibrateAscendingBurst());
                         Debug.Log("Reproduciendo: Ráfaga ascendente");
                         break;
-                    case 3:
+                    case global::VibrationSense.IrregularPattern:
                         StartCoroutine(VibrateIrregularPattern());
                         Debug.Log("Reproduciendo: Vibración irregular");
                         break;
-                    case 4:
+                    case global::VibrationSense.ExpandingWave:
                         StartCoroutine(VibrateExpandingWave());
                         Debug.Log("Reproduciendo: Onda expansiva");
                         break;
-                    case 5:
+                    case global::VibrationSense.Spiral:
                         StartCoroutine(VibrateSpiral());
                         Debug.Log("Reproduciendo: Vibración en espiral");
                         break;
-                    case 6:
+                    case global::VibrationSense.Explosion:
                         StartCoroutine(VibrateExplosion());
                         Debug.Log("Reproduciendo: Vibración de explosión");
                         break;
-                    case 7:
+                    case global::VibrationSense.Throbbing:
                         StartCoroutine(VibrateThrobbing());
                         Debug.Log("Reproduciendo: Vibración de Throbbing");
                         break;
-
+                    case global::VibrationSense.none:
+                        
+                        break;
                 }
             }
         }
