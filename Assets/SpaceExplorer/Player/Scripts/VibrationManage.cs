@@ -19,15 +19,17 @@ public class VibrationManage : MonoBehaviour
     {
         if (other.GetComponent<VibrationController>())
         {
-            other.GetComponent<VibrationController>().VibrationSense(vibrationSense);
+            other.GetComponent<VibrationController>().VibrationSense(vibrationSense,true);
 
 
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        /*
+        
         if (other.GetComponent<VibrationController>())
         {
-        }*/    }
+            other.GetComponent<VibrationController>().Active = false;
+        }
+    }
 }

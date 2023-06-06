@@ -7,11 +7,12 @@ using UnityEngine.InputSystem;
 
 public class VibrationController : MonoBehaviour
 {
-    public Transform targetZone;
-    public float vibrationDuration = 1f;
-    public float vibrationIntensity = 0.5f;
-    public AnimationCurve vibrationCurve;
     
+    [SerializeField] float vibrationDuration = 1f;
+    [SerializeField] float vibrationIntensity = 0.5f;
+    [SerializeField] AnimationCurve vibrationCurve;
+    public bool Active = false;
+
     private Gamepad gamepad;
     private bool isVibrating = false;
     private VibrationSense sense;
@@ -23,21 +24,15 @@ public class VibrationController : MonoBehaviour
 
     private void Update()
     {
-            Vibration(sense);
-    }
-    public void VibrationSense(VibrationSense number)
-    {
-        sense = number;
-    }
-    private void Vibration(VibrationSense vibrationIndex)
-    {
-        if (gamepad != null)
+        if (gamepad != null && Active == true)
         {
             if (!isVibrating)
             {
                 // Comienza una subrutina de vibración aleatoria
                 isVibrating = true;
-                switch (vibrationIndex)
+
+                int vibrationIndex = Random.Range(0, 8);
+                switch (sense)
                 {
                     case global::VibrationSense.FastPulse:
                         StartCoroutine(VibrateFastPulse());
@@ -71,9 +66,6 @@ public class VibrationController : MonoBehaviour
                         StartCoroutine(VibrateThrobbing());
                         Debug.Log("Reproduciendo: Vibración de Throbbing");
                         break;
-                    case global::VibrationSense.none:
-                        
-                        break;
                 }
             }
         }
@@ -81,10 +73,17 @@ public class VibrationController : MonoBehaviour
         {
             // Detiene la vibración
             isVibrating = false;
+            Active = false;
             gamepad.ResetHaptics();
             Debug.Log("Deteniendo vibración");
         }
     }
+    public void VibrationSense(VibrationSense number,bool Ac)
+    {
+        sense = number;
+        Active = Ac;
+    }
+    
 
     private IEnumerator VibrateFastPulse()
     {
