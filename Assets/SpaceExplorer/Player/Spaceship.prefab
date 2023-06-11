@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540288477}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17, y: 0, z: -7.6406074}
+  m_LocalPosition: {x: -0.17, y: 0, z: -0.66}
   m_LocalScale: {x: 1, y: 1.2405, z: 1.9101518}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 25
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -661,7 +661,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 0
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -5863,7 +5863,7 @@ MonoBehaviour:
   yawSpeed: 120
   actualYawSpeed: 0
   maxYawSpeed: 120
-  yawDeceleration: 480
+  yawDeceleration: 240
   pitchSpeed: 240
   actualPitchSpeed: 0
   maxPitchSpeed: 240
@@ -5882,10 +5882,10 @@ MonoBehaviour:
   timeToStartRecovering: 2
   movementDeadzone: 0.2
   rotationOnYaw: 30
-  maxParticleSpeed: 25
-  minParticleSpeed: 15
-  maxParticleEmision: 30
-  minParticleEmision: 0
+  maxParticleSpeed: 0
+  minParticleSpeed: 0
+  maxParticleEmision: 50
+  minParticleEmision: 15
   speedParticles: {fileID: 540288480}
   Cabina: {fileID: 5890441070408703751}
   ShipPS4: {fileID: 7983267439546022587}
