@@ -11,10 +11,8 @@ public class ConversationManager : MonoBehaviour
 {
     Dialogue[] conversationSentences;
     Button[] buttonList;
-    [SerializeField] float menuDeadZone = 0.5f;
     int currentButtonIndex =0;
-    bool moveUp=false;
-    bool moveDown = false;
+
     int currentDialogueIndex = 0;
     bool playerSelection = false;
     bool activeNext=false;
