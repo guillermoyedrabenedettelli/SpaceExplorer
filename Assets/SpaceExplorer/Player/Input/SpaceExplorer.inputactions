@@ -1101,6 +1101,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Conversation",
+            "id": "01353546-33f3-48cf-9876-352283316cf6",
+            "actions": [
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "d82f12e1-cdd4-463f-a99c-83b2e3496c40",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "aa3d367c-312c-4f75-bd01-012e0fd7bd18",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "Press(pressPoint=0.1,behavior=2)",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "432fbbc2-4540-4aa9-9948-6b458b1a99a3",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press(pressPoint=0.1,behavior=2)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
