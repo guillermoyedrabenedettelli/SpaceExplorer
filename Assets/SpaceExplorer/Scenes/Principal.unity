@@ -2587,6 +2587,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2666594043654420470, guid: 85827f95a3340ec44b9e07e438cbaf97,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666594043654420470, guid: 85827f95a3340ec44b9e07e438cbaf97,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666594043654420470, guid: 85827f95a3340ec44b9e07e438cbaf97,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666594043654420470, guid: 85827f95a3340ec44b9e07e438cbaf97,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.07429503
       objectReference: {fileID: 0}
@@ -2701,6 +2716,7 @@ GameObject:
   - component: {fileID: 1178574057}
   - component: {fileID: 1178574059}
   - component: {fileID: 1178574060}
+  - component: {fileID: 1178574061}
   m_Layer: 0
   m_Name: MissionPoint
   m_TagString: Untagged
@@ -2809,8 +2825,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1815123778}
-  maxDistance: 500
-  minDistance: 100
+  maxDistance: 1000
+  minDistance: 500
+--- !u!114 &1178574061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178574056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc23dc36066f624982f54de896d7d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billboardPlane: {fileID: 1178574056}
 --- !u!1 &1255808840 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2137642603, guid: 880f4ca0b4717e34285686a2e22281dc,
@@ -3355,7 +3384,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
