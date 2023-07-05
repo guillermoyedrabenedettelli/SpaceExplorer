@@ -16,6 +16,10 @@ public class ConversationManager : MonoBehaviour
     int currentDialogueIndex = 0;
     bool playerSelection = false;
     bool activeNext=false;
+
+    Misiones3 Missions;
+    PlayerMovementController PMC;
+    WeaponsShip Weapons;
     void Awake()
     {
         conversationSentences = GetComponentsInChildren<Dialogue>();
@@ -25,12 +29,14 @@ public class ConversationManager : MonoBehaviour
            
         }
         currentDialogueIndex = 0;
+        InputSystem.settings.defaultDeadzoneMax = 0.925f;
     }
 
     private void Start()
     {
         conversationSentences[currentDialogueIndex].gameObject.SetActive(true);
         playerSelection = (conversationSentences[currentDialogueIndex].gameObject.GetComponent<PlayerDialogue>() != null) ? true : false;
+        this.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -60,7 +66,15 @@ public class ConversationManager : MonoBehaviour
             {
                 EventSystem.current.SetSelectedGameObject(null);
             }
-        }     
+        }
+        else
+        {
+            Missions.asignaMision(Missions.GetCurrentMission() + 1);
+            PMC.StartTakeOf();
+            PMC.enabled = true;
+            Weapons.enabled = true;
+            Destroy(this.gameObject);
+        }
     }
 
     public void LoadNextDialogue(int nextDialogueToLoad)
@@ -92,6 +106,14 @@ public class ConversationManager : MonoBehaviour
     {
         EventSystem.current.firstSelectedGameObject.SetActive(true);
         //buttonList[currentButtonIndex].onClick.Invoke();
+    }
+
+    public void SetMision(GameObject player,Misiones3 m)
+    {
+        Missions = m;
+        PMC = player.GetComponent<PlayerMovementController>();
+        Weapons=player.GetComponent<WeaponsShip>();
+        player.GetComponent<ConversationControl>().SetConversationManager(this);
     }
 }
 
