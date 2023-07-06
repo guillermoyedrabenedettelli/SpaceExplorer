@@ -218,10 +218,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cabina_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5050422055867433376, guid: 56964bdc5b2e5bd449668d483d98a1c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5958438921693756439, guid: 56964bdc5b2e5bd449668d483d98a1c5,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.39
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56964bdc5b2e5bd449668d483d98a1c5, type: 3}

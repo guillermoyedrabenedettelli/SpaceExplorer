@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3926cf3e8223097448339ab3518074a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   DropRate: 20
   healthRecoveryPercentag: 50
 --- !u!1 &8941822766443270534

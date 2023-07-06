@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e00c10d9c56bf84490187bce05b8b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   DropRate: 30
   turboRecoveryPercentage: 20
 --- !u!1001 &1339569971007949168

@@ -25,7 +25,8 @@ public class AlingIA : MonoBehaviour
     public float shootDistance = 50.0f; 
     float timeSinceLastShot = 1f;
     //
-
+    [Header("Distancia segura")]
+    [SerializeField] float safeShoot = 20f;
 
     void Update()
     {
@@ -167,7 +168,10 @@ public class AlingIA : MonoBehaviour
         // Rotar el objeto hacia el target
         transform.rotation = Quaternion.Slerp(transform.rotation, rotacion, rotationSpeed * Time.deltaTime);
         // Mover al enemigo en la dirección del objetivo
-        transform.position += direction * speed * Time.deltaTime;
+        if (Vector3.Distance(transform.position, obj.position) > safeShoot)
+        {
+            transform.position += direction * speed * Time.deltaTime;
+        }
     }
     private void Shoot()
     {
