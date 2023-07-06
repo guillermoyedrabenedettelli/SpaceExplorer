@@ -93,13 +93,19 @@ public class ConversationManager : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(null);
         }
+        activeNext = false;
     }
 
     public void Next(InputAction.CallbackContext context)
     {
         if (!playerSelection)
-            if (context.canceled)
+            if (context.performed)
                 activeNext =true;
+    }
+
+    public bool GetPlayerSelection()
+    {
+        return playerSelection;
     }
 
     public void PressCurrentButton(InputAction.CallbackContext context)

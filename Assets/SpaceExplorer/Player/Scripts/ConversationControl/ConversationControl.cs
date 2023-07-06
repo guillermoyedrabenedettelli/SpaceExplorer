@@ -12,7 +12,7 @@ public class ConversationControl : MonoBehaviour
 
     public void Next(InputAction.CallbackContext context)
     {
-        if (CM != null && CM.isActiveAndEnabled)
+        if (CM != null && CM.isActiveAndEnabled && !CM.GetPlayerSelection())
         {
             CM.Next(context);
         }  
