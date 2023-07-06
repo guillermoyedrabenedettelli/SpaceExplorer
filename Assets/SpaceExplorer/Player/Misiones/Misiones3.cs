@@ -10,19 +10,30 @@ public class Misiones3 : MonoBehaviour
     public TextMeshProUGUI TextoaMostrar;
     public TextMeshProUGUI TextoMision;
 
-
     private int misionPorHacerN;
     private int misionHechaN;
 
     private bool noTengoMision;
     private bool TengoMision;
     private int misionN;
+
+    [SerializeField] Canvas[] conversationCanvas;
+
+    GameObject NextConversation=null;
+
     // Start is called before the first frame update
     void Start()
     {
         TextoaMostrar.text = "Sin misión asignada.";
         TextoMision.text = "";
-        noTengoMision = true;
+        //noTengoMision = true;
+
+
+        TengoMision = true;
+        misionN = 1;
+        asignaMision(misionN);
+
+
     }
 
     // Update is called once per frame
@@ -44,8 +55,9 @@ public class Misiones3 : MonoBehaviour
         }
         
     }
-    private void asignaMision(int n)
+    public void asignaMision(int n)
     {
+        misionN = n;
         switch (n)
         {
             case 1:
@@ -104,12 +116,44 @@ public class Misiones3 : MonoBehaviour
 
     IEnumerator CompletadaMision()
     {
+        CreateNewConversation();
         TengoMision = false;
-        noTengoMision = false;
         yield return new WaitForSecondsRealtime(5f);
         noTengoMision = true;
-        TextoaMostrar.text = "Sin misión asignada.";
+        TextoaMostrar.text = "Tienes una llamada";
         TextoMision.text = "";
+
+
+
+
+    }
+
+
+    //Conversation functions for player
+    private void CreateNewConversation()
+    {
+        NextConversation = Instantiate(conversationCanvas[misionN-1].gameObject);
+        ConversationManager cm=NextConversation.GetComponent<ConversationManager>();
+        cm.SetMision(gameObject,this);
+    }
+
+    public int GetCurrentMission()
+    {
+        return misionN;
+    }
+
+    public bool IsConversationEnabled()
+    {
+       return (NextConversation != null) ;
+    }
+    public bool ActiveNextConversation()
+    {
+        if(NextConversation != null)
+        {
+            NextConversation.SetActive(true);
+            return true;
+        }
+        return false;
     }
 }
 

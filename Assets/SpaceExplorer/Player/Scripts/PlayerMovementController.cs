@@ -106,6 +106,9 @@ public class PlayerMovementController : MonoBehaviour
     private float roll;
     private Vector2 yawPicth;
 
+    private Misiones3 Missions;
+    private WeaponsShip Weapons;
+
 
   
     void Awake()
@@ -124,6 +127,9 @@ public class PlayerMovementController : MonoBehaviour
         if(landingMessage!=null)
             landingMessage.SetActive(false);
         trails = GetComponentsInChildren<TrailRenderer>();
+
+        Missions = this.GetComponent<Misiones3>();
+        Weapons=GetComponent<WeaponsShip>();
 
 
 
@@ -355,7 +361,9 @@ public class PlayerMovementController : MonoBehaviour
             landCamera.gameObject.SetActive(true);
         if (landingMessage != null)
             landingMessage.SetActive(false);
-        
+        if (Weapons != null)
+            Weapons.enabled = false;
+
 
     }
 
@@ -417,10 +425,18 @@ public class PlayerMovementController : MonoBehaviour
         if (transform.position != landingTarget.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, landingTarget.position, defaultSpeed/2 * Time.deltaTime);
-        }else
+        }
+        else
         {
             landingState++;
-            foreach(TrailRenderer trail in trails)
+            if(Missions.ActiveNextConversation())
+            {
+                this.enabled = false;
+            }
+            
+            
+
+            foreach (TrailRenderer trail in trails)
             {
                 trail.gameObject.SetActive(false);
             }
@@ -506,11 +522,29 @@ public class PlayerMovementController : MonoBehaviour
             rollPitchRotation = Quaternion.Euler(landingTarget.rotation.x, transform.rotation.y, landingTarget.rotation.z);
             initialRotatiom=transform.rotation;
             landingState = LandingStepsEnum.Rotate;
+            if (Missions.GetCurrentMission() == 1)
+            {
+                Missions.actualizaMision(Missions.GetCurrentMission());
+            }
+
+            Weapons.enabled = false;
+
         }
         else if(landingState==LandingStepsEnum.Landed)
         {
             landingState++;
             startTakeOffPosition = transform.position;
+            Weapons.enabled = true;
+        }
+    }
+    //Will be called from COnversationManager
+    public void StartTakeOf()
+    {
+       if (landingState == LandingStepsEnum.Landed)
+        {
+            landingState++;
+            startTakeOffPosition = transform.position;
+            Weapons.enabled = true;
         }
     }
 
