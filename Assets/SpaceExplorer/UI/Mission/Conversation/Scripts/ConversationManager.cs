@@ -29,7 +29,6 @@ public class ConversationManager : MonoBehaviour
            
         }
         currentDialogueIndex = 0;
-        InputSystem.settings.defaultDeadzoneMax = 0.925f;
     }
 
     private void Start()

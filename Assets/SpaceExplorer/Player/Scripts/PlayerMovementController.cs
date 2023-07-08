@@ -109,6 +109,8 @@ public class PlayerMovementController : MonoBehaviour
     private Misiones3 Missions;
     private WeaponsShip Weapons;
 
+    private Transform firstParent;
+
 
   
     void Awake()
@@ -132,7 +134,7 @@ public class PlayerMovementController : MonoBehaviour
         Weapons=GetComponent<WeaponsShip>();
 
 
-
+        firstParent = transform.parent;
 
     }
 
@@ -422,7 +424,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         var offset = landingTarget.position - transform.position;
 
-        if (transform.position != landingTarget.position)
+        if (Vector3.Distance(transform.position, landingTarget.position)>0.5)
         {
             transform.position = Vector3.MoveTowards(transform.position, landingTarget.position, defaultSpeed/2 * Time.deltaTime);
         }
@@ -453,7 +455,7 @@ public class PlayerMovementController : MonoBehaviour
             }
             speedParticles.gameObject.SetActive(true);
             landCamera.SetActive(false);
-            transform.parent = null;
+            transform.parent = firstParent;
             isLanding = false;
         }
         
@@ -516,7 +518,7 @@ public class PlayerMovementController : MonoBehaviour
 
     public void OnPressActionButton(InputAction.CallbackContext context)
     {
-        if (isReadyToLand && !isLanding)
+        if (context.canceled && isReadyToLand && !isLanding)
         {
             StartLanding();
             rollPitchRotation = Quaternion.Euler(landingTarget.rotation.x, transform.rotation.y, landingTarget.rotation.z);

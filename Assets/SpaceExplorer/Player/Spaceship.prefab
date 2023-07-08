@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -744,9 +744,9 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
-    randomPositionAmount: 0
+    randomPositionAmount: 1
     radius:
       value: 4
       mode: 0
@@ -973,7 +973,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -985,21 +985,30 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 1
-          tangentMode: 0
+          inSlope: 1.9967431
+          outSlope: 1.9967431
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.5008156
+          value: 1
+          inSlope: -0.0032622218
+          outSlope: -0.0032622218
+          tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 0
-          tangentMode: 0
+          value: 0
+          inSlope: -2.0032675
+          outSlope: -2.0032675
+          tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -4761,7 +4770,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c18f9f06339d49e784aa6c2c60ae29e, type: 2}
+  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5061,8 +5070,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053793857010159273}
-  m_LocalRotation: {x: -1.9106855e-15, y: 1, z: -0.00000004371139, w: -0.00000004371139}
-  m_LocalPosition: {x: 0, y: 1, z: 4.5}
+  m_LocalRotation: {x: 0.050431177, y: 0.7562002, z: -0.058693584, w: 0.64974844}
+  m_LocalPosition: {x: -6.3301272, y: 1, z: 0.96410084}
   m_LocalScale: {x: 1, y: 0.78972983, z: 0.53067404}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5234,8 +5243,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053793857083727526}
-  m_LocalRotation: {x: -1.9106855e-15, y: 1, z: -0.00000004371139, w: -0.00000004371139}
-  m_LocalPosition: {x: 0, y: 1, z: 4.5}
+  m_LocalRotation: {x: -7.1054274e-14, y: -1, z: 0.00000012513159, w: -0.00000052154064}
+  m_LocalPosition: {x: -0.000006198883, y: 1, z: 4.5000095}
   m_LocalScale: {x: 1, y: 0.97965986, z: 1.013668}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5836,6 +5845,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 02bd2300-7c11-43d6-80a7-8f5ff8cd8b54
     m_ActionName: SpaceshipControlls/ActionInput[/XInputControllerWindows/buttonSouth,/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e7ce23bc-0adb-457d-821a-49b0cbc7e46f
+    m_ActionName: Menu/Up[/XInputControllerWindows/dpad/up,/Keyboard/w,/XInputControllerWindows/leftStick/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e21b2c62-c0a6-41db-af73-14b2ab26a83c
+    m_ActionName: Menu/Down[/XInputControllerWindows/dpad/down,/Keyboard/s,/XInputControllerWindows/leftStick/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c84cb9ff-ae43-4925-9767-4bc2c2cd7316
+    m_ActionName: Menu/Select[/XInputControllerWindows/buttonSouth,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d82f12e1-cdd4-463f-a99c-83b2e3496c40
+    m_ActionName: Conversation/Next[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: SpaceshipControlls
@@ -5882,8 +5907,8 @@ MonoBehaviour:
   timeToStartRecovering: 2
   movementDeadzone: 0.2
   rotationOnYaw: 30
-  maxParticleSpeed: 0
-  minParticleSpeed: 0
+  maxParticleSpeed: 0.2
+  minParticleSpeed: 0.2
   maxParticleEmision: 50
   minParticleEmision: 15
   speedParticles: {fileID: 540288480}
