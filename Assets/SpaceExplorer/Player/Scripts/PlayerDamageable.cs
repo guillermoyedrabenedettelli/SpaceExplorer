@@ -27,7 +27,7 @@ public class PlayerDamageable : damageableWithLife
                 movementController?.chargeTurbo(turboFuelTank);
                 playerMovementController?.chargeTurbo(turboFuelTank);
             }
-            if(other.CompareTag("ReparationKit"))
+            else if(other.CompareTag("ReparationKit"))
             {
                 ReparationKit reparationKit = other.GetComponent<ReparationKit>();
                 life_dead = life_dead + (life*(reparationKit.healthRecoveryPercentag / 100));
@@ -38,11 +38,18 @@ public class PlayerDamageable : damageableWithLife
                 healthBar.fillAmount = life_dead / life;
                 reparationKit.DestroyItem();
             }
-            if(other.CompareTag("AmmoPack"))
+            else if(other.CompareTag("AmmoPack"))
             {
                 AmmoPack ammoPack = other.GetComponent<AmmoPack>();
                 shipWeapons?.chargeAmmo(ammoPack);
             }
+            else if(other.gameObject.GetComponent<MissionObject1>()!=null)
+            {
+                playerMovementController.UpdateCurrentMission(2);
+                MissionObject1 missionObject = other.GetComponent<MissionObject1>();
+                missionObject.DestroyItem();
+            }
+
         }
         
        

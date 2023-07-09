@@ -526,7 +526,7 @@ public class PlayerMovementController : MonoBehaviour
             landingState = LandingStepsEnum.Rotate;
             if (Missions.GetCurrentMission() == 1)
             {
-                Missions.actualizaMision(Missions.GetCurrentMission());
+                UpdateCurrentMission(1);
             }
 
             Weapons.enabled = false;
@@ -547,6 +547,14 @@ public class PlayerMovementController : MonoBehaviour
             landingState++;
             startTakeOffPosition = transform.position;
             Weapons.enabled = true;
+        }
+    }
+
+    public void UpdateCurrentMission(int missioniId)
+    {
+        if (Missions.GetCurrentMission() == missioniId)
+        {
+            Missions.actualizaMision(Missions.GetCurrentMission());
         }
     }
 

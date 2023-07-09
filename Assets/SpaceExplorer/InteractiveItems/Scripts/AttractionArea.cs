@@ -22,7 +22,8 @@ public class AttractionArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            dropeableItem.MoveToPlayer(other.transform);
+            this.transform.parent.parent = null;
+            dropeableItem.MoveToPlayer(other.transform);          
         }
     }
 }

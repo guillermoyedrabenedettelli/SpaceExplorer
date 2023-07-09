@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Misiones3 : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Misiones3 : MonoBehaviour
     private int misionN;
 
     [SerializeField] Canvas[] conversationCanvas;
+    [SerializeField] GameObject[] gameObjectToActive;
 
     GameObject NextConversation=null;
 
@@ -39,7 +41,7 @@ public class Misiones3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (noTengoMision) {
+        /*if (noTengoMision) {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 TengoMision = true;
@@ -52,28 +54,38 @@ public class Misiones3 : MonoBehaviour
                 TengoMision = true;
                 asignaMision(2);
             }
-        }
+        }*/
         
     }
     public void asignaMision(int n)
     {
+        gameObjectToActive[misionN-1].SetActive(false);
+
         misionN = n;
+        TengoMision = true;
         switch (n)
         {
             case 1:
-                TextoaMostrar.text = "Llega al destino.";
+                TextoaMostrar.text = "Llega al destino";
                 misionPorHacerN = 1;
                 misionHechaN = 0;
                 TextoMision.text = misionHechaN + " / " + misionPorHacerN;
                 break;
             case 2:
-                TextoaMostrar.text = "Acaba con los enemigos.";
-                misionPorHacerN = 3;
+                TextoaMostrar.text = "Recupera chatarra";
+                misionPorHacerN = 7;
                 misionHechaN = 0;
                 TextoMision.text = misionHechaN + " / " + misionPorHacerN;
                 break;
-            
+            case 3:
+                TextoaMostrar.text = "Vuelve a la estacion";
+                misionPorHacerN = 1;
+                misionHechaN = 0;
+                TextoMision.text = misionHechaN + " / " + misionPorHacerN;
+                break;
+
         }
+        gameObjectToActive[misionN-1].SetActive(true);
     }
 
     public void actualizaMision(int n)
@@ -84,7 +96,7 @@ public class Misiones3 : MonoBehaviour
             {
                 
                 case 1:
-                    TextoaMostrar.text = "Llega al destino.";
+                    TextoaMostrar.text = "Llega al destino";
                     misionPorHacerN = 1;
                     misionHechaN = misionHechaN + 1;
                     TextoMision.text = misionHechaN + " / " + misionPorHacerN;
@@ -96,8 +108,8 @@ public class Misiones3 : MonoBehaviour
                     }
                     break;
                 case 2:
-                    TextoaMostrar.text = "Acaba con los enemigos.";
-                    misionPorHacerN = 3;
+                    TextoaMostrar.text = "Recupera chatarra";
+                    misionPorHacerN = 7;
                     misionHechaN = misionHechaN + 1;
                     if (misionHechaN >= misionPorHacerN)
                     {
@@ -108,6 +120,18 @@ public class Misiones3 : MonoBehaviour
                     else
                     {
                         TextoMision.text = misionHechaN + " / " + misionPorHacerN;
+                    }
+                    break;
+                case 3:
+                    TextoaMostrar.text = "Vuelve a la estacion";
+                    misionPorHacerN = 1;
+                    misionHechaN = misionHechaN + 1;
+                    TextoMision.text = misionHechaN + " / " + misionPorHacerN;
+                    if (misionHechaN >= misionPorHacerN)
+                    {
+                        TextoaMostrar.text = "Misión completada!";
+                        TextoMision.text = "";
+                        StartCoroutine(CompletadaMision());
                     }
                     break;
             }
@@ -123,18 +147,26 @@ public class Misiones3 : MonoBehaviour
         TextoaMostrar.text = "Tienes una llamada";
         TextoMision.text = "";
 
-
-
-
     }
 
 
     //Conversation functions for player
     private void CreateNewConversation()
     {
-        NextConversation = Instantiate(conversationCanvas[misionN-1].gameObject);
-        ConversationManager cm=NextConversation.GetComponent<ConversationManager>();
-        cm.SetMision(gameObject,this);
+        if(misionN - 1 < conversationCanvas.Length)
+        {
+            if (conversationCanvas[misionN - 1].gameObject.GetComponentInChildren<ConversationManager>() != null)
+            {
+                NextConversation = Instantiate(conversationCanvas[misionN - 1].gameObject);
+                ConversationManager cm = NextConversation.GetComponent<ConversationManager>();
+                cm.SetMision(gameObject, this);
+            }
+            else
+            {
+                asignaMision(misionN + 1);
+            }
+        }
+        
     }
 
     public int GetCurrentMission()

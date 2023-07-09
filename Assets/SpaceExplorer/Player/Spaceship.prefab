@@ -5901,10 +5901,10 @@ MonoBehaviour:
   turboDeceleration: 0.2
   maxTurbo: 100
   actualTurbo: 0
-  turboReductionPerSecond: 10
+  turboReductionPerSecond: 5
   turboBar: {fileID: 0}
-  turboRecovery: 5
-  timeToStartRecovering: 2
+  turboRecovery: 10
+  timeToStartRecovering: 1
   movementDeadzone: 0.2
   rotationOnYaw: 30
   maxParticleSpeed: 0.2
