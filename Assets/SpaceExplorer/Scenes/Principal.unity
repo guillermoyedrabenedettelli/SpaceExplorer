@@ -1145,8 +1145,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le recomiendo desactivar el piloto autom\xE1tico, gasta m\xE1s energ\xEDa
-    y no tendr\xEDa para llegar."
+  m_text: Le recomiendo desactivar el piloto automatico, gasta mas energia y no tendria
+    para llegar.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d8cd415ab0d4634bb945c2dbeac9243, type: 2}
   m_sharedMaterial: {fileID: 8402588608755220002, guid: 6d8cd415ab0d4634bb945c2dbeac9243,
@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Debe ir a repostar. Los niveles de energ\xEDa son bajos."
+  m_text: Debe ir a repostar. Los niveles de energia son bajos.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d8cd415ab0d4634bb945c2dbeac9243, type: 2}
   m_sharedMaterial: {fileID: 8402588608755220002, guid: 6d8cd415ab0d4634bb945c2dbeac9243,
@@ -2328,11 +2328,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LandingMessage
       objectReference: {fileID: 0}
-    - target: {fileID: 4144043021988278839, guid: 83ca9c1ca86022c4eacbe44b59e750ba,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83ca9c1ca86022c4eacbe44b59e750ba, type: 3}
 --- !u!1 &565433465 stripped
@@ -2496,7 +2491,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707029190}
-  m_LocalRotation: {x: 0.069746055, y: -0.4318881, z: 0.03352153, w: 0.8986014}
+  m_LocalRotation: {x: 0.06974606, y: -0.43188813, z: 0.033521533, w: 0.8986014}
   m_LocalPosition: {x: -1945, y: 1.5, z: -426}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4195,7 +4190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lo se\xF1alo ahora mismo en el navegador."
+  m_text: Lo indico ahora mismo en el navegador.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d8cd415ab0d4634bb945c2dbeac9243, type: 2}
   m_sharedMaterial: {fileID: 8402588608755220002, guid: 6d8cd415ab0d4634bb945c2dbeac9243,
@@ -4448,9 +4443,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 79004166606099842bc39391dfe7afae, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2d38b3f13f6db6046a41c3a9dd586ed5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.09
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5985,7 +5980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xBFCu\xE1l es la estaci\xF3n espacial m\xE1s cercana?"
+  m_text: "\xBFCual es la estacion espacial mas cercana?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d8cd415ab0d4634bb945c2dbeac9243, type: 2}
   m_sharedMaterial: {fileID: 8402588608755220002, guid: 6d8cd415ab0d4634bb945c2dbeac9243,
@@ -6465,17 +6460,17 @@ PrefabInstance:
     - target: {fileID: 2555834117408268446, guid: a9cbb3e8228e1f34f8717bdf8c49d69b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6497471
+      value: 0.64974713
       objectReference: {fileID: 0}
     - target: {fileID: 2555834117408268446, guid: a9cbb3e8228e1f34f8717bdf8c49d69b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.050430924
+      value: 0.05043092
       objectReference: {fileID: 0}
     - target: {fileID: 2555834117408268446, guid: a9cbb3e8228e1f34f8717bdf8c49d69b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.058693502
+      value: -0.0586935
       objectReference: {fileID: 0}
     - target: {fileID: 2555834117469188244, guid: a9cbb3e8228e1f34f8717bdf8c49d69b,
         type: 3}

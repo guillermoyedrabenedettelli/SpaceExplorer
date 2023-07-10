@@ -70,8 +70,8 @@ MonoBehaviour:
     nada de lo que era antes, pero necesitamos toda la chatarra que podamos encontrar.
     Misi\xF3n n\xBA 734."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7c21665e0aecbdd4f81519c4d9411bc4, type: 2}
-  m_sharedMaterial: {fileID: 5545049954507388724, guid: 7c21665e0aecbdd4f81519c4d9411bc4,
+  m_fontAsset: {fileID: 11400000, guid: 210ba1d6df209154d894cb585ca807c7, type: 2}
+  m_sharedMaterial: {fileID: 1931819219911105721, guid: 210ba1d6df209154d894cb585ca807c7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 10
   m_fontSizeMax: 20
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -206,8 +206,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Recibido. Misi\xF3n n\xBA 734 aceptada."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7c21665e0aecbdd4f81519c4d9411bc4, type: 2}
-  m_sharedMaterial: {fileID: 5545049954507388724, guid: 7c21665e0aecbdd4f81519c4d9411bc4,
+  m_fontAsset: {fileID: 11400000, guid: 210ba1d6df209154d894cb585ca807c7, type: 2}
+  m_sharedMaterial: {fileID: 1931819219911105721, guid: 210ba1d6df209154d894cb585ca807c7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 20
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -342,8 +342,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Por ahora no. Te avisar\xE9 si recibo alg\xFAn aviso."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7c21665e0aecbdd4f81519c4d9411bc4, type: 2}
-  m_sharedMaterial: {fileID: 5545049954507388724, guid: 7c21665e0aecbdd4f81519c4d9411bc4,
+  m_fontAsset: {fileID: 11400000, guid: 210ba1d6df209154d894cb585ca807c7, type: 2}
+  m_sharedMaterial: {fileID: 1931819219911105721, guid: 210ba1d6df209154d894cb585ca807c7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -374,7 +374,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 10
   m_fontSizeMax: 20
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -529,8 +529,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Gracias Azose. Cuentame qu\xE9 tienes para mi."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7c21665e0aecbdd4f81519c4d9411bc4, type: 2}
-  m_sharedMaterial: {fileID: 5545049954507388724, guid: 7c21665e0aecbdd4f81519c4d9411bc4,
+  m_fontAsset: {fileID: 11400000, guid: 210ba1d6df209154d894cb585ca807c7, type: 2}
+  m_sharedMaterial: {fileID: 1931819219911105721, guid: 210ba1d6df209154d894cb585ca807c7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -561,7 +561,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 20
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -665,8 +665,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\xBFMucha polic\xEDa cerca?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7c21665e0aecbdd4f81519c4d9411bc4, type: 2}
-  m_sharedMaterial: {fileID: 5545049954507388724, guid: 7c21665e0aecbdd4f81519c4d9411bc4,
+  m_fontAsset: {fileID: 11400000, guid: 210ba1d6df209154d894cb585ca807c7, type: 2}
+  m_sharedMaterial: {fileID: 1931819219911105721, guid: 210ba1d6df209154d894cb585ca807c7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -697,7 +697,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 20
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1375,8 +1375,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Buenos d\xEDas Hern. Tienes dos nuevas misiones en tu cuadrante.\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7c21665e0aecbdd4f81519c4d9411bc4, type: 2}
-  m_sharedMaterial: {fileID: 5545049954507388724, guid: 7c21665e0aecbdd4f81519c4d9411bc4,
+  m_fontAsset: {fileID: 11400000, guid: 210ba1d6df209154d894cb585ca807c7, type: 2}
+  m_sharedMaterial: {fileID: 1931819219911105721, guid: 210ba1d6df209154d894cb585ca807c7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1407,7 +1407,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 10
   m_fontSizeMax: 20
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1666,8 +1666,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Estoy en la estaci\xF3n del cuadrante 683. \xBFMisiones disponibles?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7c21665e0aecbdd4f81519c4d9411bc4, type: 2}
-  m_sharedMaterial: {fileID: 5545049954507388724, guid: 7c21665e0aecbdd4f81519c4d9411bc4,
+  m_fontAsset: {fileID: 11400000, guid: 210ba1d6df209154d894cb585ca807c7, type: 2}
+  m_sharedMaterial: {fileID: 1931819219911105721, guid: 210ba1d6df209154d894cb585ca807c7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1698,7 +1698,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 20
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
