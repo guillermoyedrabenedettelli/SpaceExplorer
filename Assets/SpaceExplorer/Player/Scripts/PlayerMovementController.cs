@@ -111,12 +111,10 @@ public class PlayerMovementController : MonoBehaviour
 
     private Transform firstParent;
 
-    static public PlayerMovementController Player = null;
 
   
     void Awake()
     {
-        Player = this;
         roll = 0f;
         movement = 0f;
         yawPicth = new Vector2(0, 0);

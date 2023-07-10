@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class Gravedad : MonoBehaviour
 {
-    public float RadioDeAtraccion = 10.5f;
-    public float FuerzaDeGravedad = 10f;
-    
+   public float RadioDeAtraccion = 10.5f;  // Radio de atracción
+    public float FuerzaDeGravedad = 10f;  // Fuerza de gravedad
+
     private void FixedUpdate()
     {
-        var Player = PlayerMovementController.Player;
-        if (Player == null)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, RadioDeAtraccion);
+
+        foreach (Collider collider in colliders)
         {
-            return;
+            if (collider.gameObject != gameObject)
+            {
+                Vector3 direction = transform.position - collider.transform.position;
+                if(collider.GetComponent<Rigidbody>()!=null)
+                {
+                    collider.GetComponent<Rigidbody>().AddForce(direction.normalized * FuerzaDeGravedad);
+                }
+            }
         }
-        // Tener la direccion para el rayo de atraccion
-        Vector3 distance = vector3.distance();
     }
 }
