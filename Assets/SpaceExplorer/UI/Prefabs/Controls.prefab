@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 53}
-  m_SizeDelta: {x: 250, y: 100}
+  m_AnchoredPosition: {x: 150, y: 37.601833}
+  m_SizeDelta: {x: 250, y: 69.2037}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5468209648548399004
 CanvasRenderer:
@@ -66,12 +66,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "-WASD/stick izquierdo: Movimiento de la nave, adelante, atr\xE1s, desplazamiento
-    lateral a la izquierda, y desplazamiento lateral a la derecha.\r\n-QE/ Bot\xF3n
-    norte y este de gamepad: Movimiento vertical de la nave, arriba y abajo.\r\n-Shift
-    izquierdo/L2: Utilizar turbo:\r\n-Click izquierdo/R2: Disparar Arma.\r\n-R/Bot\xF3n
-    oeste de gamepad: cambiar de arma\r\n-Movimiento del rat\xF3n/Stick derecho:
-    rotaci\xF3n de la nave.\r\n-Tab/Select: cambiar tipo de c\xE1mara."
+  m_text: "-WASD teclado/Stick izquierdo gamepad: Movimiento de la nave, adelante,
+    parar y Rotar nave.\n-Movimiento de rat\xF3n/ Stick drecho: dirigir nave\n-Click
+    izquierdo / R2(PS) / RB(Xbox): Disparar Arma.\r\n-R teclado/ \u25A1 (PS) / X
+    (Xbox): cambiar de arma\r\n-Tab/Select: cambiar tipo de c\xE1mara."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

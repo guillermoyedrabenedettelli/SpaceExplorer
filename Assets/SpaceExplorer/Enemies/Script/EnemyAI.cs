@@ -47,7 +47,7 @@ public class EnemyAI : MonoBehaviour
                 TargetEncontrado(collider.gameObject);
             }
         }
-        if (!isTarget)
+        if (!isTarget && PatrolPoint!=null)
         {
             deteccionObstaculo(PatrolPoint);
         }

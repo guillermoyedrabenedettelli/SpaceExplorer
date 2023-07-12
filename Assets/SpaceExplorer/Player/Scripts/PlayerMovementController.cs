@@ -524,7 +524,7 @@ public class PlayerMovementController : MonoBehaviour
             rollPitchRotation = Quaternion.Euler(landingTarget.rotation.x, transform.rotation.y, landingTarget.rotation.z);
             initialRotatiom=transform.rotation;
             landingState = LandingStepsEnum.Rotate;
-            if (Missions.GetCurrentMission() == 1)
+            if (Missions.GetCurrentMission() == 1 || Missions.GetCurrentMission() == 3)
             {
                 UpdateCurrentMission(1);
             }

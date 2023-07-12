@@ -144,8 +144,8 @@ public class Misiones3 : MonoBehaviour
         TengoMision = false;
         yield return new WaitForSecondsRealtime(5f);
         noTengoMision = true;
-        TextoaMostrar.text = "Tienes una llamada";
-        TextoMision.text = "";
+        /*TextoaMostrar.text = "Tienes una llamada";
+        TextoMision.text = "";*/
 
     }
 
@@ -155,7 +155,7 @@ public class Misiones3 : MonoBehaviour
     {
         if(misionN - 1 < conversationCanvas.Length)
         {
-            if (conversationCanvas[misionN - 1].gameObject.GetComponentInChildren<ConversationManager>() != null)
+            if (conversationCanvas[misionN-1]!= null)
             {
                 NextConversation = Instantiate(conversationCanvas[misionN - 1].gameObject);
                 ConversationManager cm = NextConversation.GetComponent<ConversationManager>();
