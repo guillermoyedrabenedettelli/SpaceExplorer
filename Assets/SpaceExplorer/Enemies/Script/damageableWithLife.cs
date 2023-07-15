@@ -16,7 +16,12 @@ public class damageableWithLife : MonoBehaviour, IDamageable
 
     [Header("Droop Configurations")]
     [SerializeField] GameObject[] DropeableItems;
-    [SerializeField] int NoDropChance=100;
+    [SerializeField] int NoDropChance = 100;
+
+    private Gamepad gamepad;
+    float vibrationDuration = 1f;
+    float vibrationIntensity = 0.5f;
+    AnimationCurve vibrationCurve;
 
     int range;
 
@@ -29,6 +34,12 @@ public class damageableWithLife : MonoBehaviour, IDamageable
 
     private void Awake()
     {
+        vibrationCurve = new AnimationCurve();
+        // Agregamos puntos clave (keyframes) al curva
+        vibrationCurve.AddKey(0f, 0f); // En el tiempo 0, el valor es 0
+        vibrationCurve.AddKey(1f, 0.5f); // En el tiempo 1, el valor es 1
+        vibrationCurve.AddKey(2f, 1f); // En el tiempo 2, el valor es 0.
+        vibrationCurve.SmoothTangents(1, 0f);
         baseAwake();
     }
 
@@ -52,6 +63,21 @@ public class damageableWithLife : MonoBehaviour, IDamageable
     }
 
 
+    private IEnumerator spiral()
+    {
+        float startTime = Time.time;
+
+        float elapsedTime = Time.time - startTime;
+        float normalizedTime = Mathf.Clamp01(elapsedTime / vibrationDuration);
+        float vibrationValue = vibrationCurve.Evaluate(normalizedTime) * vibrationIntensity;
+
+        Vector2 normalizedPosition = new Vector2(Mathf.Sin(elapsedTime * 3f), Mathf.Cos(elapsedTime * 3f)).normalized;
+        gamepad.SetMotorSpeeds(vibrationValue * normalizedPosition.x, vibrationValue * normalizedPosition.y);
+        yield return null;
+
+        gamepad.ResetHaptics();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -68,6 +94,10 @@ public class damageableWithLife : MonoBehaviour, IDamageable
                 timeCurrentSetMotor = 0;
                 Gamepad.current?.SetMotorSpeeds(0f, 0f);
             }
+            if(life_dead < (life / 2)){
+                StartCoroutine(spiral());
+            }
+
         }
 
     }
@@ -155,6 +185,8 @@ public class damageableWithLife : MonoBehaviour, IDamageable
             {
                 Instantiate(SpawnObject, transform.position, transform.rotation);
             }
-        }   
+        }
     }
+
 }
+
