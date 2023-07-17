@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 2683624636356492933}
   - component: {fileID: 1832004233}
   - component: {fileID: 5279931241452100265}
+  - component: {fileID: 4459234459039916141}
+  - component: {fileID: 7438800675664550232}
   m_Layer: 0
   m_Name: MainPlanet
   m_TagString: Untagged
@@ -203,3 +205,29 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1104164829288876934, guid: 687390b3818d79e49949627a9cd0f438, type: 3}
+--- !u!114 &4459234459039916141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485262055626792784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0758f4035ca93df4eab036c7fb2c5909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vibrationSense: 5
+--- !u!135 &7438800675664550232
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485262055626792784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.93030506
+  m_Center: {x: 0, y: 0, z: 0}

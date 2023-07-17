@@ -17,6 +17,13 @@ public class PlayerDamageable : damageableWithLife
         playerMovementController = GetComponent<PlayerMovementController>();
     }
 
+
+    void Start()
+    {
+        VibrationController vibrationController = gameObject.AddComponent<VibrationController>();
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<DropeableItem>() != null)
