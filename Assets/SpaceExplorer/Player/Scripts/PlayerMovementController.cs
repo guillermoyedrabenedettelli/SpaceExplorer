@@ -21,6 +21,9 @@ public enum LandingStepsEnum:int
 
 public class PlayerMovementController : MonoBehaviour
 {
+    [Header("Pause Menu")]
+    [SerializeField] PauseMenu pauseMenu;
+
     [Header("Rotation")]
     [SerializeField] float turboRotationLimitation = 0.5f;
     private float rotationLimit = 1f;
@@ -544,7 +547,16 @@ public class PlayerMovementController : MonoBehaviour
             Weapons.enabled = true;
         }
     }
-    //Will be called from COnversationManager
+
+    public void PauseGame(InputAction.CallbackContext context)
+    {
+        if (context.canceled && !isLanding)
+        {
+            pauseMenu.PauseGame(Weapons, this);
+        }
+    }
+
+    //Will be called from ConversationManager
     public void StartTakeOf()
     {
        if (landingState == LandingStepsEnum.Landed)
