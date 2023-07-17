@@ -7,19 +7,42 @@ using UnityEngine.InputSystem;
 
 public class VibrationController : MonoBehaviour
 {
-    
+
     [SerializeField] float vibrationDuration = 1f;
     [SerializeField] float vibrationIntensity = 0.5f;
     [SerializeField] AnimationCurve vibrationCurve;
+
+
+    public float startTime = 0f;
+    public float endTime = 1f;
+    public int numSamples = 100000;
+
+
     public bool Active = false;
 
     private Gamepad gamepad;
     private bool isVibrating = false;
     private VibrationSense sense;
+    Coroutine coroutine = null;
+
+    private float Sigmoid(float x)
+    {
+        return 1 / (1 + Mathf.Exp(-x));
+    }
+
     private void Start()
     {
         // Obtén el gamepad principal
         gamepad = Gamepad.current;
+        vibrationCurve = new AnimationCurve();
+        for (int i = 0; i <= numSamples; i++)
+        {
+            float time = Mathf.Lerp(startTime, endTime, (float)i / numSamples);
+            float value = Sigmoid(time);
+
+            Keyframe keyframe = new Keyframe(time, value);
+            vibrationCurve.AddKey(keyframe);
+        }
     }
 
     private void Update()
@@ -35,35 +58,35 @@ public class VibrationController : MonoBehaviour
                 switch (sense)
                 {
                     case global::VibrationSense.FastPulse:
-                        StartCoroutine(VibrateFastPulse());
+                        coroutine = StartCoroutine(VibrateFastPulse());
                         Debug.Log("Reproduciendo: Ráfaga rápida");
                         break;
                     case global::VibrationSense.SlowPulse:
-                        StartCoroutine(VibrateSlowPulse());
+                        coroutine = StartCoroutine(VibrateSlowPulse());
                         Debug.Log("Reproduciendo: Pulso tranquilo");
                         break;
                     case global::VibrationSense.AscendingBurst:
-                        StartCoroutine(VibrateAscendingBurst());
+                        coroutine = StartCoroutine(VibrateAscendingBurst());
                         Debug.Log("Reproduciendo: Ráfaga ascendente");
                         break;
                     case global::VibrationSense.IrregularPattern:
-                        StartCoroutine(VibrateIrregularPattern());
+                        coroutine = StartCoroutine(VibrateIrregularPattern());
                         Debug.Log("Reproduciendo: Vibración irregular");
                         break;
                     case global::VibrationSense.ExpandingWave:
-                        StartCoroutine(VibrateExpandingWave());
+                        coroutine = StartCoroutine(VibrateExpandingWave());
                         Debug.Log("Reproduciendo: Onda expansiva");
                         break;
                     case global::VibrationSense.Spiral:
-                        StartCoroutine(VibrateSpiral());
+                        coroutine = StartCoroutine(VibrateSpiral());
                         Debug.Log("Reproduciendo: Vibración en espiral");
                         break;
                     case global::VibrationSense.Explosion:
-                        StartCoroutine(VibrateExplosion());
+                        coroutine = StartCoroutine(VibrateExplosion());
                         Debug.Log("Reproduciendo: Vibración de explosión");
                         break;
                     case global::VibrationSense.Throbbing:
-                        StartCoroutine(VibrateThrobbing());
+                        coroutine = StartCoroutine(VibrateThrobbing());
                         Debug.Log("Reproduciendo: Vibración de Throbbing");
                         break;
                 }
@@ -76,14 +99,23 @@ public class VibrationController : MonoBehaviour
             Active = false;
             gamepad.ResetHaptics();
             Debug.Log("Deteniendo vibración");
+            //StopCoroutine(reset());
         }
     }
-    public void VibrationSense(VibrationSense number,bool Ac)
+
+    private IEnumerator reset()
+    {
+        yield break;
+        
+    }
+
+
+    public void VibrationSense(VibrationSense number, bool Ac)
     {
         sense = number;
         Active = Ac;
     }
-    
+
 
     private IEnumerator VibrateFastPulse()
     {

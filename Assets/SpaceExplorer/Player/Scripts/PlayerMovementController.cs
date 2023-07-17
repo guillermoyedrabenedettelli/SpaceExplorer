@@ -138,6 +138,11 @@ public class PlayerMovementController : MonoBehaviour
 
     }
 
+    void Start()
+    {
+        VibrationController vibrationController = gameObject.AddComponent<VibrationController>();
+    }
+
     void Update()
     {
         if (!isLanding)
