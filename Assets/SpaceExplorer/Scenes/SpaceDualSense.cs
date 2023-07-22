@@ -42,9 +42,13 @@ public class SpaceDualSense : MonoBehaviour
    
     private void Awake()
     {
-        ShootMotionOff();
+        //ShootMotionOff();
     }
-
+    private void Start()
+    {
+        // Encuentra la instancia de DualSenseTouchpadColor en la escena y guárdala en la variable touchpadColorScript
+        dualSenseRumble = FindObjectOfType<DualSenseSample.Inputs.DualSenseRumble>();
+    }
     private void Update()
     {
         // Ejemplo: Modificar el color rojo al valor 0.5f
@@ -57,7 +61,7 @@ public class SpaceDualSense : MonoBehaviour
         /*
          * Ejemplo de como acceder a los parametros de efectos del Dualsense
          */
-        /*  
+       
                  dualSenseTrigger.LeftContinuousForce = leftTriggeretForce;
                  dualSenseTrigger.RightContinuousForce = rightTriggeretForce;
 
@@ -71,8 +75,8 @@ public class SpaceDualSense : MonoBehaviour
                  dualSenseTrigger.RightEffectBeginForce = RightEffectBeginForce;
                  dualSenseTrigger.RightEffectMiddleForce = RightEffectMiddleForce;
                  dualSenseTrigger.RightEffectEndForce = RightEffectEndForce;
-      */
-        ShootMotion();
+      
+       // ShootMotion();
     }
     private void ShootMotion()
     {

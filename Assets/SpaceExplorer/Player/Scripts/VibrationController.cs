@@ -34,21 +34,20 @@ public class VibrationController : MonoBehaviour
     {
         // Obtén el gamepad principal
         gamepad = Gamepad.current;
-        //vibrationCurve = new AnimationCurve();
-        /*for (int i = 0; i <= numSamples; i++)
+        vibrationCurve = new AnimationCurve();
+        for (int i = 0; i <= numSamples; i++)
         {
             float time = Mathf.Lerp(startTime, endTime, (float)i / numSamples);
             float value = Sigmoid(time);
 
             Keyframe keyframe = new Keyframe(time, value);
             vibrationCurve.AddKey(keyframe);
-        }*/
+        }
     }
 
     private void Update()
     {
-        Active = SpaceShip.GetComponent<PlayerDamageable>().vibrate;
-        //Debug.Log(Active);
+        
         if (gamepad != null && Active == true)
             {
                 if (!isVibrating)

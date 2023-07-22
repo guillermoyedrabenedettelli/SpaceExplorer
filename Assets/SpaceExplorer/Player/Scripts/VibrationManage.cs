@@ -17,28 +17,29 @@ public class VibrationManage : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        /*
         if (other.GetComponent<PlayerDamageable>())
         {
             other.GetComponent<PlayerDamageable>().vibrate = true;
-        }
-        /*
+        }*/
+        
         if (other.GetComponent<VibrationController>())
         {
             other.GetComponent<VibrationController>().VibrationSense(vibrationSense, true);
 
 
-        }*/
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        /*
+        
         if (other.GetComponent<VibrationController>())
         {
             other.GetComponent<VibrationController>().Active = false;
-        }*/
-        if(other.GetComponent<PlayerDamageable>())
+        }
+        /*if(other.GetComponent<PlayerDamageable>())
         {
             other.GetComponent<PlayerDamageable>().vibrate = false;
-        }
+        }*/
     }
 }
