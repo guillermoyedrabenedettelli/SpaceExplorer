@@ -1,4 +1,5 @@
 using System.Collections;
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,7 +33,7 @@ public class VibrationController : MonoBehaviour
 
     private void Start()
     {
-        // Obtén el gamepad principal
+        
         gamepad = Gamepad.current;
         vibrationCurve = new AnimationCurve();
         for (int i = 0; i <= numSamples; i++)
@@ -47,7 +48,7 @@ public class VibrationController : MonoBehaviour
 
     private void Update()
     {
-        
+        gamepad = Gamepad.current;
         if (gamepad != null && Active == true)
             {
                 if (!isVibrating)
@@ -123,10 +124,13 @@ public class VibrationController : MonoBehaviour
     {
         while (isVibrating)
         {
+            Debug.Log("1");
             gamepad.SetMotorSpeeds(0.8f, 0.8f);
             yield return new WaitForSeconds(0.1f);
+            Debug.Log("2");
             gamepad.ResetHaptics();
             yield return new WaitForSeconds(0.2f);
+            Debug.Log("3");
         }
     }
 
