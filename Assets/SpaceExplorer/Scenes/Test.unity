@@ -311,6 +311,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &52076001 stripped
@@ -523,6 +528,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &162660126 stripped
@@ -597,6 +607,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -673,6 +688,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &173342616 stripped
@@ -747,6 +767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -918,6 +943,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &206341173 stripped
@@ -993,6 +1023,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &206909436 stripped
@@ -1067,6 +1102,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -1540,6 +1580,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -2634,6 +2679,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &738418973 stripped
@@ -2714,6 +2764,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -2837,6 +2892,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &818959481 stripped
@@ -2953,6 +3013,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &832216657 stripped
@@ -3027,6 +3092,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -3246,6 +3316,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -3754,6 +3829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -4333,6 +4413,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &1135340675 stripped
@@ -4407,6 +4492,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -4656,6 +4746,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &1159835619 stripped
@@ -4757,6 +4852,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &1180708752 stripped
@@ -4837,6 +4937,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -4991,6 +5096,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -5776,6 +5886,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &1390252547 stripped
@@ -6221,6 +6336,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &1489666710 stripped
@@ -6295,6 +6415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -6488,6 +6613,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &1587803879 stripped
@@ -6563,6 +6693,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &1587966365 stripped
@@ -6637,6 +6772,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -6812,6 +6952,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &1624613383 stripped
@@ -6886,6 +7031,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -7425,7 +7575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1821543231
 Transform:
   m_ObjectHideFlags: 0
@@ -7529,6 +7679,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -7718,6 +7873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -8096,6 +8256,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &1943785006 stripped
@@ -8260,6 +8425,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
 --- !u!4 &1968017592 stripped
@@ -8340,6 +8510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}
@@ -8526,6 +8701,32 @@ MonoBehaviour:
   frequency: 1
   speed: 1
   rotationSpeed: 1
+--- !u!114 &2012342668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012342662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0758f4035ca93df4eab036c7fb2c5909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vibrationSense: 0
+--- !u!135 &2012342669
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012342662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 19.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2056844370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8592,6 +8793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111833004260388158, guid: c7a9c984bc1212e44a67dc6c3808611e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9c984bc1212e44a67dc6c3808611e, type: 3}

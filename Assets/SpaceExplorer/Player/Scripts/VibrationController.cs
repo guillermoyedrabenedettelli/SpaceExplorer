@@ -1,5 +1,4 @@
 using System.Collections;
-//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -53,7 +52,7 @@ public class VibrationController : MonoBehaviour
             {
                 if (!isVibrating)
                 {
-                    // Comienza una subrutina de vibración aleatoria
+                   
                     isVibrating = true;
 
                     int vibrationIndex = Random.Range(0, 8);
@@ -96,12 +95,12 @@ public class VibrationController : MonoBehaviour
             }
             else if (isVibrating)
             {
-                // Detiene la vibración
+                
                 isVibrating = false;
                 Active = false;
                 gamepad.ResetHaptics();
                 Debug.Log("Deteniendo vibración");
-                //StopCoroutine(reset());
+                
             }
         
     }
@@ -119,17 +118,21 @@ public class VibrationController : MonoBehaviour
         Active = Ac;
     }
 
-
+    /// 
+    /// Todos los que tienen waitforseconds no funcionan!!!
+    ///
+    /// 
     private IEnumerator VibrateFastPulse()
     {
         while (isVibrating)
         {
             Debug.Log("1");
             gamepad.SetMotorSpeeds(0.8f, 0.8f);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
             Debug.Log("2");
-            gamepad.ResetHaptics();
-            yield return new WaitForSeconds(0.2f);
+            gamepad.SetMotorSpeeds(0.0f, 0.0f);
+            //gamepad.ResetHaptics();
+            yield return new WaitForSecondsRealtime(0.2f);
             Debug.Log("3");
         }
     }
