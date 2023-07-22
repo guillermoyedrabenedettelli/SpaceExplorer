@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(DualSenseSample.Inputs.DualSenseTouchpadColor))]
 [RequireComponent(typeof(DualSenseSample.Inputs.DualSenseRumble))]
 [RequireComponent(typeof(DualSenseSample.Inputs.DualSenseTrigger))]
+[RequireComponent(typeof(DualSenseSample.Inputs.DualSenseMonitor))]
 public class SpaceDualSense : MonoBehaviour
 {
     // Referencia al script DualSenseTouchpadColor
@@ -38,6 +39,11 @@ public class SpaceDualSense : MonoBehaviour
     public float RightEffectMiddleForce = 50;
     public float RightEffectEndForce = 1;
 
+   
+    private void Awake()
+    {
+        ShootMotionOff();
+    }
 
     private void Update()
     {
@@ -50,37 +56,44 @@ public class SpaceDualSense : MonoBehaviour
         dualSenseRumble.RightRumble = rightRumble;  //(0 - 1) 0 apagado 1 -> 100% prendido
         /*
          * Ejemplo de como acceder a los parametros de efectos del Dualsense
-         * 
-                dualSenseTrigger.LeftContinuousForce = leftTriggeretForce;
-                dualSenseTrigger.RightContinuousForce = rightTriggeretForce;
+         */
+        /*  
+                 dualSenseTrigger.LeftContinuousForce = leftTriggeretForce;
+                 dualSenseTrigger.RightContinuousForce = rightTriggeretForce;
 
-                dualSenseTrigger.LeftTriggerEffectType = leftTriggerEffectType;
-                dualSenseTrigger.RightTriggerEffectType = rightTriggerEffectType;
+                 dualSenseTrigger.LeftTriggerEffectType = leftTriggerEffectType;
+                 dualSenseTrigger.RightTriggerEffectType = rightTriggerEffectType;
 
-                dualSenseTrigger.RightEffectFrequency = frequencyRigth;
-                dualSenseTrigger.LeftEffectFrequency = frequencyLeft;
+                 dualSenseTrigger.RightEffectFrequency = frequencyRigth;
+                 dualSenseTrigger.LeftEffectFrequency = frequencyLeft;
 
-                dualSenseTrigger.RightEffectStartPosition = RightEffectStartPosition;
-                dualSenseTrigger.RightEffectBeginForce = RightEffectBeginForce;
-                dualSenseTrigger.RightEffectMiddleForce = RightEffectMiddleForce;
-                dualSenseTrigger.RightEffectEndForce = RightEffectEndForce;
-          */
+                 dualSenseTrigger.RightEffectStartPosition = RightEffectStartPosition;
+                 dualSenseTrigger.RightEffectBeginForce = RightEffectBeginForce;
+                 dualSenseTrigger.RightEffectMiddleForce = RightEffectMiddleForce;
+                 dualSenseTrigger.RightEffectEndForce = RightEffectEndForce;
+      */
         ShootMotion();
     }
-    void ShootMotion()
+    private void ShootMotion()
     {
-        dualSenseTrigger.RightContinuousForce = 100f;
-        dualSenseTrigger.RightTriggerEffectType = 2;
-        dualSenseTrigger.RightEffectFrequency = 0.05f;
-        dualSenseTrigger.RightEffectStartPosition = 0f;
-        dualSenseTrigger.RightEffectBeginForce = 0;
-        dualSenseTrigger.RightEffectMiddleForce = 50f;
-        dualSenseTrigger.RightEffectEndForce = 1f;
+        dualSenseTrigger.LeftContinuousForce = leftTriggeretForce;
+        dualSenseTrigger.RightContinuousForce = rightTriggeretForce;
+
+        dualSenseTrigger.LeftTriggerEffectType = leftTriggerEffectType;
+        dualSenseTrigger.RightTriggerEffectType = rightTriggerEffectType;
+
+        dualSenseTrigger.RightEffectFrequency = frequencyRigth;
+        dualSenseTrigger.LeftEffectFrequency = frequencyLeft;
+
+        dualSenseTrigger.RightEffectStartPosition = RightEffectStartPosition;
+        dualSenseTrigger.RightEffectBeginForce = RightEffectBeginForce;
+        dualSenseTrigger.RightEffectMiddleForce = RightEffectMiddleForce;
+        dualSenseTrigger.RightEffectEndForce = RightEffectEndForce;
     }
     void ShootMotionOff()
     {
         dualSenseTrigger.RightContinuousForce = 0.0f;
-        dualSenseTrigger.RightTriggerEffectType = 2;
+        dualSenseTrigger.RightTriggerEffectType = 3;
         dualSenseTrigger.RightEffectFrequency = 0.0f;
         dualSenseTrigger.RightEffectStartPosition = 0.0f;
         dualSenseTrigger.RightEffectBeginForce = 0.0f;

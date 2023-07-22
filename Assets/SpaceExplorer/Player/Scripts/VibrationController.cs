@@ -11,7 +11,7 @@ public class VibrationController : MonoBehaviour
     [SerializeField] float vibrationDuration = 1f;
     [SerializeField] float vibrationIntensity = 0.5f;
     [SerializeField] AnimationCurve vibrationCurve;
-
+    public GameObject SpaceShip;
 
     public float startTime = 0f;
     public float endTime = 1f;
@@ -34,73 +34,76 @@ public class VibrationController : MonoBehaviour
     {
         // Obtén el gamepad principal
         gamepad = Gamepad.current;
-        vibrationCurve = new AnimationCurve();
-        for (int i = 0; i <= numSamples; i++)
+        //vibrationCurve = new AnimationCurve();
+        /*for (int i = 0; i <= numSamples; i++)
         {
             float time = Mathf.Lerp(startTime, endTime, (float)i / numSamples);
             float value = Sigmoid(time);
 
             Keyframe keyframe = new Keyframe(time, value);
             vibrationCurve.AddKey(keyframe);
-        }
+        }*/
     }
 
     private void Update()
     {
+        Active = SpaceShip.GetComponent<PlayerDamageable>().vibrate;
+        //Debug.Log(Active);
         if (gamepad != null && Active == true)
-        {
-            if (!isVibrating)
             {
-                // Comienza una subrutina de vibración aleatoria
-                isVibrating = true;
-
-                int vibrationIndex = Random.Range(0, 8);
-                switch (sense)
+                if (!isVibrating)
                 {
-                    case global::VibrationSense.FastPulse:
-                        coroutine = StartCoroutine(VibrateFastPulse());
-                        Debug.Log("Reproduciendo: Ráfaga rápida");
-                        break;
-                    case global::VibrationSense.SlowPulse:
-                        coroutine = StartCoroutine(VibrateSlowPulse());
-                        Debug.Log("Reproduciendo: Pulso tranquilo");
-                        break;
-                    case global::VibrationSense.AscendingBurst:
-                        coroutine = StartCoroutine(VibrateAscendingBurst());
-                        Debug.Log("Reproduciendo: Ráfaga ascendente");
-                        break;
-                    case global::VibrationSense.IrregularPattern:
-                        coroutine = StartCoroutine(VibrateIrregularPattern());
-                        Debug.Log("Reproduciendo: Vibración irregular");
-                        break;
-                    case global::VibrationSense.ExpandingWave:
-                        coroutine = StartCoroutine(VibrateExpandingWave());
-                        Debug.Log("Reproduciendo: Onda expansiva");
-                        break;
-                    case global::VibrationSense.Spiral:
-                        coroutine = StartCoroutine(VibrateSpiral());
-                        Debug.Log("Reproduciendo: Vibración en espiral");
-                        break;
-                    case global::VibrationSense.Explosion:
-                        coroutine = StartCoroutine(VibrateExplosion());
-                        Debug.Log("Reproduciendo: Vibración de explosión");
-                        break;
-                    case global::VibrationSense.Throbbing:
-                        coroutine = StartCoroutine(VibrateThrobbing());
-                        Debug.Log("Reproduciendo: Vibración de Throbbing");
-                        break;
+                    // Comienza una subrutina de vibración aleatoria
+                    isVibrating = true;
+
+                    int vibrationIndex = Random.Range(0, 8);
+                    switch (sense)
+                    {
+                        case global::VibrationSense.FastPulse:
+                            coroutine = StartCoroutine(VibrateFastPulse());
+                            Debug.Log("Reproduciendo: Ráfaga rápida");
+                            break;
+                        case global::VibrationSense.SlowPulse:
+                            coroutine = StartCoroutine(VibrateSlowPulse());
+                            Debug.Log("Reproduciendo: Pulso tranquilo");
+                            break;
+                        case global::VibrationSense.AscendingBurst:
+                            coroutine = StartCoroutine(VibrateAscendingBurst());
+                            Debug.Log("Reproduciendo: Ráfaga ascendente");
+                            break;
+                        case global::VibrationSense.IrregularPattern:
+                            coroutine = StartCoroutine(VibrateIrregularPattern());
+                            Debug.Log("Reproduciendo: Vibración irregular");
+                            break;
+                        case global::VibrationSense.ExpandingWave:
+                            coroutine = StartCoroutine(VibrateExpandingWave());
+                            Debug.Log("Reproduciendo: Onda expansiva");
+                            break;
+                        case global::VibrationSense.Spiral:
+                            coroutine = StartCoroutine(VibrateSpiral());
+                            Debug.Log("Reproduciendo: Vibración en espiral");
+                            break;
+                        case global::VibrationSense.Explosion:
+                            coroutine = StartCoroutine(VibrateExplosion());
+                            Debug.Log("Reproduciendo: Vibración de explosión");
+                            break;
+                        case global::VibrationSense.Throbbing:
+                            coroutine = StartCoroutine(VibrateThrobbing());
+                            Debug.Log("Reproduciendo: Vibración de Throbbing");
+                            break;
+                    }
                 }
             }
-        }
-        else if (isVibrating)
-        {
-            // Detiene la vibración
-            isVibrating = false;
-            Active = false;
-            gamepad.ResetHaptics();
-            Debug.Log("Deteniendo vibración");
-            //StopCoroutine(reset());
-        }
+            else if (isVibrating)
+            {
+                // Detiene la vibración
+                isVibrating = false;
+                Active = false;
+                gamepad.ResetHaptics();
+                Debug.Log("Deteniendo vibración");
+                //StopCoroutine(reset());
+            }
+        
     }
 
     private IEnumerator reset()

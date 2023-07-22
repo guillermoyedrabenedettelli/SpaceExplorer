@@ -8,9 +8,11 @@ public class PlayerDamageable : damageableWithLife
     MovementController movementController;
     WeaponsShip shipWeapons;
     PlayerMovementController playerMovementController;
-
+    public GameObject DualSense;
+    public bool vibrate = false;
     private  void Awake()
     {
+        DualSense.SetActive(false);
         baseAwake();
         movementController = GetComponent<MovementController>();
         shipWeapons = GetComponent<WeaponsShip>();
@@ -20,10 +22,11 @@ public class PlayerDamageable : damageableWithLife
 
     void Start()
     {
-        VibrationController vibrationController = gameObject.AddComponent<VibrationController>();
+        DualSense.SetActive(true);
+        //VibrationController vibrationController = gameObject.AddComponent<VibrationController>();
     }
 
-
+  
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<DropeableItem>() != null)
