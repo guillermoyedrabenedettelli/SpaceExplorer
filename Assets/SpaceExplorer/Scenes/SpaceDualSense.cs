@@ -80,7 +80,7 @@ public class SpaceDualSense : MonoBehaviour
     void ShootMotionOff()
     {
         dualSenseTrigger.RightContinuousForce = 0.0f;
-        dualSenseTrigger.RightTriggerEffectType = 0.0f;
+        dualSenseTrigger.RightTriggerEffectType = 2;
         dualSenseTrigger.RightEffectFrequency = 0.0f;
         dualSenseTrigger.RightEffectStartPosition = 0.0f;
         dualSenseTrigger.RightEffectBeginForce = 0.0f;
