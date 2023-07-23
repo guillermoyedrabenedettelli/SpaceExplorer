@@ -8713,7 +8713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0758f4035ca93df4eab036c7fb2c5909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vibrationSense: 0
+  vibrationSense: 2
 --- !u!135 &2012342669
 SphereCollider:
   m_ObjectHideFlags: 0
