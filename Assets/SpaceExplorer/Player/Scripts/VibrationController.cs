@@ -1,253 +1,315 @@
-using System.Collections;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-
-
+using Debug = UnityEngine.Debug;
+using Random = UnityEngine.Random;
 
 public class VibrationController : MonoBehaviour
 {
-
-    [SerializeField] float vibrationDuration = 1f;
-    [SerializeField] float vibrationIntensity = 0.5f;
-    [SerializeField] AnimationCurve vibrationCurve;
-    public GameObject SpaceShip;
+    [SerializeField] private float vibrationDuration = 1f;
+    [SerializeField] private float vibrationIntensity = 0.5f;
+    [SerializeField] private AnimationCurve vibrationCurve = new();
 
     public float startTime = 0f;
     public float endTime = 1f;
     public int numSamples = 100000;
 
-
-    public bool Active = false;
-
-    private Gamepad gamepad;
+    private readonly HashSet<VibrationSource> sources = new();
     private bool isVibrating = false;
-    private VibrationSense sense;
-    Coroutine coroutine = null;
 
-    private float Sigmoid(float x)
+    private void Awake()
     {
-        return 1 / (1 + Mathf.Exp(-x));
+        SetVibrationCurve();
+
+        InputSystem.onDeviceChange += OnDeviceChanged;
     }
 
-    private void Start()
+    /// <summary> Handles device changes, such as disconnecting the main gamepad. </summary>
+    /// <param name="device"> The device that has changed. </param>
+    /// <param name="change"> The change the device has suffered. </param>
+    private void OnDeviceChanged(InputDevice device, InputDeviceChange change)
     {
-        
-        gamepad = Gamepad.current;
-        vibrationCurve = new AnimationCurve();
-        for (int i = 0; i <= numSamples; i++)
+        // If main gamepad got disconnected, stop vibrating
+        if (Gamepad.current == null)
         {
-            float time = Mathf.Lerp(startTime, endTime, (float)i / numSamples);
-            float value = Sigmoid(time);
+            StopVibration();
+            return;
+        }
 
-            Keyframe keyframe = new Keyframe(time, value);
+        UpdateVibration();
+    }
+
+    /// <summary> Vibration sources add themselves through their colliders. </summary>
+    /// <param name="source"> Vibration source to add. </param>
+    public void AddVibrationSource(VibrationSource source)
+    {
+        Debug.Log("[VibrationController] Add Vibration Source");
+        sources.Add(source);
+        UpdateVibration();
+    }
+
+    /// <summary> Vibration sources remove themselves through their colliders. </summary>
+    /// <param name="source"> Vibration source to remove. </param>
+    public void RemoveVibrationSource(VibrationSource source)
+    {
+        Debug.Log("[VibrationController] Remove Vibration Source");
+        sources.Remove(source);
+        UpdateVibration();
+    }
+
+    /// <summary> Checks if there are any vibration sources and updates vibration accordingly. </summary>
+    private void UpdateVibration()
+    {
+        Debug.Log("[VibrationController] Update Vibration, Source count:" + sources.Count);
+        if (sources.Count > 0)
+            SetVibration(sources.Last().vibrationSense);
+        else
+            StopVibration();
+    }
+
+    private void SetVibrationCurve()
+    {
+        for (var i = 0; i <= numSamples; i++)
+        {
+            var time = Mathf.Lerp(startTime, endTime, (float)i / numSamples);
+            var value = Sigmoid(time);
+
+            var keyframe = new Keyframe(time, value);
             vibrationCurve.AddKey(keyframe);
         }
     }
 
-    private void Update()
+    private static float Sigmoid(float x)
     {
-        gamepad = Gamepad.current;
-        if (gamepad != null && Active == true)
-            {
-                if (!isVibrating)
-                {
-                   
-                    isVibrating = true;
+        return 1 / (1 + Mathf.Exp(-x));
+    }
 
-                    int vibrationIndex = Random.Range(0, 8);
-                    switch (sense)
-                    {
-                        case global::VibrationSense.FastPulse:
-                            coroutine = StartCoroutine(VibrateFastPulse());
-                            Debug.Log("Reproduciendo: Ráfaga rápida");
-                            break;
-                        case global::VibrationSense.SlowPulse:
-                            coroutine = StartCoroutine(VibrateSlowPulse());
-                            Debug.Log("Reproduciendo: Pulso tranquilo");
-                            break;
-                        case global::VibrationSense.AscendingBurst:
-                            coroutine = StartCoroutine(VibrateAscendingBurst());
-                            Debug.Log("Reproduciendo: Ráfaga ascendente");
-                            break;
-                        case global::VibrationSense.IrregularPattern:
-                            coroutine = StartCoroutine(VibrateIrregularPattern());
-                            Debug.Log("Reproduciendo: Vibración irregular");
-                            break;
-                        case global::VibrationSense.ExpandingWave:
-                            coroutine = StartCoroutine(VibrateExpandingWave());
-                            Debug.Log("Reproduciendo: Onda expansiva");
-                            break;
-                        case global::VibrationSense.Spiral:
-                            coroutine = StartCoroutine(VibrateSpiral());
-                            Debug.Log("Reproduciendo: Vibración en espiral");
-                            break;
-                        case global::VibrationSense.Explosion:
-                            coroutine = StartCoroutine(VibrateExplosion());
-                            Debug.Log("Reproduciendo: Vibración de explosión");
-                            break;
-                        case global::VibrationSense.Throbbing:
-                            coroutine = StartCoroutine(VibrateThrobbing());
-                            Debug.Log("Reproduciendo: Vibración de Throbbing");
-                            break;
-                    }
-                }
-            }
-            else if (isVibrating)
-            {
-                
-                isVibrating = false;
-                Active = false;
-                gamepad.ResetHaptics();
-                Debug.Log("Deteniendo vibración");
-                
-            }
+    private void OnDisable()
+    {
+        sources.Clear();
+        StopVibration();
+    }
+
+    private void SetVibration(VibrationSense sense)
+    {
+        if (isVibrating) return;
         
-    }
+        isVibrating = true;
 
-    private IEnumerator reset()
-    {
-        yield break;
-        
-    }
-
-
-    public void VibrationSense(VibrationSense number, bool Ac)
-    {
-        sense = number;
-        Active = Ac;
-    }
-
-    /// 
-    /// Todos los que tienen waitforseconds no funcionan!!!
-    ///
-    /// 
-    private IEnumerator VibrateFastPulse()
-    {
-        while (isVibrating)
+        switch (sense)
         {
-            Debug.Log("1");
-            gamepad.SetMotorSpeeds(0.8f, 0.8f);
-            yield return new WaitForSecondsRealtime(0.1f);
-            Debug.Log("2");
-            gamepad.SetMotorSpeeds(0.0f, 0.0f);
-            //gamepad.ResetHaptics();
-            yield return new WaitForSecondsRealtime(0.2f);
-            Debug.Log("3");
+            case VibrationSense.FastPulse:
+                VibrateFastPulse();
+                break;
+            case VibrationSense.SlowPulse:
+                VibrateSlowPulse();
+                break;
+            case VibrationSense.AscendingBurst:
+                VibrateAscendingBurst();
+                break;
+            case VibrationSense.IrregularPattern:
+                VibrateIrregularPattern();
+                break;
+            case VibrationSense.ExpandingWave:
+                VibrateExpandingWave();
+                break;
+            case VibrationSense.Spiral:
+                VibrateSpiral();
+                break;
+            case VibrationSense.Explosion:
+                VibrateExplosion();
+                break;
+            case VibrationSense.Throbbing:
+                VibrateThrobbing();
+                break;
+            case VibrationSense.Default:
+            case VibrationSense.None:
+                Debug.LogWarning("[VibrationController] VibrationSense is set to None or Default.");
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
-    private IEnumerator VibrateSlowPulse()
+    private void StopVibration()
+    {
+        isVibrating = false;
+
+        if (Gamepad.current != null)
+            Gamepad.current.ResetHaptics();
+
+        Debug.Log("[VibrationController] Stop Vibration");
+    }
+
+    private async void VibrateFastPulse()
     {
         while (isVibrating)
         {
-            gamepad.SetMotorSpeeds(0.3f, 0.3f);
-            yield return new WaitForSeconds(0.5f);
-            gamepad.ResetHaptics();
-            yield return new WaitForSeconds(1f);
+            var s = Stopwatch.StartNew();
+            
+            if (Gamepad.current != null)
+                Gamepad.current.SetMotorSpeeds(0.8f, 0.8f);
+
+            await Task.Delay(100);
+            
+            Debug.Log("Awaited for: " + s.ElapsedMilliseconds + "ms");
+
+            if (Gamepad.current != null)
+                Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
+
+            await Task.Delay(200);
+
+            Debug.Log("Awaited for: " + s.ElapsedMilliseconds + "ms");
         }
+
+        if (Gamepad.current != null)
+            Gamepad.current.ResetHaptics();
     }
 
-    private IEnumerator VibrateAscendingBurst()
+    private async void VibrateSlowPulse()
     {
-        float startTime = Time.time;
+        while (isVibrating)
+        {
+            if (Gamepad.current != null)
+                Gamepad.current.SetMotorSpeeds(0.3f, 0.3f);
+
+            await Task.Delay(500);
+
+            if (Gamepad.current != null)
+                Gamepad.current.ResetHaptics();
+
+            await Task.Delay(1000);
+        }
+
+        if (Gamepad.current != null)
+            Gamepad.current.ResetHaptics();
+    }
+
+    private async void VibrateAscendingBurst()
+    {
+        startTime = Time.time;
+
+        while (isVibrating)
+        {
+            var elapsedTime = Time.time - startTime;
+            var normalizedTime = Mathf.Clamp01(elapsedTime / vibrationDuration);
+            var vibrationValue = vibrationCurve.Evaluate(normalizedTime) * vibrationIntensity;
+
+            if (Gamepad.current != null)
+                Gamepad.current.SetMotorSpeeds(vibrationValue, vibrationValue);
+
+            await Task.Yield();
+        }
+
+        if (Gamepad.current != null)
+            Gamepad.current.ResetHaptics();
+    }
+
+    private async void VibrateIrregularPattern()
+    {
+        while (isVibrating)
+        {
+            var randomDelay = Random.Range(100, 500);
+            Gamepad.current.SetMotorSpeeds(0.6f, 0.6f);
+            await Task.Delay(randomDelay);
+            Gamepad.current.ResetHaptics();
+            await Task.Delay(randomDelay);
+        }
+
+        if (Gamepad.current != null)
+            Gamepad.current.ResetHaptics();
+    }
+
+    private async void VibrateExpandingWave()
+    {
+        var vec = new Vector2();
+        startTime = Time.time;
+
+        while (isVibrating)
+        {
+            var elapsedTime = Time.time - startTime;
+            var normalizedTime = Mathf.Clamp01(elapsedTime / vibrationDuration);
+            var vibrationValue = vibrationCurve.Evaluate(normalizedTime) * vibrationIntensity;
+
+            vec.x = Mathf.Sin(elapsedTime);
+            vec.y = Mathf.Cos(elapsedTime);
+
+            Gamepad.current.SetMotorSpeeds(vibrationValue * vec.x, vibrationValue * vec.y);
+            await Task.Yield();
+        }
+
+        if (Gamepad.current != null)
+            Gamepad.current.ResetHaptics();
+    }
+
+    private async void VibrateSpiral()
+    {
+        startTime = Time.time;
+
         while (isVibrating)
         {
             float elapsedTime = Time.time - startTime;
             float normalizedTime = Mathf.Clamp01(elapsedTime / vibrationDuration);
             float vibrationValue = vibrationCurve.Evaluate(normalizedTime) * vibrationIntensity;
 
-            gamepad.SetMotorSpeeds(vibrationValue, vibrationValue);
-            yield return null;
+            Vector2 normalizedPosition =
+                new Vector2(Mathf.Sin(elapsedTime * 3f), Mathf.Cos(elapsedTime * 3f)).normalized;
+            Gamepad.current.SetMotorSpeeds(vibrationValue * normalizedPosition.x,
+                vibrationValue * normalizedPosition.y);
+            await Task.Yield();
         }
-        gamepad.ResetHaptics();
+
+        if (Gamepad.current != null)
+            Gamepad.current.ResetHaptics();
     }
 
-    private IEnumerator VibrateIrregularPattern()
+    private async void VibrateExplosion()
     {
-        while (isVibrating)
-        {
-            float randomDelay = Random.Range(0.1f, 0.5f);
-            gamepad.SetMotorSpeeds(0.6f, 0.6f);
-            yield return new WaitForSeconds(randomDelay);
-            gamepad.ResetHaptics();
-            yield return new WaitForSeconds(randomDelay);
-        }
+        Gamepad.current.SetMotorSpeeds(1f, 1f);
+
+        await Task.Delay(200);
+
+        if (Gamepad.current != null)
+            Gamepad.current.ResetHaptics();
     }
 
-    private IEnumerator VibrateExpandingWave()
+    private async void VibrateThrobbing()
     {
-        float startTime = Time.time;
-        while (isVibrating)
-        {
-            float elapsedTime = Time.time - startTime;
-            float normalizedTime = Mathf.Clamp01(elapsedTime / vibrationDuration);
-            float vibrationValue = vibrationCurve.Evaluate(normalizedTime) * vibrationIntensity;
+        startTime = Time.time;
 
-            Vector2 normalizedPosition = new Vector2(Mathf.Sin(elapsedTime), Mathf.Cos(elapsedTime)).normalized;
-            gamepad.SetMotorSpeeds(vibrationValue * normalizedPosition.x, vibrationValue * normalizedPosition.y);
-            yield return null;
-        }
-        gamepad.ResetHaptics();
-    }
-
-    private IEnumerator VibrateSpiral()
-    {
-        float startTime = Time.time;
-        while (isVibrating)
-        {
-            float elapsedTime = Time.time - startTime;
-            float normalizedTime = Mathf.Clamp01(elapsedTime / vibrationDuration);
-            float vibrationValue = vibrationCurve.Evaluate(normalizedTime) * vibrationIntensity;
-
-            Vector2 normalizedPosition = new Vector2(Mathf.Sin(elapsedTime * 3f), Mathf.Cos(elapsedTime * 3f)).normalized;
-            gamepad.SetMotorSpeeds(vibrationValue * normalizedPosition.x, vibrationValue * normalizedPosition.y);
-            yield return null;
-        }
-        gamepad.ResetHaptics();
-    }
-
-    private IEnumerator VibrateExplosion()
-    {
-        gamepad.SetMotorSpeeds(1f, 1f);
-        yield return new WaitForSeconds(0.2f);
-        gamepad.ResetHaptics();
-    }
-    private IEnumerator VibrateThrobbing()
-    {
-        float startTime = Time.time;
-        float maxVibrationIntensity = vibrationIntensity * 0.8f;
-        float pulseDuration = vibrationDuration / 2f;
+        var maxVibrationIntensity = vibrationIntensity * 0.8f;
+        var pulseDuration = vibrationDuration / 2f;
 
         while (isVibrating)
         {
-            float elapsedTime = Time.time - startTime;
-            float normalizedTime = Mathf.Clamp01(elapsedTime / pulseDuration);
+            var elapsedTime = Time.time - startTime;
+            var normalizedTime = Mathf.Clamp01(elapsedTime / pulseDuration);
 
-            // Incrementa la fuerza de vibración
-            float vibrationValue = Mathf.Lerp(0f, maxVibrationIntensity, normalizedTime);
-            gamepad.SetMotorSpeeds(vibrationValue, vibrationValue);
+            var vibrationValue = Mathf.Lerp(0f, maxVibrationIntensity, normalizedTime);
+            Gamepad.current.SetMotorSpeeds(vibrationValue, vibrationValue);
 
             if (normalizedTime >= 1f)
             {
-                // Inicia la fase de disminución de la vibración
-                float decreaseTime = elapsedTime - pulseDuration;
-                float normalizedDecreaseTime = Mathf.Clamp01(decreaseTime / pulseDuration);
+                var decreaseTime = elapsedTime - pulseDuration;
+                var normalizedDecreaseTime = Mathf.Clamp01(decreaseTime / pulseDuration);
 
-                // Disminuye la fuerza de vibración
-                float decreaseVibrationValue = Mathf.Lerp(maxVibrationIntensity, 0f, normalizedDecreaseTime);
-                gamepad.SetMotorSpeeds(decreaseVibrationValue, decreaseVibrationValue);
+                var decreaseVibrationValue = Mathf.Lerp(maxVibrationIntensity, 0f, normalizedDecreaseTime);
+                Gamepad.current.SetMotorSpeeds(decreaseVibrationValue, decreaseVibrationValue);
 
                 if (normalizedDecreaseTime >= 1f)
-                {
-                    // Reinicia el temporizador y comienza un nuevo ciclo de vibración
                     startTime = Time.time;
-                }
             }
 
-            yield return null;
+            await Task.Yield();
         }
-        gamepad.ResetHaptics();
-    }
 
+        if (Gamepad.current != null)
+            Gamepad.current.ResetHaptics();
+    }
 }
