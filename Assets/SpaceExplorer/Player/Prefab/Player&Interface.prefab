@@ -41,6 +41,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3307883449650593134}
     m_Modifications:
+    - target: {fileID: 6778247148941891731, guid: d7c2fc5e03dc822438ff3a984d5e5ef8,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 28.45
+      objectReference: {fileID: 0}
     - target: {fileID: 6778247148968972238, guid: d7c2fc5e03dc822438ff3a984d5e5ef8,
         type: 3}
       propertyPath: m_Name
@@ -49,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 6778247148968972238, guid: d7c2fc5e03dc822438ff3a984d5e5ef8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6778247150282979664, guid: d7c2fc5e03dc822438ff3a984d5e5ef8,
         type: 3}
@@ -469,6 +474,11 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 3626404486551474035}
+    - target: {fileID: 71871419131804128, guid: 880f4ca0b4717e34285686a2e22281dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 904061423313774141, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: m_Time
@@ -517,12 +527,12 @@ PrefabInstance:
     - target: {fileID: 1053793857010159274, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.649747
+      value: 0.64974713
       objectReference: {fileID: 0}
     - target: {fileID: 1053793857010159274, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.050430913
+      value: 0.050430924
       objectReference: {fileID: 0}
     - target: {fileID: 1053793857010159274, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
@@ -532,7 +542,7 @@ PrefabInstance:
     - target: {fileID: 1053793857010159274, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.058693495
+      value: -0.058693506
       objectReference: {fileID: 0}
     - target: {fileID: 1053793857083727520, guid: 880f4ca0b4717e34285686a2e22281dc,
         type: 3}
@@ -855,8 +865,8 @@ MonoBehaviour:
   TextoMision: {fileID: 3307883450257605997}
   conversationCanvas:
   - {fileID: 2928631534686223075, guid: b68173e3ee9a85f48a9ef5f339aebef4, type: 3}
-  - {fileID: 2928631534686223075, guid: b68173e3ee9a85f48a9ef5f339aebef4, type: 3}
-  - {fileID: 2928631534686223075, guid: b68173e3ee9a85f48a9ef5f339aebef4, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   gameObjectToActive:
   - {fileID: 0}
   - {fileID: 0}

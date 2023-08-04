@@ -23,7 +23,7 @@ public class PlayerDamageable : damageableWithLife
     void Start()
     {
         DualSense.SetActive(true);
-        VibrationController vibrationController = gameObject.AddComponent<VibrationController>();
+        //VibrationController vibrationController = gameObject.AddComponent<VibrationController>();
     }
 
   
