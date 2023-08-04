@@ -124,10 +124,6 @@ public class VibrationController : MonoBehaviour
         Active = Ac;
     }
 
-    /// 
-    /// Todos los que tienen waitforseconds no funcionan!!!
-    ///
-    /// 
 
 
   
