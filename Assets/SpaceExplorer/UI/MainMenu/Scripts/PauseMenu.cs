@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     WeaponsShip WeaponsController;
     PlayerMovementController PlayerController;
+    bool activePlayer = false;
     void Awake()
     {
         firstButton=GetComponentInChildren<Button>();
@@ -23,7 +24,14 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (activePlayer)
+        {
+            activePlayer = false;
+            PlayerController.enabled = true;
+            WeaponsController.enabled = true;
+            pauseMenu.gameObject.SetActive(false);
+
+        }
     }
 
     public void LoadLevel(string name)
@@ -66,10 +74,10 @@ public class PauseMenu : MonoBehaviour
         PlayerController.gameObject.transform.position= Checkpoint.checkpointPosition;
         PlayerController.gameObject.GetComponentInChildren<PlayerDamageable>().fullHeal();
         PlayerController.FullChargeTurbo();
-        PlayerController.enabled = true;
-        WeaponsController.enabled = true;
-        pauseMenu.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
 
+        activePlayer = true;
+
     }
+
 }

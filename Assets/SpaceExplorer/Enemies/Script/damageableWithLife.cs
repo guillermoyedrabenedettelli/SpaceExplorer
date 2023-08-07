@@ -18,10 +18,6 @@ public class damageableWithLife : MonoBehaviour, IDamageable
     [SerializeField] GameObject[] DropeableItems;
     [SerializeField] int NoDropChance = 100;
 
-    private Gamepad gamepad;
-    float vibrationDuration = 1f;
-    float vibrationIntensity = 0.5f;
-    AnimationCurve vibrationCurve;
 
     int range;
 
@@ -30,16 +26,11 @@ public class damageableWithLife : MonoBehaviour, IDamageable
     AudioSource Hurt;
     bool principalPlayer = false;
     float timeSetMotor = 2;
-    float timeCurrentSetMotor = 0;
+    protected float timeCurrentSetMotor = 0;
 
     private void Awake()
     {
-        vibrationCurve = new AnimationCurve();
-        // Agregamos puntos clave (keyframes) al curva
-        vibrationCurve.AddKey(0f, 0f); // En el tiempo 0, el valor es 0
-        vibrationCurve.AddKey(1f, 0.5f); // En el tiempo 1, el valor es 1
-        vibrationCurve.AddKey(2f, 1f); // En el tiempo 2, el valor es 0.
-        vibrationCurve.SmoothTangents(1, 0f);
+        
         baseAwake();
         foreach (GameObject item in DropeableItems)
         {
@@ -61,44 +52,9 @@ public class damageableWithLife : MonoBehaviour, IDamageable
         
     }
 
-
-    private IEnumerator spiral()
-    {
-        float startTime = Time.time;
-
-        float elapsedTime = Time.time - startTime;
-        float normalizedTime = Mathf.Clamp01(elapsedTime / vibrationDuration);
-        float vibrationValue = vibrationCurve.Evaluate(normalizedTime) * vibrationIntensity;
-
-        Vector2 normalizedPosition = new Vector2(Mathf.Sin(elapsedTime * 3f), Mathf.Cos(elapsedTime * 3f)).normalized;
-        gamepad.SetMotorSpeeds(vibrationValue * normalizedPosition.x, vibrationValue * normalizedPosition.y);
-        yield return null;
-
-        gamepad.ResetHaptics();
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (principalPlayer)
-        {
-            if (timeCurrentSetMotor >= 1)
-            {
-                timeCurrentSetMotor -= Time.deltaTime;
-                Gamepad.current?.SetMotorSpeeds(0.25f, 0.75f);
-                //this.gameObject.GetComponent<CameraShaker>().StartShake(1, .1f);
-            }
-            else
-            {
-                timeCurrentSetMotor = 0;
-                Gamepad.current?.SetMotorSpeeds(0f, 0f);
-            }
-            if(life_dead < (life / 2)){
-                StartCoroutine(spiral());
-            }
-
-        }
-
     }
     void IDamageable.NotifyHit(float damage)
     {

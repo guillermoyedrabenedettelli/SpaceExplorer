@@ -13,8 +13,21 @@ public class PlayerDamageable : damageableWithLife
     PlayerMovementController playerMovementController;
     public GameObject DualSense;
     public bool vibrate = false;
-    private  void Awake()
+
+    [Header("Vibration")]
+    [SerializeField] float vibrationDuration = 1f;
+    [SerializeField] float vibrationIntensity = 0.5f;
+    AnimationCurve vibrationCurve;
+    private Gamepad gamepad;
+
+    private void Awake()
     {
+        vibrationCurve = new AnimationCurve();
+        // Agregamos puntos clave (keyframes) al curva
+        vibrationCurve.AddKey(0f, 0f); // En el tiempo 0, el valor es 0
+        vibrationCurve.AddKey(1f, 0.5f); // En el tiempo 1, el valor es 1
+        vibrationCurve.AddKey(2f, 1f); // En el tiempo 2, el valor es 0.
+        vibrationCurve.SmoothTangents(1, 0f);
         DualSense.SetActive(false);
         baseAwake();
         movementController = GetComponent<MovementController>();
@@ -29,7 +42,42 @@ public class PlayerDamageable : damageableWithLife
         //VibrationController vibrationController = gameObject.AddComponent<VibrationController>();
     }
 
-  
+    void Update()
+    {
+        if (timeCurrentSetMotor >= 1)
+        {
+            timeCurrentSetMotor -= Time.deltaTime;
+            Gamepad.current?.SetMotorSpeeds(0.25f, 0.75f);
+            //this.gameObject.GetComponent<CameraShaker>().StartShake(1, .1f);
+        }
+        else
+        {
+            timeCurrentSetMotor = 0;
+            Gamepad.current?.SetMotorSpeeds(0f, 0f);
+        }
+        if (life_dead < (life / 2))
+        {
+            StartCoroutine(spiral());
+        }
+
+    }
+
+    private IEnumerator spiral()
+    {
+        float startTime = Time.time;
+
+        float elapsedTime = Time.time - startTime;
+        float normalizedTime = Mathf.Clamp01(elapsedTime / vibrationDuration);
+        float vibrationValue = vibrationCurve.Evaluate(normalizedTime) * vibrationIntensity;
+
+        Vector2 normalizedPosition = new Vector2(Mathf.Sin(elapsedTime * 3f), Mathf.Cos(elapsedTime * 3f)).normalized;
+        gamepad.SetMotorSpeeds(vibrationValue * normalizedPosition.x, vibrationValue * normalizedPosition.y);
+        yield return null;
+
+        gamepad.ResetHaptics();
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<DropeableItem>() != null)
@@ -76,6 +124,7 @@ public class PlayerDamageable : damageableWithLife
     protected override void onDamageableDies()
     {
         Gamepad.current?.SetMotorSpeeds(0f, 0f);
+        playerMovementController.enabled = false;
         alreadyDead = true;
         onDeath.Invoke();
     }
