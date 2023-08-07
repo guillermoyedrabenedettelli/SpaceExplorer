@@ -23,6 +23,7 @@ public class PlayerMovementController : MonoBehaviour
 {
     [Header("Pause Menu")]
     [SerializeField] PauseMenu pauseMenu;
+    [SerializeField] PauseMenu deathMenu;
 
     [Header("Rotation")]
     [SerializeField] float turboRotationLimitation = 0.5f;
@@ -112,7 +113,7 @@ public class PlayerMovementController : MonoBehaviour
     private Misiones3 Missions;
     private WeaponsShip Weapons;
 
-    private Transform firstParent;
+    //private Transform firstParent;
 
 
   
@@ -136,8 +137,11 @@ public class PlayerMovementController : MonoBehaviour
         Missions = this.GetComponent<Misiones3>();
         Weapons=GetComponent<WeaponsShip>();
 
+        Checkpoint.checkpointPosition = transform.position;
 
-        firstParent = transform.parent;
+        deathMenu.SetRequeriments(Weapons, this);
+        pauseMenu.SetRequeriments(Weapons,this);
+       // firstParent = transform.parent;
 
     }
 
@@ -340,7 +344,17 @@ public class PlayerMovementController : MonoBehaviour
 
     }
 
+    public void FullChargeTurbo()
+    {
+        actualTurbo = maxTurbo;
+        turboBar.fillAmount = 1;
+    }
+
     //Landing methods
+    public void SetLandingState(LandingStepsEnum newLandingState)
+    {
+        landingState=newLandingState;
+    }
     public void ReadyToLand(bool ready,Transform target,GameObject landingCamera)
     {
         if (!isLanding)
@@ -368,8 +382,6 @@ public class PlayerMovementController : MonoBehaviour
             landingMessage.SetActive(false);
         if (Weapons != null)
             Weapons.enabled = false;
-
-
     }
 
 
@@ -416,7 +428,7 @@ public class PlayerMovementController : MonoBehaviour
         }
         else
         {
-            transform.parent = landingTarget;
+            //transform.parent = landingTarget;
             landingState++;
             time = 0;
         }
@@ -434,7 +446,9 @@ public class PlayerMovementController : MonoBehaviour
         else
         {
             landingState++;
-            if(Missions.ActiveNextConversation())
+            SaveCheckpoint();
+            
+            if (Missions.ActiveNextConversation())
             {
                 this.enabled = false;
             }
@@ -458,17 +472,22 @@ public class PlayerMovementController : MonoBehaviour
             }
             speedParticles.gameObject.SetActive(true);
             landCamera.SetActive(false);
-            transform.parent = firstParent;
+           // transform.parent = firstParent;
             isLanding = false;
         }
         
     }
 
+    //Checkpoint
+    void SaveCheckpoint()
+    {
+        Checkpoint.checkpointPosition = transform.position;
+        Checkpoint.newchekpoint = true;
+    }
 
 
 
-
-    //Imputs
+    //Inputs
     public void OnMovemente(InputAction.CallbackContext context)
     {
         movement = context.ReadValue<float>();
@@ -547,7 +566,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (context.canceled && !isLanding)
         {
-            pauseMenu.PauseGame(Weapons, this);
+            pauseMenu.PauseGame();
         }
     }
 

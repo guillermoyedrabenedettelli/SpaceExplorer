@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using static UnityEngine.ParticleSystem;
 
 public class PlayerDamageable : damageableWithLife
 {
@@ -61,8 +64,19 @@ public class PlayerDamageable : damageableWithLife
             }
 
         }
-        
-       
-       
+    }
+
+    public void fullHeal()
+    {
+        life_dead=life;
+        healthBar.fillAmount = 1;
+    }
+
+
+    protected override void onDamageableDies()
+    {
+        Gamepad.current?.SetMotorSpeeds(0f, 0f);
+        alreadyDead = true;
+        onDeath.Invoke();
     }
 }

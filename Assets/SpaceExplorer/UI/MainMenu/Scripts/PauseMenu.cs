@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.ParticleSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class PauseMenu : MonoBehaviour
     void Awake()
     {
         firstButton=GetComponentInChildren<Button>();
-        pauseMenu.SetActive(false);
+        if(pauseMenu!=null)
+            pauseMenu.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,15 +45,31 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    public void PauseGame(WeaponsShip Weapons, PlayerMovementController pmc)
+    public void SetRequeriments(WeaponsShip Weapons, PlayerMovementController pmc)
     {
         WeaponsController = Weapons;
         PlayerController = pmc;
+    }
 
-        pmc.enabled = false;
-        Weapons.enabled = false;
+    public void PauseGame()
+    {
+        PlayerController.enabled = false;
+        WeaponsController.enabled = false;
         pauseMenu.gameObject.SetActive(true);
         SetFirstOption();
         Time.timeScale = 0.0f;
+    }
+
+
+    public void ReturnToCheckPoint()
+    {
+        PlayerController.gameObject.transform.position= Checkpoint.checkpointPosition;
+        PlayerController.gameObject.GetComponentInChildren<PlayerDamageable>().fullHeal();
+        PlayerController.FullChargeTurbo();
+        PlayerController.enabled = true;
+        WeaponsController.enabled = true;
+        pauseMenu.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
+
     }
 }

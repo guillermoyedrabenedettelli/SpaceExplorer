@@ -10,7 +10,7 @@ public class damageableWithLife : MonoBehaviour, IDamageable
 {
     public float life;
     public float life_dead = 0;
-    bool alreadyDead = false;
+    protected bool alreadyDead = false;
     public UnityEvent onDeath;
     public UnityEvent<float> onChangeLife;
 
@@ -41,6 +41,13 @@ public class damageableWithLife : MonoBehaviour, IDamageable
         vibrationCurve.AddKey(2f, 1f); // En el tiempo 2, el valor es 0.
         vibrationCurve.SmoothTangents(1, 0f);
         baseAwake();
+        foreach (GameObject item in DropeableItems)
+        {
+            DropeableItem dropeable = item.GetComponentInChildren<DropeableItem>();
+            range += dropeable.GetDropRate();
+        }
+        range = range + NoDropChance;
+        
     }
 
     public void baseAwake()
@@ -51,15 +58,7 @@ public class damageableWithLife : MonoBehaviour, IDamageable
             principalPlayer = true;
             if (Hurt != null) { Hurt = this.GetComponentInParent<AudioSource>(); }
         }
-        if (!principalPlayer)
-        {
-            foreach (GameObject item in DropeableItems)
-            {
-                DropeableItem dropeable = item.GetComponentInChildren<DropeableItem>();
-                range += dropeable.GetDropRate();
-            }
-            range = range + NoDropChance;
-        }
+        
     }
 
 
@@ -122,20 +121,7 @@ public class damageableWithLife : MonoBehaviour, IDamageable
         }
         if (life_dead < 0.5f)
         {
-            if (!principalPlayer)
-            {
-                SpawnDrop();
-
-            }
-            else
-            {
-
-                SceneManager.LoadScene("Test");
-            }
-            Destroy(gameObject);
-            Gamepad.current?.SetMotorSpeeds(0f, 0f);
-            alreadyDead = true;
-            onDeath.Invoke();
+            onDamageableDies();
         }
         if (life_dead > life)
         {
@@ -146,6 +132,16 @@ public class damageableWithLife : MonoBehaviour, IDamageable
     UnityEvent IDamageable.GetDeathEvent()
     {
         return onDeath;
+    }
+
+    virtual protected void onDamageableDies()
+    {
+        SpawnDrop();
+
+        Destroy(gameObject);
+        Gamepad.current?.SetMotorSpeeds(0f, 0f);
+        alreadyDead = true;
+        onDeath.Invoke();
     }
 
     void SpawnDrop()
