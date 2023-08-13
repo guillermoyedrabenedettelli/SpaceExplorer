@@ -86,6 +86,7 @@ public class Misiones3 : MonoBehaviour
 
         }
         gameObjectToActive[misionN-1].SetActive(true);
+        PlayerMovementController.currentObjetive = gameObjectToActive[misionN - 1];
     }
 
     public void actualizaMision(int n)

@@ -113,6 +113,8 @@ public class PlayerMovementController : MonoBehaviour
     private Misiones3 Missions;
     private WeaponsShip Weapons;
 
+    public static GameObject currentObjetive;
+
     //private Transform firstParent;
 
 
