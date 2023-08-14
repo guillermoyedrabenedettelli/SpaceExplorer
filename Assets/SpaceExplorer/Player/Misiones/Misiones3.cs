@@ -8,8 +8,10 @@ public class Misiones3 : MonoBehaviour
 {
 
     [Header("Textos A mostrar")]
-    public TextMeshProUGUI TextoaMostrar;
+    public TextMeshProUGUI TextoMostrar;
     public TextMeshProUGUI TextoMision;
+    public TextMeshProUGUI TextoMoney;
+    public int Money = 0;
 
     private int misionPorHacerN;
     private int misionHechaN;
@@ -26,8 +28,9 @@ public class Misiones3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TextoaMostrar.text = "Sin misión asignada.";
+        TextoMostrar.text = "Sin misión asignada.";
         TextoMision.text = "";
+        TextoMoney.text = Money.ToString();
         //noTengoMision = true;
 
 
@@ -66,19 +69,19 @@ public class Misiones3 : MonoBehaviour
         switch (n)
         {
             case 1:
-                TextoaMostrar.text = "Llega al destino";
+                TextoMostrar.text = "Llega al destino";
                 misionPorHacerN = 1;
                 misionHechaN = 0;
                 TextoMision.text = misionHechaN + " / " + misionPorHacerN;
                 break;
             case 2:
-                TextoaMostrar.text = "Recupera chatarra";
+                TextoMostrar.text = "Recupera chatarra";
                 misionPorHacerN = 7;
                 misionHechaN = 0;
                 TextoMision.text = misionHechaN + " / " + misionPorHacerN;
                 break;
             case 3:
-                TextoaMostrar.text = "Vuelve a la estacion";
+                TextoMostrar.text = "Vuelve a la estacion";
                 misionPorHacerN = 1;
                 misionHechaN = 0;
                 TextoMision.text = misionHechaN + " / " + misionPorHacerN;
@@ -97,26 +100,28 @@ public class Misiones3 : MonoBehaviour
             {
                 
                 case 1:
-                    TextoaMostrar.text = "Llega al destino";
+                    TextoMostrar.text = "Llega al destino";
                     misionPorHacerN = 1;
                     misionHechaN = misionHechaN + 1;
                     TextoMision.text = misionHechaN + " / " + misionPorHacerN;
                     if (misionHechaN >= misionPorHacerN)
                     {
-                        TextoaMostrar.text = "Misión completada!";
+                        TextoMostrar.text = "Misión completada!";
                         TextoMision.text = "";
                         StartCoroutine(CompletadaMision());
+                        MoneyRewards(50);
                     }
                     break;
                 case 2:
-                    TextoaMostrar.text = "Recupera chatarra";
+                    TextoMostrar.text = "Recupera chatarra";
                     misionPorHacerN = 7;
                     misionHechaN = misionHechaN + 1;
                     if (misionHechaN >= misionPorHacerN)
                     {
-                        TextoaMostrar.text = "Misión completada!";
+                        TextoMostrar.text = "Misión completada!";
                         TextoMision.text = "";
                         StartCoroutine(CompletadaMision());
+                        MoneyRewards(55);
                     }
                     else
                     {
@@ -124,21 +129,27 @@ public class Misiones3 : MonoBehaviour
                     }
                     break;
                 case 3:
-                    TextoaMostrar.text = "Vuelve a la estacion";
+                    TextoMostrar.text = "Vuelve a la estacion";
                     misionPorHacerN = 1;
                     misionHechaN = misionHechaN + 1;
                     TextoMision.text = misionHechaN + " / " + misionPorHacerN;
                     if (misionHechaN >= misionPorHacerN)
                     {
-                        TextoaMostrar.text = "Misión completada!";
+                        TextoMostrar.text = "Misión completada!";
                         TextoMision.text = "";
                         StartCoroutine(CompletadaMision());
+                        MoneyRewards(100);
                     }
                     break;
             }
         }
     }
-
+    private void MoneyRewards(int MoneyR)
+    {
+        TextoMoney.text = Money.ToString() + "+ " +MoneyR;
+        Money += MoneyR;
+        TextoMoney.text = "$ " + Money.ToString();
+    }
     IEnumerator CompletadaMision()
     {
         CreateNewConversation();

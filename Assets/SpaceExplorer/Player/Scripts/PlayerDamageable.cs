@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -7,18 +6,24 @@ using static UnityEngine.ParticleSystem;
 
 public class PlayerDamageable : damageableWithLife
 {
-
-    MovementController movementController;
-    WeaponsShip shipWeapons;
-    PlayerMovementController playerMovementController;
-    public GameObject DualSense;
-    public bool vibrate = false;
-
     [Header("Vibration")]
     [SerializeField] float vibrationDuration = 1f;
     [SerializeField] float vibrationIntensity = 0.5f;
-    AnimationCurve vibrationCurve;
+
+    public GameObject DualSense;
+    public bool vibrate = false;
+
     private Gamepad gamepad;
+    private bool AlertLife = false;
+
+    MovementController movementController;
+    WeaponsShip shipWeapons;
+    VibrationController vibrationContrller;
+    PlayerMovementController playerMovementController;
+    AnimationCurve vibrationCurve;
+
+
+
 
     private void Awake()
     {
@@ -31,6 +36,7 @@ public class PlayerDamageable : damageableWithLife
         DualSense.SetActive(false);
         baseAwake();
         movementController = GetComponent<MovementController>();
+        vibrationContrller = GetComponent<VibrationController>();
         shipWeapons = GetComponent<WeaponsShip>();
         playerMovementController = GetComponent<PlayerMovementController>();
     }
@@ -55,12 +61,25 @@ public class PlayerDamageable : damageableWithLife
             timeCurrentSetMotor = 0;
             Gamepad.current?.SetMotorSpeeds(0f, 0f);
         }
+
         if (life_dead < (life / 2))
         {
-            StartCoroutine(spiral());
+            vibrationContrller.VibrationSense(VibrationSense.Spiral, true);
+            Debug.Log("Spiral");
+            AlertLife = true;
         }
-
+        else
+        {
+            if (AlertLife)
+            {
+                vibrationContrller.Active = false;
+                AlertLife = false;
+                Debug.Log("Pausa");
+            }
+        }
     }
+
+
 
     private IEnumerator spiral()
     {
@@ -88,23 +107,23 @@ public class PlayerDamageable : damageableWithLife
                 movementController?.chargeTurbo(turboFuelTank);
                 playerMovementController?.chargeTurbo(turboFuelTank);
             }
-            else if(other.CompareTag("ReparationKit"))
+            else if (other.CompareTag("ReparationKit"))
             {
                 ReparationKit reparationKit = other.GetComponent<ReparationKit>();
-                life_dead = life_dead + (life*(reparationKit.healthRecoveryPercentag / 100));
-                if(life_dead>life)
+                life_dead = life_dead + (life * (reparationKit.healthRecoveryPercentag / 100));
+                if (life_dead > life)
                 {
                     life_dead = life;
                 }
                 healthBar.fillAmount = life_dead / life;
                 reparationKit.DestroyItem();
             }
-            else if(other.CompareTag("AmmoPack"))
+            else if (other.CompareTag("AmmoPack"))
             {
                 AmmoPack ammoPack = other.GetComponent<AmmoPack>();
                 shipWeapons?.chargeAmmo(ammoPack);
             }
-            else if(other.gameObject.GetComponent<MissionObject1>()!=null)
+            else if (other.gameObject.GetComponent<MissionObject1>() != null)
             {
                 playerMovementController.UpdateCurrentMission(2);
                 MissionObject1 missionObject = other.GetComponent<MissionObject1>();
@@ -116,7 +135,7 @@ public class PlayerDamageable : damageableWithLife
 
     public void fullHeal()
     {
-        life_dead=life;
+        life_dead = life;
         healthBar.fillAmount = 1;
     }
 
