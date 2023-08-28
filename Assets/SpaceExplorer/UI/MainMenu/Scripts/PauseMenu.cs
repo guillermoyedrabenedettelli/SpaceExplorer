@@ -48,6 +48,8 @@ public class PauseMenu : MonoBehaviour
     public void UnPauseGame()
     {
         PlayerController.enabled = true;
+        PlayerController.SetLandingState(LandingStepsEnum.Landed);
+        PlayerController.isLanding = true;
         WeaponsController.enabled = true;
         pauseMenu.gameObject.SetActive(false);
         Time.timeScale = 1.0f;

@@ -96,7 +96,7 @@ public class PlayerMovementController : MonoBehaviour
     Quaternion initialRotatiom;
     Quaternion lookAt;
     bool isReadyToLand = false;
-    bool isLanding = false;
+    public bool isLanding = false;
     GameObject landCamera;
     TrailRenderer[] trails;
 
@@ -466,7 +466,21 @@ public class PlayerMovementController : MonoBehaviour
 
     void TakeOff()
     {
-       if(MoveToPosition(new Vector3(startTakeOffPosition.x, startTakeOffPosition.y + heightBeforeLanding, startTakeOffPosition.z)))
+        if (startTakeOffPosition != null)
+        {
+            if (MoveToPosition(new Vector3(startTakeOffPosition.x, startTakeOffPosition.y + heightBeforeLanding, startTakeOffPosition.z)))
+            {
+                foreach (TrailRenderer trail in trails)
+                {
+                    trail.gameObject.SetActive(true);
+                }
+                speedParticles.gameObject.SetActive(true);
+                landCamera.SetActive(false);
+                // transform.parent = firstParent;
+                isLanding = false;
+            }
+        }
+        else
         {
             foreach (TrailRenderer trail in trails)
             {
@@ -474,9 +488,10 @@ public class PlayerMovementController : MonoBehaviour
             }
             speedParticles.gameObject.SetActive(true);
             landCamera.SetActive(false);
-           // transform.parent = firstParent;
+            // transform.parent = firstParent;
             isLanding = false;
         }
+           
         
     }
 
