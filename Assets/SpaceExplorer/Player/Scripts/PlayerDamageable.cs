@@ -22,7 +22,15 @@ public class PlayerDamageable : damageableWithLife
     PlayerMovementController playerMovementController;
     AnimationCurve vibrationCurve;
 
-
+    [Header("Materials")]
+    [SerializeField] Renderer tanksToChange;
+    [SerializeField] Renderer cuerpoToChange;
+    [SerializeField] Material HealthyMaterial;
+    [SerializeField] Material DangerMaterial;
+    Material[] dangerTanks;
+    Material[] healthyTanks;
+    Material[] dangerBody;
+    Material[] healthyBody;
 
 
     private void Awake()
@@ -39,6 +47,21 @@ public class PlayerDamageable : damageableWithLife
         vibrationContrller = GetComponent<VibrationController>();
         shipWeapons = GetComponent<WeaponsShip>();
         playerMovementController = GetComponent<PlayerMovementController>();
+
+
+        dangerTanks = tanksToChange.materials;
+        dangerTanks[2] = DangerMaterial;
+        healthyTanks = tanksToChange.materials;
+        healthyTanks[2] = HealthyMaterial;
+
+        dangerBody = cuerpoToChange.materials;
+        dangerBody[1] = DangerMaterial;
+        healthyBody = cuerpoToChange.materials;
+        healthyBody[1] = HealthyMaterial;
+
+
+
+
     }
 
 
@@ -65,6 +88,11 @@ public class PlayerDamageable : damageableWithLife
         if (life_dead < (life / 2))
         {
             vibrationContrller.VibrationSense(VibrationSense.Spiral, true);
+            if (tanksToChange.materials!= dangerTanks)
+            {
+                tanksToChange.materials = dangerTanks;
+                cuerpoToChange.materials = dangerBody;
+            }
             Debug.Log("Spiral");
             AlertLife = true;
         }
@@ -111,6 +139,14 @@ public class PlayerDamageable : damageableWithLife
             {
                 ReparationKit reparationKit = other.GetComponent<ReparationKit>();
                 life_dead = life_dead + (life * (reparationKit.healthRecoveryPercentag / 100));
+                if (life_dead > (life / 2))
+                {
+                    if (tanksToChange.materials != healthyTanks)
+                    {
+                        tanksToChange.materials = healthyTanks;
+                        cuerpoToChange.materials = healthyBody;
+                    }
+                }
                 if (life_dead > life)
                 {
                     life_dead = life;
@@ -137,6 +173,12 @@ public class PlayerDamageable : damageableWithLife
     {
         life_dead = life;
         healthBar.fillAmount = 1;
+        if (tanksToChange.materials != healthyTanks)
+        {
+            tanksToChange.materials = healthyTanks;
+            cuerpoToChange.materials = healthyBody;
+        }
+
     }
 
 
