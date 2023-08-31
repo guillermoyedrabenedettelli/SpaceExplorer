@@ -41,7 +41,8 @@ public class PlayerDamageable : damageableWithLife
         vibrationCurve.AddKey(1f, 0.5f); // En el tiempo 1, el valor es 1
         vibrationCurve.AddKey(2f, 1f); // En el tiempo 2, el valor es 0.
         vibrationCurve.SmoothTangents(1, 0f);
-        DualSense.SetActive(false);
+        if(DualSense!=null)
+            DualSense.SetActive(false);
         baseAwake();
         movementController = GetComponent<MovementController>();
         vibrationContrller = GetComponent<VibrationController>();
@@ -67,7 +68,8 @@ public class PlayerDamageable : damageableWithLife
 
     void Start()
     {
-        DualSense.SetActive(true);
+        if(DualSense!=null)
+            DualSense.SetActive(true);
         //VibrationController vibrationController = gameObject.AddComponent<VibrationController>();
     }
 

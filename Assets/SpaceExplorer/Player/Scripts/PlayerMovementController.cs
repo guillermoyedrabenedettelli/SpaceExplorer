@@ -115,7 +115,6 @@ public class PlayerMovementController : MonoBehaviour
 
     public static GameObject currentObjetive;
 
-    //private Transform firstParent;
 
 
   
@@ -141,9 +140,15 @@ public class PlayerMovementController : MonoBehaviour
 
         Checkpoint.checkpointPosition = transform.position;
 
-        deathMenu.SetRequeriments(Weapons, this);
-        pauseMenu.SetRequeriments(Weapons,this);
-       // firstParent = transform.parent;
+        if (deathMenu != null)
+        {
+            deathMenu.SetRequeriments(Weapons, this);
+
+        }
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetRequeriments(Weapons, this);
+        }
 
     }
 
@@ -476,7 +481,6 @@ public class PlayerMovementController : MonoBehaviour
                 }
                 speedParticles.gameObject.SetActive(true);
                 landCamera.SetActive(false);
-                // transform.parent = firstParent;
                 isLanding = false;
             }
         }
@@ -488,7 +492,6 @@ public class PlayerMovementController : MonoBehaviour
             }
             speedParticles.gameObject.SetActive(true);
             landCamera.SetActive(false);
-            // transform.parent = firstParent;
             isLanding = false;
         }
            

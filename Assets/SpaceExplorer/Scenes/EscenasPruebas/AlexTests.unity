@@ -1094,6 +1094,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ESTACION ESPACIAL
       objectReference: {fileID: 0}
+    - target: {fileID: 8396058728420077957, guid: 85827f95a3340ec44b9e07e438cbaf97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85827f95a3340ec44b9e07e438cbaf97, type: 3}
 --- !u!1001 &1689591327
