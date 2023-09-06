@@ -84,6 +84,12 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] float maxAimHorizontalMovement = 2f;
     [SerializeField] float maxAimVerticalMovement = 1f;
 
+    [Header("Tow Mission Variables")]
+    [SerializeField] float towCurrentTime = 0f;
+    [SerializeField] bool canTow = false;
+    [SerializeField] TowArea towArea;
+    [SerializeField] float towTime = 5f;
+
 
     [Header("Landing")]
     [SerializeField] GameObject landingMessage = null;
@@ -109,15 +115,16 @@ public class PlayerMovementController : MonoBehaviour
     private float movement;
     private float roll;
     private Vector2 yawPicth;
-
     private Misiones3 Missions;
     private WeaponsShip Weapons;
 
     public static GameObject currentObjetive;
 
+    
 
 
-  
+
+
     void Awake()
     {
         roll = 0f;
@@ -159,6 +166,16 @@ public class PlayerMovementController : MonoBehaviour
             UpdateLocation();
             UpdateSpeedParticles();
             UpdateRotation();
+            if(canTow)
+            {
+                towCurrentTime = towCurrentTime + Time.deltaTime;
+                if (towCurrentTime >= towTime)
+                {
+                    towArea.GetTowItem().transform.parent = transform;
+                    towArea.SetTowed();
+                    canTow = false;
+                }
+            }
         }
         else
         {
@@ -560,26 +577,41 @@ public class PlayerMovementController : MonoBehaviour
 
     public void OnPressActionButton(InputAction.CallbackContext context)
     {
-        if (context.canceled && isReadyToLand && !isLanding)
+        if (canTow)
         {
-            StartLanding();
-            rollPitchRotation = Quaternion.Euler(landingTarget.rotation.x, transform.rotation.y, landingTarget.rotation.z);
-            initialRotatiom=transform.rotation;
-            landingState = LandingStepsEnum.Rotate;
-            if (Missions.GetCurrentMission() == 1 || Missions.GetCurrentMission() == 3)
+            if (context.started)
             {
-                UpdateCurrentMission(1);
+                towCurrentTime = 0f;
             }
-
-            Weapons.enabled = false;
-
+            if(context.canceled)
+            {
+                towCurrentTime = 0f;
+            }
         }
-        else if(landingState==LandingStepsEnum.Landed)
+        else
         {
-            landingState++;
-            startTakeOffPosition = transform.position;
-            Weapons.enabled = true;
+            if (context.canceled && isReadyToLand && !isLanding)
+            {
+                StartLanding();
+                rollPitchRotation = Quaternion.Euler(landingTarget.rotation.x, transform.rotation.y, landingTarget.rotation.z);
+                initialRotatiom = transform.rotation;
+                landingState = LandingStepsEnum.Rotate;
+                if (Missions.GetCurrentMission() == 1 || Missions.GetCurrentMission() == 3)
+                {
+                    UpdateCurrentMission(1);
+                }
+
+                Weapons.enabled = false;
+
+            }
+            else if (landingState == LandingStepsEnum.Landed)
+            {
+                landingState++;
+                startTakeOffPosition = transform.position;
+                Weapons.enabled = true;
+            }
         }
+        
     }
 
     public void PauseGame(InputAction.CallbackContext context)
@@ -609,7 +641,18 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    
+
+    //Tow Methods
+
+    public void SetCanTow(bool newCantTow)
+    {
+        canTow = newCantTow;
+    }
+
+    public void SetTowItem(TowArea newTowArea)
+    {
+        towArea = newTowArea;
+    }
 
 
 }
