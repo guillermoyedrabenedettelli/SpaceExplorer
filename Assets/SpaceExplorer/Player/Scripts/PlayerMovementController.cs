@@ -89,6 +89,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] bool canTow = false;
     [SerializeField] TowArea towArea;
     [SerializeField] float towTime = 5f;
+    [SerializeField] GameObject towPoint;
 
 
     [Header("Landing")]
@@ -171,7 +172,12 @@ public class PlayerMovementController : MonoBehaviour
                 towCurrentTime = towCurrentTime + Time.deltaTime;
                 if (towCurrentTime >= towTime)
                 {
-                    towArea.GetTowItem().transform.parent = transform;
+                    /*FixedJoint fj=towPoint.AddComponent<FixedJoint>();*/
+                    towArea.GetTowItem().transform.position = towPoint.transform.position;
+                    towArea.GetTowItem().transform.parent = towPoint.transform;
+                    /*fj.connectedBody = towArea.GetTowItem().GetComponent<Rigidbody>();*/
+
+                    //towArea.GetTowItem().transform.parent = transform;
                     towArea.SetTowed();
                     canTow = false;
                 }

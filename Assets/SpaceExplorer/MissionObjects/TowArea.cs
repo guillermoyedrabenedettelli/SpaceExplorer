@@ -12,7 +12,7 @@ public class TowArea : MonoBehaviour
 
     void Awake()
     {
-        
+        towInterface.SetActive(false);
     }
 
     // Update is called once per frame
