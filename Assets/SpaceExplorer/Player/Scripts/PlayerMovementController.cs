@@ -87,6 +87,8 @@ public class PlayerMovementController : MonoBehaviour
     [Header("Tow Mission Variables")]
     [SerializeField] float towCurrentTime = 0f;
     [SerializeField] bool canTow = false;
+    [SerializeField] bool towing = false;
+
     [SerializeField] TowArea towArea;
     [SerializeField] float towTime = 5f;
     [SerializeField] GameObject towPoint;
@@ -167,9 +169,10 @@ public class PlayerMovementController : MonoBehaviour
             UpdateLocation();
             UpdateSpeedParticles();
             UpdateRotation();
-            if(canTow)
+            if(towing)
             {
                 towCurrentTime = towCurrentTime + Time.deltaTime;
+                towArea.UpdateProgressBar(towCurrentTime/towTime);
                 if (towCurrentTime >= towTime)
                 {
                     /*FixedJoint fj=towPoint.AddComponent<FixedJoint>();*/
@@ -587,12 +590,15 @@ public class PlayerMovementController : MonoBehaviour
         {
             if (context.started)
             {
-                towCurrentTime = 0f;
+                towing = true;
             }
             if(context.canceled)
             {
-                towCurrentTime = 0f;
+                towing = false;
             }
+            towCurrentTime = 0f;
+            towArea.UpdateProgressBar(0);
+
         }
         else
         {
@@ -605,6 +611,7 @@ public class PlayerMovementController : MonoBehaviour
                 if (Missions.GetCurrentMission() == 1 || Missions.GetCurrentMission() == 3)
                 {
                     UpdateCurrentMission(1);
+                    UpdateCurrentMission(3);
                 }
 
                 Weapons.enabled = false;

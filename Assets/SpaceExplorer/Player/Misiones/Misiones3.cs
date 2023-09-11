@@ -18,7 +18,7 @@ public class Misiones3 : MonoBehaviour
 
     private bool noTengoMision;
     private bool TengoMision;
-    private int misionN;
+    [SerializeField] int misionN=1;
 
     [SerializeField] Canvas[] conversationCanvas;
     [SerializeField] GameObject[] gameObjectToActive;
@@ -35,7 +35,6 @@ public class Misiones3 : MonoBehaviour
 
 
         TengoMision = true;
-        misionN = 1;
         asignaMision(misionN);
 
 
@@ -86,6 +85,18 @@ public class Misiones3 : MonoBehaviour
                 misionHechaN = 0;
                 TextoMision.text = misionHechaN + " / " + misionPorHacerN;
                 break;
+            case 4:
+                TextoMostrar.text = "Encuentra a Mael Bahi y engancha el remolque a su nave";
+                misionPorHacerN = 1;
+                misionHechaN = 0;
+                TextoMision.text = misionHechaN + " / " + misionPorHacerN;
+                break;
+            case 5:
+                TextoMostrar.text = "Remolca a Mael Bahi hasta la base";
+                misionPorHacerN = 1;
+                misionHechaN = 0;
+                TextoMision.text = misionHechaN + " / " + misionPorHacerN;
+                break;
 
         }
         gameObjectToActive[misionN-1].SetActive(true);
@@ -109,7 +120,7 @@ public class Misiones3 : MonoBehaviour
                         TextoMostrar.text = "Misión completada!";
                         TextoMision.text = "";
                         StartCoroutine(CompletadaMision());
-                        MoneyRewards(50);
+                        MoneyRewards(0);
                     }
                     break;
                 case 2:
@@ -121,7 +132,7 @@ public class Misiones3 : MonoBehaviour
                         TextoMostrar.text = "Misión completada!";
                         TextoMision.text = "";
                         StartCoroutine(CompletadaMision());
-                        MoneyRewards(55);
+                        MoneyRewards(0);
                     }
                     else
                     {
