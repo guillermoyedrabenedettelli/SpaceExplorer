@@ -92,7 +92,7 @@ public class Misiones3 : MonoBehaviour
                 TextoMision.text = misionHechaN + " / " + misionPorHacerN;
                 break;
             case 5:
-                TextoMostrar.text = "Remolca a Mael Bahi hasta la base";
+                TextoMostrar.text = "Remolca a Mael Bahi hasta la estacion espacial";
                 misionPorHacerN = 1;
                 misionHechaN = 0;
                 TextoMision.text = misionHechaN + " / " + misionPorHacerN;
@@ -150,6 +150,30 @@ public class Misiones3 : MonoBehaviour
                         TextoMision.text = "";
                         StartCoroutine(CompletadaMision());
                         MoneyRewards(100);
+                    }
+                    break;
+                case 4:
+                    misionPorHacerN = 1;
+                    misionHechaN = misionHechaN + 1;
+                    TextoMision.text = misionHechaN + " / " + misionPorHacerN;
+                    if (misionHechaN >= misionPorHacerN)
+                    {
+                        TextoMostrar.text = "Misión completada!";
+                        TextoMision.text = "";
+                        StartCoroutine(CompletadaMision());
+                        MoneyRewards(0);
+                    }
+                    break;
+                case 5:
+                    misionPorHacerN = 1;
+                    misionHechaN = misionHechaN + 1;
+                    TextoMision.text = misionHechaN + " / " + misionPorHacerN;
+                    if (misionHechaN >= misionPorHacerN)
+                    {
+                        TextoMostrar.text = "Misión completada!";
+                        TextoMision.text = "";
+                        StartCoroutine(CompletadaMision());
+                        MoneyRewards(300);
                     }
                     break;
             }

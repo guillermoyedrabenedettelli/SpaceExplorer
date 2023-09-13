@@ -85,9 +85,9 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] float maxAimVerticalMovement = 1f;
 
     [Header("Tow Mission Variables")]
-    [SerializeField] float towCurrentTime = 0f;
-    [SerializeField] bool canTow = false;
-    [SerializeField] bool towing = false;
+    float towCurrentTime = 0f;
+    bool canTow = false;
+    bool towing = false;
 
     [SerializeField] TowArea towArea;
     [SerializeField] float towTime = 5f;
@@ -172,7 +172,7 @@ public class PlayerMovementController : MonoBehaviour
             if(towing)
             {
                 towCurrentTime = towCurrentTime + Time.deltaTime;
-                towArea.UpdateProgressBar(towCurrentTime/towTime);
+                towArea.UpdateProgressBar(towCurrentTime/towTime>=1?1: towCurrentTime / towTime);
                 if (towCurrentTime >= towTime)
                 {
                     /*FixedJoint fj=towPoint.AddComponent<FixedJoint>();*/
@@ -183,6 +183,8 @@ public class PlayerMovementController : MonoBehaviour
                     //towArea.GetTowItem().transform.parent = transform;
                     towArea.SetTowed();
                     canTow = false;
+                    towing = false;
+                    Missions.actualizaMision(4);
                 }
             }
         }
@@ -608,11 +610,12 @@ public class PlayerMovementController : MonoBehaviour
                 rollPitchRotation = Quaternion.Euler(landingTarget.rotation.x, transform.rotation.y, landingTarget.rotation.z);
                 initialRotatiom = transform.rotation;
                 landingState = LandingStepsEnum.Rotate;
-                if (Missions.GetCurrentMission() == 1 || Missions.GetCurrentMission() == 3)
-                {
-                    UpdateCurrentMission(1);
-                    UpdateCurrentMission(3);
-                }
+          
+                //Only do something if the mission is the inserted
+                UpdateCurrentMission(1);
+                UpdateCurrentMission(3);
+                UpdateCurrentMission(5);
+                
 
                 Weapons.enabled = false;
 
@@ -657,9 +660,13 @@ public class PlayerMovementController : MonoBehaviour
 
     //Tow Methods
 
-    public void SetCanTow(bool newCantTow)
+    public void SetCanTow(bool newCanTow)
     {
-        canTow = newCantTow;
+        canTow = newCanTow;
+        towing = false;
+        towCurrentTime = 0f;
+        towArea.UpdateProgressBar(0f);
+
     }
 
     public void SetTowItem(TowArea newTowArea)

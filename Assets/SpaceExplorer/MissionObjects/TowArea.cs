@@ -65,6 +65,6 @@ public class TowArea : MonoBehaviour
 
     public void UpdateProgressBar(float percentage)
     {
-        towBar.fillAmount = percentage;
+        towBar.fillAmount = percentage;        
     }
 }

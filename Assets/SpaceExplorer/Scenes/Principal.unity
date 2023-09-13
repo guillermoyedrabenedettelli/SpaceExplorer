@@ -2013,6 +2013,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878555379}
     m_Modifications:
+    - target: {fileID: 1301084077224103801, guid: e492f0f4dba25584f8937f460c91da35,
+        type: 3}
+      propertyPath: maxDistance
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301084077224103801, guid: e492f0f4dba25584f8937f460c91da35,
+        type: 3}
+      propertyPath: minDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301084077224103801, guid: e492f0f4dba25584f8937f460c91da35,
+        type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1815123778}
     - target: {fileID: 1301084077224103805, guid: e492f0f4dba25584f8937f460c91da35,
         type: 3}
       propertyPath: m_Name
@@ -8136,6 +8151,16 @@ PrefabInstance:
       propertyPath: gameObjectToActive.Array.data[4]
       value: 
       objectReference: {fileID: 1178574056}
+    - target: {fileID: 3307883449059008534, guid: a9cbb3e8228e1f34f8717bdf8c49d69b,
+        type: 3}
+      propertyPath: towTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307883449059008534, guid: a9cbb3e8228e1f34f8717bdf8c49d69b,
+        type: 3}
+      propertyPath: maxTurbo
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3307883449059008534, guid: a9cbb3e8228e1f34f8717bdf8c49d69b,
         type: 3}
       propertyPath: landingMessage
