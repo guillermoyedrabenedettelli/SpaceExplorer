@@ -97,7 +97,7 @@ public class PlayerMovementController : MonoBehaviour
     [Header("Landing")]
     [SerializeField] GameObject landingMessage = null;
     [SerializeField] float heightBeforeLanding = 2f;
-    LandingStepsEnum landingState = LandingStepsEnum.Rotate;
+    [SerializeField] LandingStepsEnum landingState = LandingStepsEnum.Rotate;
     Vector3 startTakeOffPosition;
     float time=0f;
     float aligmentSpeed=1f;

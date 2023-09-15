@@ -16,8 +16,8 @@ public class Misiones3 : MonoBehaviour
     private int misionPorHacerN;
     private int misionHechaN;
 
-    private bool noTengoMision;
-    private bool TengoMision;
+    //private bool noTengoMision;
+    //private bool TengoMision;
     [SerializeField] int misionN=1;
 
     [SerializeField] Canvas[] conversationCanvas;
@@ -34,7 +34,8 @@ public class Misiones3 : MonoBehaviour
         //noTengoMision = true;
 
 
-        TengoMision = true;
+        //
+        //TengoMision = true;
         asignaMision(misionN);
 
 
@@ -64,7 +65,6 @@ public class Misiones3 : MonoBehaviour
         gameObjectToActive[misionN-1].SetActive(false);
 
         misionN = n;
-        TengoMision = true;
         switch (n)
         {
             case 1:
@@ -99,13 +99,16 @@ public class Misiones3 : MonoBehaviour
                 break;
 
         }
-        gameObjectToActive[misionN-1].SetActive(true);
-        PlayerMovementController.currentObjetive = gameObjectToActive[misionN - 1];
+        if (misionN - 1< gameObjectToActive.Length)
+        {
+            gameObjectToActive[misionN - 1].SetActive(true);
+            PlayerMovementController.currentObjetive = gameObjectToActive[misionN - 1];
+        }
     }
 
     public void actualizaMision(int n)
     {
-        if (TengoMision && n == misionN)
+        if (n == misionN)
         {
             switch (n)
             {
@@ -188,9 +191,9 @@ public class Misiones3 : MonoBehaviour
     IEnumerator CompletadaMision()
     {
         CreateNewConversation();
-        TengoMision = false;
+       //TengoMision = false;
         yield return new WaitForSecondsRealtime(5f);
-        noTengoMision = true;
+        //noTengoMision = true;
         /*TextoaMostrar.text = "Tienes una llamada";
         TextoMision.text = "";*/
 
@@ -213,6 +216,7 @@ public class Misiones3 : MonoBehaviour
                 asignaMision(misionN + 1);
             }
         }
+        
         
     }
 
