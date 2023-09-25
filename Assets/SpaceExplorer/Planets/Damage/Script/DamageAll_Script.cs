@@ -24,10 +24,6 @@ public class DamageAll_Script : MonoBehaviour
                 damageable.NotifyHit(damage_);
 
             }
-            else
-            {
-                Destroy(collision.gameObject);
-            }
         }
     }
 }
