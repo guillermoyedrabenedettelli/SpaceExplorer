@@ -16,9 +16,9 @@ public class Misiones3 : MonoBehaviour
     private int misionPorHacerN;
     private int misionHechaN;
 
-    private bool noTengoMision;
-    private bool TengoMision;
-    private int misionN;
+    //private bool noTengoMision;
+    //private bool TengoMision;
+    [SerializeField] int misionN=1;
 
     [SerializeField] Canvas[] conversationCanvas;
     [SerializeField] GameObject[] gameObjectToActive;
@@ -34,8 +34,8 @@ public class Misiones3 : MonoBehaviour
         //noTengoMision = true;
 
 
-        TengoMision = true;
-        misionN = 1;
+        //
+        //TengoMision = true;
         asignaMision(misionN);
 
 
@@ -65,7 +65,6 @@ public class Misiones3 : MonoBehaviour
         gameObjectToActive[misionN-1].SetActive(false);
 
         misionN = n;
-        TengoMision = true;
         switch (n)
         {
             case 1:
@@ -86,15 +85,30 @@ public class Misiones3 : MonoBehaviour
                 misionHechaN = 0;
                 TextoMision.text = misionHechaN + " / " + misionPorHacerN;
                 break;
+            case 4:
+                TextoMostrar.text = "Encuentra a Mael Bahi y engancha el remolque a su nave";
+                misionPorHacerN = 1;
+                misionHechaN = 0;
+                TextoMision.text = misionHechaN + " / " + misionPorHacerN;
+                break;
+            case 5:
+                TextoMostrar.text = "Remolca a Mael Bahi hasta la estacion espacial";
+                misionPorHacerN = 1;
+                misionHechaN = 0;
+                TextoMision.text = misionHechaN + " / " + misionPorHacerN;
+                break;
 
         }
-        gameObjectToActive[misionN-1].SetActive(true);
-        PlayerMovementController.currentObjetive = gameObjectToActive[misionN - 1];
+        if (misionN - 1< gameObjectToActive.Length)
+        {
+            gameObjectToActive[misionN - 1].SetActive(true);
+            PlayerMovementController.currentObjetive = gameObjectToActive[misionN - 1];
+        }
     }
 
     public void actualizaMision(int n)
     {
-        if (TengoMision && n == misionN)
+        if (n == misionN)
         {
             switch (n)
             {
@@ -109,7 +123,7 @@ public class Misiones3 : MonoBehaviour
                         TextoMostrar.text = "Misión completada!";
                         TextoMision.text = "";
                         StartCoroutine(CompletadaMision());
-                        MoneyRewards(50);
+                        MoneyRewards(0);
                     }
                     break;
                 case 2:
@@ -121,7 +135,7 @@ public class Misiones3 : MonoBehaviour
                         TextoMostrar.text = "Misión completada!";
                         TextoMision.text = "";
                         StartCoroutine(CompletadaMision());
-                        MoneyRewards(55);
+                        MoneyRewards(0);
                     }
                     else
                     {
@@ -141,6 +155,30 @@ public class Misiones3 : MonoBehaviour
                         MoneyRewards(100);
                     }
                     break;
+                case 4:
+                    misionPorHacerN = 1;
+                    misionHechaN = misionHechaN + 1;
+                    TextoMision.text = misionHechaN + " / " + misionPorHacerN;
+                    if (misionHechaN >= misionPorHacerN)
+                    {
+                        TextoMostrar.text = "Misión completada!";
+                        TextoMision.text = "";
+                        StartCoroutine(CompletadaMision());
+                        MoneyRewards(0);
+                    }
+                    break;
+                case 5:
+                    misionPorHacerN = 1;
+                    misionHechaN = misionHechaN + 1;
+                    TextoMision.text = misionHechaN + " / " + misionPorHacerN;
+                    if (misionHechaN >= misionPorHacerN)
+                    {
+                        TextoMostrar.text = "Misión completada!";
+                        TextoMision.text = "";
+                        StartCoroutine(CompletadaMision());
+                        MoneyRewards(300);
+                    }
+                    break;
             }
         }
     }
@@ -153,9 +191,9 @@ public class Misiones3 : MonoBehaviour
     IEnumerator CompletadaMision()
     {
         CreateNewConversation();
-        TengoMision = false;
+       //TengoMision = false;
         yield return new WaitForSecondsRealtime(5f);
-        noTengoMision = true;
+        //noTengoMision = true;
         /*TextoaMostrar.text = "Tienes una llamada";
         TextoMision.text = "";*/
 
@@ -178,6 +216,7 @@ public class Misiones3 : MonoBehaviour
                 asignaMision(misionN + 1);
             }
         }
+        
         
     }
 

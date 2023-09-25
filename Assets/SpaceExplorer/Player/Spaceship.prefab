@@ -5539,6 +5539,7 @@ Transform:
   - {fileID: 540288478}
   - {fileID: 1748329845}
   - {fileID: 3478215841653505916}
+  - {fileID: 4917220039257982010}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5931,6 +5932,11 @@ MonoBehaviour:
   ShipPS4: {fileID: 3593598106431633579}
   maxAimHorizontalMovement: 1
   maxAimVerticalMovement: 1
+  towCurrentTime: 0
+  canTow: 0
+  towArea: {fileID: 0}
+  towTime: 5
+  towPoint: {fileID: 8516512919661520015}
   landingMessage: {fileID: 0}
   heightBeforeLanding: 2
   isLanding: 0
@@ -6253,6 +6259,37 @@ Transform:
   m_Father: {fileID: 1053793858792924476}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &8516512919661520015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4917220039257982010}
+  m_Layer: 0
+  m_Name: TowPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4917220039257982010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8516512919661520015}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.458}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1053793858792924476}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9011148094888648025
 GameObject:
   m_ObjectHideFlags: 0

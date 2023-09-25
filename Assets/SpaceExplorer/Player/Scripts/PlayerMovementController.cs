@@ -84,11 +84,20 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] float maxAimHorizontalMovement = 2f;
     [SerializeField] float maxAimVerticalMovement = 1f;
 
+    [Header("Tow Mission Variables")]
+    float towCurrentTime = 0f;
+    bool canTow = false;
+    bool towing = false;
+
+    [SerializeField] TowArea towArea;
+    [SerializeField] float towTime = 5f;
+    [SerializeField] GameObject towPoint;
+
 
     [Header("Landing")]
     [SerializeField] GameObject landingMessage = null;
     [SerializeField] float heightBeforeLanding = 2f;
-    LandingStepsEnum landingState = LandingStepsEnum.Rotate;
+    [SerializeField] LandingStepsEnum landingState = LandingStepsEnum.Rotate;
     Vector3 startTakeOffPosition;
     float time=0f;
     float aligmentSpeed=1f;
@@ -109,15 +118,16 @@ public class PlayerMovementController : MonoBehaviour
     private float movement;
     private float roll;
     private Vector2 yawPicth;
-
     private Misiones3 Missions;
     private WeaponsShip Weapons;
 
     public static GameObject currentObjetive;
 
+    
 
 
-  
+
+
     void Awake()
     {
         roll = 0f;
@@ -159,6 +169,24 @@ public class PlayerMovementController : MonoBehaviour
             UpdateLocation();
             UpdateSpeedParticles();
             UpdateRotation();
+            if(towing)
+            {
+                towCurrentTime = towCurrentTime + Time.deltaTime;
+                towArea.UpdateProgressBar(towCurrentTime/towTime>=1?1: towCurrentTime / towTime);
+                if (towCurrentTime >= towTime)
+                {
+                    /*FixedJoint fj=towPoint.AddComponent<FixedJoint>();*/
+                    towArea.GetTowItem().transform.position = towPoint.transform.position;
+                    towArea.GetTowItem().transform.parent = towPoint.transform;
+                    /*fj.connectedBody = towArea.GetTowItem().GetComponent<Rigidbody>();*/
+
+                    //towArea.GetTowItem().transform.parent = transform;
+                    towArea.SetTowed();
+                    canTow = false;
+                    towing = false;
+                    Missions.actualizaMision(4);
+                }
+            }
         }
         else
         {
@@ -560,26 +588,46 @@ public class PlayerMovementController : MonoBehaviour
 
     public void OnPressActionButton(InputAction.CallbackContext context)
     {
-        if (context.canceled && isReadyToLand && !isLanding)
+        if (canTow)
         {
-            StartLanding();
-            rollPitchRotation = Quaternion.Euler(landingTarget.rotation.x, transform.rotation.y, landingTarget.rotation.z);
-            initialRotatiom=transform.rotation;
-            landingState = LandingStepsEnum.Rotate;
-            if (Missions.GetCurrentMission() == 1 || Missions.GetCurrentMission() == 3)
+            if (context.started)
             {
-                UpdateCurrentMission(1);
+                towing = true;
             }
-
-            Weapons.enabled = false;
+            if(context.canceled)
+            {
+                towing = false;
+            }
+            towCurrentTime = 0f;
+            towArea.UpdateProgressBar(0);
 
         }
-        else if(landingState==LandingStepsEnum.Landed)
+        else
         {
-            landingState++;
-            startTakeOffPosition = transform.position;
-            Weapons.enabled = true;
+            if (context.canceled && isReadyToLand && !isLanding)
+            {
+                StartLanding();
+                rollPitchRotation = Quaternion.Euler(landingTarget.rotation.x, transform.rotation.y, landingTarget.rotation.z);
+                initialRotatiom = transform.rotation;
+                landingState = LandingStepsEnum.Rotate;
+          
+                //Only do something if the mission is the inserted
+                UpdateCurrentMission(1);
+                UpdateCurrentMission(3);
+                UpdateCurrentMission(5);
+                
+
+                Weapons.enabled = false;
+
+            }
+            else if (landingState == LandingStepsEnum.Landed)
+            {
+                landingState++;
+                startTakeOffPosition = transform.position;
+                Weapons.enabled = true;
+            }
         }
+        
     }
 
     public void PauseGame(InputAction.CallbackContext context)
@@ -609,7 +657,22 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    
+
+    //Tow Methods
+
+    public void SetCanTow(bool newCanTow)
+    {
+        canTow = newCanTow;
+        towing = false;
+        towCurrentTime = 0f;
+        towArea.UpdateProgressBar(0f);
+
+    }
+
+    public void SetTowItem(TowArea newTowArea)
+    {
+        towArea = newTowArea;
+    }
 
 
 }
