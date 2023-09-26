@@ -1538,6 +1538,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 596352024070946851, guid: 38b908baf45691947b36ce7646c62459,
+        type: 3}
+      propertyPath: m_text
+      value: "Mat\xE9n X para remolcar"
+      objectReference: {fileID: 0}
     - target: {fileID: 596352024352689707, guid: 38b908baf45691947b36ce7646c62459,
         type: 3}
       propertyPath: m_Name

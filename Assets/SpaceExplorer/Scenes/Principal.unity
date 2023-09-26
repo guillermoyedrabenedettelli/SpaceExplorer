@@ -3535,6 +3535,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5468209648548399011, guid: e32b10912a4cc1443bee7c18fc97dce7,
+        type: 3}
+      propertyPath: m_text
+      value: "-Stick izquierdo: Movimiento de la nave, adelante, parar y Rotar nave.\n-Stick
+        drecho: dirigir nave\n-R2: Disparar Arma.\r\n- \u25A1 : cambiar de arma\r\n-Select:
+        cambiar tipo de c\xE1mara."
+      objectReference: {fileID: 0}
     - target: {fileID: 5468209649081809011, guid: e32b10912a4cc1443bee7c18fc97dce7,
         type: 3}
       propertyPath: m_IsActive
