@@ -25,6 +25,8 @@ public class Misiones3 : MonoBehaviour
 
     GameObject NextConversation=null;
 
+    [SerializeField] PauseMenu Credits;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,10 @@ public class Misiones3 : MonoBehaviour
         //
         //TengoMision = true;
         asignaMision(misionN);
+        foreach(GameObject go in gameObjectToActive)
+        {
+            go.SetActive(false);
+        }
 
 
     }
@@ -103,6 +109,12 @@ public class Misiones3 : MonoBehaviour
         {
             gameObjectToActive[misionN - 1].SetActive(true);
             PlayerMovementController.currentObjetive = gameObjectToActive[misionN - 1];
+            
+        }
+        else
+        {
+            if (Credits != null)
+                Credits.PauseGame();
         }
     }
 

@@ -967,7 +967,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '>>>>  Z teclado/ X (PS) / A (Xbox)'
+  m_text: X para avanzar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1414,6 +1414,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d82f12e1-cdd4-463f-a99c-83b2e3496c40
     m_ActionName: Conversation/Next[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 194779aa-0d87-4735-ad99-264f99320d22
+    m_ActionName: SpaceshipControlls/Pause[/Keyboard/escape,/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Conversation

@@ -71,8 +71,10 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        PlayerController.enabled = false;
-        WeaponsController.enabled = false;
+        if(PlayerController!=null)
+            PlayerController.enabled = false;
+        if(WeaponsController!=null)
+            WeaponsController.enabled = false;
         pauseMenu.gameObject.SetActive(true);
         SetFirstOption();
         Time.timeScale = 0.0f;
